@@ -1,0 +1,611 @@
+<odoo>
+    <data noupdate="1">
+        <record id="avatar_the_visionary_leader" model="scentopia.avatar">
+            <field name="name">The Visionary Leader</field>
+            <field name="title">The Visionary Leader</field>
+            <field name="emotions">Empathetic, intense, warm, encouraging, supportive</field>
+            <field name="goal">Inspire others, foster meaningful growth</field>
+            <field name="judges_other_by">Compassion, sincerity, potential, integrity, dedication</field>
+            <field name="influences_other_by">Charisma, empathy, optimism, encouragement, vision</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overwhelmed by others' expectations</field>
+            <field name="fears">Being unneeded, rejection, conflict, failure, disconnection</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">Learning to set clear boundaries and prioritize self-care would enhance the your effectiveness. By focusing on balancing your desire to help others with your personal needs, you can avoid burnout and maintain your energy. Practicing active listening and delegating tasks effectively ensures you don't shoulder too much responsibility. Strengthening your ability to make objective decisions, even when emotions are high, can provide clarity and reduce stress. Developing resilience to criticism and focusing on long-term goals rather than immediate approval can help them lead more decisively. Lastly, taking time for reflection fosters growth and maintains alignment with your core values.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1')])]"/>
+        </record>
+
+        <record id="avatar_the_nurturing_organizer" model="scentopia.avatar">
+            <field name="name">The Nurturing Organizer</field>
+            <field name="title">The Nurturing Organizer</field>
+            <field name="emotions">Warm, empathetic, caring, supportive, reliable</field>
+            <field name="goal">Build harmony, nurture meaningful connections</field>
+            <field name="judges_other_by">Kindness, reliability, loyalty, respect, social etiquette</field>
+            <field name="influences_other_by">Warmth, encouragement, tradition, practicality, dependability</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overwhelmed by unmet expectations, anxiety</field>
+            <field name="fears">Conflict, rejection, being undervalued, isolation, failure</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by learning to prioritize your own needs and setting boundaries to avoid overcommitting to others. Developing a tolerance for constructive criticism and accepting that not everyone will share your values can foster personal growth. Practicing mindfulness and stress management techniques can help you stay grounded under pressure. Balancing your focus on others with self-reflection allows for more objective decision-making. Additionally, cultivating flexibility and openness to change can enhance adaptability, especially when your traditional approaches are challenged. Embracing personal growth and maintaining a strong sense of self will ensure your strengths continue to shine.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2')])]"/>
+        </record>
+
+        <record id="avatar_the_insightful_advocate" model="scentopia.avatar">
+            <field name="name">The Insightful Advocate</field>
+            <field name="title">The Insightful Advocate</field>
+            <field name="emotions">Deep, reflective, empathetic, passionate, intuitive</field>
+            <field name="goal">Inspire change, foster meaningful purpose</field>
+            <field name="judges_other_by">Authenticity, values, empathy, integrity, vision</field>
+            <field name="influences_other_by">Insight, compassion, vision, encouragement, connection</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, overthinks, self-critical spiral</field>
+            <field name="fears">Being misunderstood, rejection, purposelessness, failure, isolation</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your idealism with practical strategies and embracing imperfection. While your insights are profound, focusing on achievable steps helps turn visions into reality. Practicing self-care and setting boundaries allows you to maintain emotional resilience without being overwhelmed by others needs. Learning to communicate your feelings openly can build stronger relationships and prevent misunderstandings. Embracing flexibility and letting go of perfectionism can ease pressure and foster adaptability. Lastly, seeking collaboration and trusting others contributions can enhance your influence and bring your meaningful ideas to fruition while preserving your energy.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_3')])]"/>
+        </record>
+
+        <record id="avatar_the_reliable_organizer" model="scentopia.avatar">
+            <field name="name">The Reliable Organizer</field>
+            <field name="title">The Reliable Organizer</field>
+            <field name="emotions">Reserved, steady, pragmatic, loyal, thoughtful</field>
+            <field name="goal">Maintain order, achieve tangible success</field>
+            <field name="judges_other_by">Responsibility, reliability, integrity, competence, dedication</field>
+            <field name="influences_other_by">Consistency, logic, discipline, dependability, expertise</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, overanalyzes, suppresses emotions</field>
+            <field name="fears">Failure, disorder, inompetence, betrayal, uncertainty</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by cultivating flexibility and embracing adaptability in changing circumstances. Recognizing that perfection isn't always necessary and that collaboration can bring diverse solutions will enhance your problem-solving skills. Developing emotional awareness and expressing your thoughts openly can strengthen relationships and build trust with others. Taking occasional risks and exploring creative approaches can broaden your perspective and opportunities for growth. By balancing structure with spontaneity, you'll foster innovation while maintaining your strengths in reliability and organization. Allowing space for self-compassion and celebrating progress, rather than just results, will further support your long-term success.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_assertive_leader" model="scentopia.avatar">
+            <field name="name">The Assertive Leader</field>
+            <field name="title">The Assertive Leader</field>
+            <field name="emotions">Practical, controlled, confident, determined, reserved</field>
+            <field name="goal">Achieve efficiency, lead with results</field>
+            <field name="judges_other_by">Competence, work ethic, responsibility, results, integrity</field>
+            <field name="influences_other_by">Leadership, decisiveness, logic, organization, confidence</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Demanding, rigid, impatient, micromanages</field>
+            <field name="fears">Failure, inefficiency, chaos, incompetence, disrespect</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your drive for results with empathy and active listening. Building trust by valuing diverse perspectives and understanding emotional dynamics will strengthen team cohesion and foster collaboration. Practicing patience and allowing flexibility in achieving goals can help navigate unexpected challenges while maintaining morale. Delegating tasks and trusting others' abilities will improve efficiency and reduce personal stress. Taking time for self-reflection and considering long-term impacts instead of immediate outcomes will enhance decision-making. By cultivating emotional intelligence and valuing creativity alongside structure, you can lead with both strength and inspiration, creating a more balanced and inclusive approach.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_independent_thinker" model="scentopia.avatar">
+            <field name="name">The Independent Thinker</field>
+            <field name="title">The Independent Thinker</field>
+            <field name="emotions">Analytical, reserved, curious, detached, introspective</field>
+            <field name="goal">Seek knowledge, understand complex ideas</field>
+            <field name="judges_other_by">Intelligence, curiosity, logic, authenticity, creativity</field>
+            <field name="influences_other_by">Ideas, innovation, reasoning, curiosity, independence</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, overanalyzes, becomes indecisive, isolates</field>
+            <field name="fears">Stagnation, ignorance, misunderstanding, restriction, failure</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by focusing on balancing theoretical exploration with actionable execution. While your curiosity and intellect drive innovation, translating ideas into practical outcomes will enhance their impact. Developing communication skills and actively engaging with others can help articulate your thoughts and foster collaboration. Setting priorities and managing time effectively can mitigate the risk of getting lost in analysis. Building emotional awareness and recognizing the value of interpersonal connections will strengthen your relationships and broaden your influence. Lastly, learning to embrace imperfection and trust the process can reduce stress and help you achieve meaningful progress more consistently.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_thoughtful_entertainer" model="scentopia.avatar">
+            <field name="name">The Thoughtful Entertainer</field>
+            <field name="title">The Thoughtful Entertainer</field>
+            <field name="emotions">Vibrant, expressive, empathetic, reactive, passionate</field>
+            <field name="goal">Enjoy life, create joyful moments</field>
+            <field name="judges_other_by">Warmth, charisma, authenticity, generosity, sociability</field>
+            <field name="influences_other_by">Enthusiasm, charm, relatability, humor, spontaneity</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overwhelmed, emotional, seeks reassurance, distracted</field>
+            <field name="fears">Rejection, insignificance, boredom, disapproval, loneliness</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your spontaneity with thoughtful planning and prioritization. While your energy and charisma shine, focusing on long-term goals and developing consistent habits can enhance your productivity. Learning to pause before making decisions can help mitigate impulsivity and lead to better outcomes. Strengthening emotional resilience and practicing self-reflection will provide stability during challenging times. Embracing constructive feedback and developing organizational skills can help you manage responsibilities more effectively. Additionally, finding ways to recharge privately will sustain your enthusiasm and creativity, allowing you to continue inspiring and connecting with others authentically
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2')])]"/>
+        </record>
+
+        <record id="avatar_the_adventurous_strategist" model="scentopia.avatar">
+            <field name="name">The Adventurous Strategist</field>
+            <field name="title">The Adventurous Strategist</field>
+            <field name="emotions">Bold, dynamic, intense, adaptable, fearless</field>
+            <field name="goal">Maximize opportunities, live fully engaged</field>
+            <field name="judges_other_by">Competence, adaptability, confidence, boldness, results</field>
+            <field name="influences_other_by">Energy, charisma, action, quick thinking, decisiveness</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Impulsive, confrontational, overextends, assertive</field>
+            <field name="fears">Stagnation, failure, boredom, irrelevance, restriction</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your love for action with strategic planning and foresight. While your quick thinking and adaptability are strengths, taking time to evaluate long-term consequences can prevent unnecessary risks. Developing patience and listening skills will enhance your ability to collaborate and connect with others on a deeper level. Practicing reflection and prioritization can help align your efforts with meaningful goals. Building resilience to setbacks by focusing on growth rather than immediate success will also improve your leadership abilities. Finally, cultivating mindfulness and emotional awareness will ensure your dynamic energy remains productive and inspiring to others
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_adventurous_strategist" model="scentopia.avatar">
+            <field name="name">The Adventurous Strategist</field>
+            <field name="title">The Adventurous Strategist</field>
+            <field name="emotions">Bold, dynamic, intense, adaptable, fearless</field>
+            <field name="goal">Maximize opportunities, live fully engaged</field>
+            <field name="judges_other_by">Competence, adaptability, confidence, boldness, results</field>
+            <field name="influences_other_by">Energy, charisma, action, quick thinking, decisiveness</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Impulsive, confrontational, overextends, assertive</field>
+            <field name="fears">Stagnation, failure, boredom, irrelevance, restriction</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your love for action with strategic planning and foresight. While your quick thinking and adaptability are strengths, taking time to evaluate long-term consequences can prevent unnecessary risks. Developing patience and listening skills will enhance your ability to collaborate and connect with others on a deeper level. Practicing reflection and prioritization can help align your efforts with meaningful goals. Building resilience to setbacks by focusing on growth rather than immediate success will also improve your leadership abilities. Finally, cultivating mindfulness and emotional awareness will ensure your dynamic energy remains productive and inspiring to others
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_dedicated_caregiver" model="scentopia.avatar">
+            <field name="name">The Dedicated Caregiver</field>
+            <field name="title">The Dedicated Caregiver</field>
+            <field name="emotions">Warm, nurturing, empathetic, reserved, loyal</field>
+            <field name="goal">Support others, maintain harmonious relationships</field>
+            <field name="judges_other_by">Kindness, reliability, loyalty, integrity, effort</field>
+            <field name="influences_other_by">Compassion, dedication, sincerity, dependability</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overcommits, suppresses feelings, seeks reassurance</field>
+            <field name="fears">Conflict, rejection, failure, neglect, change</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by learning to set healthy boundaries and prioritize self-care. While your dedication to others is admirable, reserving time for your own needs will prevent burnout and improve your capacity to help. Practicing assertiveness in communication can ensure your voice is heard and your ideas are valued. Embracing flexibility and openness to change will help you adapt to new situations more comfortably. Developing emotional resilience and becoming comfortable with constructive feedback can reduce self-doubt. Lastly, focusing on long-term goals and taking measured risks will empower you to grow while staying true to your nurturing and supportive nature.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_thoughtful_maveric" model="scentopia.avatar">
+            <field name="name">The Thoughtful Maverick</field>
+            <field name="title">The Thoughtful Maverick</field>
+            <field name="emotions">Curious, energetic, adaptable, passionate, reflective</field>
+            <field name="goal">Explore ideas, challenge conventional thinking</field>
+            <field name="judges_other_by">Intelligence, creativity, wit, adaptability, authenticity</field>
+            <field name="influences_other_by">Innovation, charisma, enthusiasm, debate, originality</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overanalyzes, avoids commitment, doubts self</field>
+            <field name="fears">Stagnation, irrelevance, failure, conformity, rejection</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by channeling your curiosity and energy into focused, actionable goals. While your adaptability is a strength, committing to completing projects can enhance your reliability and influence. Developing patience and practicing active listening will improve your relationships and help you build trust with others. Managing your tendency to overanalyze can prevent self-doubt and keep you moving forward. Embracing constructive feedback and working on follow-through will make your innovative ideas more impactful. Finally, practicing mindfulness and self-reflection can help you stay grounded, balance your dynamic energy, and ensure your efforts align with your broader ambitions.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3')])]"/>
+        </record>
+
+        <record id="avatar_the_skilled_tactician" model="scentopia.avatar">
+            <field name="name">The Skilled Tactician</field>
+            <field name="title">The Skilled Tactician</field>
+            <field name="emotions">Calm, practical, reserved, adaptable, curious</field>
+            <field name="goal">Solve problems, explore new challenges</field>
+            <field name="judges_other_by">Competence, resourcefulness, logic, adaptability</field>
+            <field name="influences_other_by">Pragmatism, ingenuity, action, confidence, reliability</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, overanalyzes, acts impulsively</field>
+            <field name="fears">Stagnation, dependence, incompetence, restrictions, failure</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your independence with collaboration and communication. While you excel in solving problems on your own, involving others can provide new perspectives and strengthen teamwork. Developing emotional awareness and expressing your thoughts more openly will enhance relationships and build trust. Practicing patience and planning for long-term outcomes can complement your adaptability in the moment. Embracing constructive feedback and seeking mentorship can help refine your skills further. Finally, focusing on setting clear goals and sticking to commitments will make your pragmatic and innovative approaches even more impactful in both personal and professional contexts
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_3')])]"/>
+        </record>
+
+        <record id="avatar_the_strategic_commander" model="scentopia.avatar">
+            <field name="name">The Strategic Commander</field>
+            <field name="title">The Strategic Commander</field>
+            <field name="emotions">Confident, intense, strategic, driven, focused</field>
+            <field name="goal">Achieve success, lead with vision</field>
+            <field name="judges_other_by">Competence, ambition, confidence, efficiency, integrity</field>
+            <field name="influences_other_by">Vision, decisiveness, charisma, strategy, leadership</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Impatient, critical, demanding, overworks</field>
+            <field name="fears">Failure, stagnation, inefficiency, irrelevance, loss of control</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your ambition with empathy and attentiveness to others' needs. While your leadership and strategic thinking are exceptional, cultivating patience and actively listening to diverse perspectives will strengthen team dynamics and foster loyalty. Practicing flexibility and being open to alternative approaches can help you adapt to unexpected challenges. Delegating responsibilities and trusting others will reduce stress and empower your team. Taking time to reflect on long-term goals rather than immediate outcomes ensures sustainable success. Additionally, prioritizing self-care and emotional awareness will allow you to lead with both strength and a human touch.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_inspired_trailblazer" model="scentopia.avatar">
+            <field name="name">The Inspired Trailblazer</field>
+            <field name="title">The Inspired Trailblazer</field>
+            <field name="emotions">Passionate, enthusiastic, empathetic, imaginative, expressive</field>
+            <field name="goal">Inspire others, explore meaningful possibilities</field>
+            <field name="judges_other_by">Authenticity, creativity, values, openness, kindness</field>
+            <field name="influences_other_by">Charisma, optimism, ideas, enthusiasm, connection</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overextends, overthinks, becomes distracted, emotional</field>
+            <field name="fears">Rejection, stagnation, boredom, conformity, failure</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by focusing on turning your creative ideas into actionable plans. While your energy and enthusiasm are contagious, committing to follow-through will ensure your visions come to life. Practicing prioritization and time management can help you balance multiple projects without becoming overwhelmed. Developing emotional resilience and grounding yourself in practical steps during challenging times will strengthen your ability to navigate pressure. Embracing constructive feedback and learning to say no when needed can help maintain focus. Lastly, nurturing consistency in your efforts while staying true to your values will enhance your influence and overall impact.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_visionary_mastermind" model="scentopia.avatar">
+            <field name="name">The Visionary Mastermind</field>
+            <field name="title">The Visionary Mastermind</field>
+            <field name="emotions">Controlled, strategic, introspective, focused, reserved</field>
+            <field name="goal">Achieve mastery, realize visionary goals</field>
+            <field name="judges_other_by">Intelligence, competence, integrity, ambition, vision</field>
+            <field name="influences_other_by">Strategy, confidence, insight, leadership, innovation</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overworks, withdraws, becomes critical, isolates</field>
+            <field name="fears">Stagnation, failure, inefficiency, mediocrity, loss of control</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your visionary thinking with practical collaboration and emotional awareness. While your strategic abilities are exceptional, engaging with others perspectives and valuing emotional input can strengthen relationships and foster loyalty. Practicing flexibility and adaptability will help you navigate unexpected changes and embrace alternative solutions. Delegating tasks and trusting others contributions can reduce overwork and increase team efficiency. Developing patience and refining your communication skills will ensure your ideas resonate with diverse audiences. Lastly, celebrating incremental progress and focusing on growth, rather than perfection, will maintain your motivation and amplify your long-term impact.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_authentic_adventurer" model="scentopia.avatar">
+            <field name="name">The Authentic Adventurer</field>
+            <field name="title">The Authentic Adventurer</field>
+            <field name="emotions">Deep, empathetic, reflective, passionate, idealistic</field>
+            <field name="goal">Live authentically, inspire meaningful change</field>
+            <field name="judges_other_by">Values, authenticity, kindness, creativity, integrity</field>
+            <field name="influences_other_by">Empathy, imagination, sincerity, vision, connection</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, self-critical, emotional, overwhelmed</field>
+            <field name="fears">Rejection, conflict, purposelessness, failure, inauthenticity</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by learning to balance your idealism with practical action steps. While your creativity and empathy are powerful strengths, setting realistic goals and prioritizing tasks will help bring your ideas to life. Developing resilience and embracing imperfection can reduce self-doubt and enhance confidence in your decisions. Practicing assertiveness in communication will ensure your voice is heard and your boundaries are respected. Seeking collaboration and trusting others' abilities can provide diverse perspectives and lighten your emotional load. Lastly, celebrating small achievements along the way will maintain your motivation and allow you to stay connected to your values while growing personally and professionally.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_artistic_explorer" model="scentopia.avatar">
+            <field name="name">The Artistic Explorer</field>
+            <field name="title">The Artistic Explorer</field>
+            <field name="emotions">Sensitive, creative, empathetic, introspective, adaptable</field>
+            <field name="goal">Embrace life, create authentic beauty</field>
+            <field name="judges_other_by">Authenticity, kindness, creativity, values, empathy</field>
+            <field name="influences_other_by">Warmth, sincerity, creativity, passion, relatability</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, suppresses emotions, becomes indecisive</field>
+            <field name="fears">Rejection, conflict, confinement, failure, criticism</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your love for spontaneity with thoughtful planning and goal-setting. While your creativity and adaptability are strengths, focusing on prioritizing tasks can help you stay on track and achieve long-term aspirations. Practicing assertiveness and expressing your feelings openly will build stronger relationships and reduce misunderstandings. Developing resilience to constructive criticism will boost your confidence and help you grow. Learning to manage stress by addressing challenges directly rather than avoiding them will foster personal and professional stability. Lastly, finding ways to align your values with your actions will enhance your sense of fulfillment and purpose.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_caring_harmonizer" model="scentopia.avatar">
+            <field name="name">The Caring Harmonizer</field>
+            <field name="title">The Caring Harmonizer</field>
+            <field name="emotions">Warm, empathetic, sensitive, nurturing, compassionate</field>
+            <field name="goal">Foster harmony, strengthen meaningful connections</field>
+            <field name="judges_other_by">Kindness, loyalty, respect, sincerity, effort</field>
+            <field name="influences_other_by">Encouragement, warmth, sincerity, dedication</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overthinks, self-doubts, seeks reassurance, overwhelmed.</field>
+            <field name="fears">Rejection, conflict, failure, disconnection, being unappreciated.</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by learning to prioritize your own needs and set clear boundaries. While your empathy and dedication to others are strengths, balancing this with self-care will prevent burnout and enhance your ability to help others. Developing emotional resilience and becoming more comfortable with constructive criticism can strengthen your confidence. Practicing objectivity and focusing on long-term goals rather than immediate approval can help you make more balanced decisions. Embracing flexibility and adaptability will make it easier to navigate unexpected challenges. Finally, fostering independence and trusting other's capabilities will allow you to share responsibilities and grow both personally and professionally.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3')])]"/>
+        </record>
+
+        <record id="avatar_the_reflective_dreamer" model="scentopia.avatar">
+            <field name="name">The Reflective Dreamer</field>
+            <field name="title">The Reflective Dreamer</field>
+            <field name="emotions">Emotionally driven, reflective, easily affected by others, deeply intuitive.</field>
+            <field name="goal">Personal growth, meaningful connections, creative expression, making a difference.</field>
+            <field name="judges_other_by">Authenticity, passion, open-mindedness, emotional intelligence, and creative expression.</field>
+            <field name="influences_other_by">Sharing ideas, inspiring others, expressing enthusiasm, creating meaningful connections.</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Expressive, open-minded, creative, spontaneous, prefers thoughtful discussion over quick decisions.</field>
+            <field name="values_to_org">Innovation, emotional intelligence, creativity, authenticity, building strong relationships, inclusivity.</field>
+            <field name="under_pressure">Tends to become overwhelmed, loses focus, struggles with decision-making.</field>
+            <field name="fears">Not living up to their potential, rejection, emotional disconnection.</field>
+            <field name="personality">The Reflective Dreamer is driven by a deep sense of purpose and creativity. They value authenticity and connection, always seeking ways to express themselves and inspire others. Though emotionally driven, they struggle with consistency at times and can become easily overwhelmed by their own thoughts.
+            </field>
+            <field name="increase_effectiveness">You would increase your effectiveness by focusing on consistency and managing your emotional responses. Setting clear goals and prioritizing them will help you stay on track, while finding methods to simplify decision-making will reduce overwhelm. Practice bringing ideas to action with a balance of creativity and structure. Learning to navigate uncertainty and embracing imperfection in yourself and others will also help enhance your leadership and collaboration skills.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_thoughtful_idealist" model="scentopia.avatar">
+            <field name="name">The Thoughtful Idealist</field>
+            <field name="title">The Thoughtful Idealist</field>
+            <field name="emotions">Deep, empathetic, sensitive, reflective, intense</field>
+            <field name="goal">Inspire others, create meaningful change</field>
+            <field name="judges_other_by">Values, authenticity, empathy, integrity, vision</field>
+            <field name="influences_other_by">Insight, compassion, encouragement, creativity</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overthinks, withdraws, self-critical, overwhelmed</field>
+            <field name="fears">Rejection, failure, misunderstanding, purposelessness, conflict</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your idealistic vision with actionable, practical steps. While your empathy and insight are remarkable, focusing on measurable progress can help translate your ideas into tangible results. Developing self-compassion and silencing inner criticism will reduce self-doubt and enhance your confidence. Practicing clear communication and seeking feedback will help you align your vision with others, fostering stronger collaborations. Building emotional resilience and learning to accept imperfections will empower you to move forward even in challenging situations. Lastly, prioritizing self-care and maintaining boundaries will sustain your energy and allow you to continue inspiring others with clarity and strength
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_analytical_philosopher" model="scentopia.avatar">
+            <field name="name">The Analytical Philosopher</field>
+            <field name="title">The Analytical Philosopher</field>
+            <field name="emotions">Analytical, introspective, curious, reserved, reflective</field>
+            <field name="goal">Understand deeply, innovate through ideas</field>
+            <field name="judges_other_by">Intelligence, curiosity, logic, authenticity, creativity</field>
+            <field name="influences_other_by">Ideas, reasoning, innovation, independence, insight</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, self-doubts, overanalyzes, becomes indecisive</field>
+            <field name="fears">Stagnation, rejection, restriction, failure, misunderstanding</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by focusing on translating your innovative ideas into practical actions. While your intellectual curiosity is a strength, prioritizing tasks and setting deadlines can help bring your concepts to fruition. Developing emotional awareness and expressing your thoughts more openly will enhance relationships and improve collaboration. Practicing decision-making with confidence can reduce self-doubt and speed up progress. Learning to accept imperfections and manage risks will help you move forward without getting stuck in overanalysis. Lastly, embracing teamwork and seeking diverse perspectives will complement your independent thinking and allow your insights to make a broader impact.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_responsible_director" model="scentopia.avatar">
+            <field name="name">The Responsible Director</field>
+            <field name="title">The Responsible Director</field>
+            <field name="emotions">Practical, intense, disciplined, focused, reserved</field>
+            <field name="goal">Achieve goals, maintain efficient systems</field>
+            <field name="judges_other_by">Competence, work ethic, integrity, reliability, dedication</field>
+            <field name="influences_other_by">Leadership, organization, logic, determination</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overworks, becomes critical, impatient, stressed</field>
+            <field name="fears">Failure, inefficiency, chaos, irrelevance, disrespect</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your drive for results with empathy and emotional awareness. While your organizational skills and leadership are commendable, practicing active listening and valuing diverse perspectives will enhance collaboration and build trust. Developing patience and adaptability can help you handle unexpected changes with less stress. Embracing flexibility and recognizing that not all solutions need to be perfect will prevent burnout. Delegating tasks and empowering others can lighten your workload while fostering teamwork. Lastly, prioritizing self-care and managing stress effectively will maintain your energy and enable you to lead with both strength and approachability.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_reflective_strategist" model="scentopia.avatar">
+            <field name="name">The Reflective Strategist</field>
+            <field name="title">The Reflective Strategist</field>
+            <field name="emotions">Reserved, logical, prefers to analyze emotions, struggles to express feelings.</field>
+            <field name="goal">Achieve personal growth, strategic success, solve complex problems, innovate</field>
+            <field name="judges_other_by">Intelligence, logic, consistency, competence, strategic thinking, ability to learn</field>
+            <field name="influences_other_by">Innovative ideas, logical solutions, strategic vision, clear goals, confidence</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Calm, analytical, focused on solutions, may become more reserved</field>
+            <field name="fears">Incompetence, lack of control, failure to achieve personal vision</field>
+            <field name="personality">The Reflective Strategist is deeply intellectual, highly focused on personal growth and achieving strategic success. They are independent thinkers who value logic and efficiency but often struggle with emotional expression and detachment from others</field>
+            <field name="increase_effectiveness">You would increase your effectiveness by allowing yourself to embrace more emotional awareness and understanding in your interactions. While your strategic thinking and independence are incredible assets, balancing these with empathy and connection will help you foster stronger relationships and communication. You could benefit from practicing greater openness to others’ perspectives, especially in collaborative settings, to strengthen your leadership style. Developing a more flexible approach to problem-solving will also enhance your adaptability in dynamic environments.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_adaptive_visionary" model="scentopia.avatar">
+            <field name="name">The Adaptive Visionary</field>
+            <field name="title">The Adaptive Visionary</field>
+            <field name="emotions">Intense, determined, strategic, reflective, focused</field>
+            <field name="goal">Lead effectively, achieve ambitious visions</field>
+            <field name="judges_other_by">Competence, efficiency, intelligence, integrity</field>
+            <field name="influences_other_by">Vision, strategy, decisiveness, leadership, innovation</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Self-doubts, overworks, becomes critical, impatient</field>
+            <field name="fears">Failure, inefficiency, stagnation, irrelevance, loss of control</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your ambition with emotional awareness and interpersonal sensitivity. While your leadership and strategic thinking are exceptional, practicing patience and valuing diverse perspectives will strengthen your ability to inspire and connect with others. Developing resilience to setbacks and learning to embrace imperfections can reduce self-doubt and enhance decision-making. Delegating tasks and trusting others' expertise can improve efficiency and allow you to focus on broader goals. Prioritizing self-care and managing stress will maintain your energy and focus. Lastly, fostering collaboration and open communication will ensure your vision is realized with greater support and impact.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_bold_innovator" model="scentopia.avatar">
+            <field name="name">The Bold Innovator</field>
+            <field name="title">The Bold Innovator</field>
+            <field name="emotions">Curious, enthusiastic, adaptable, reflective, playful</field>
+            <field name="goal">Explore possibilities, challenge conventional thinking</field>
+            <field name="judges_other_by">Intelligence, creativity, adaptability, authenticity, wit</field>
+            <field name="influences_other_by">Charisma, ideas, energy, humor, innovation</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overthinks, distracts self, becomes restless</field>
+            <field name="fears">Stagnation, irrelevance, boredom, conformity, failure</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by focusing on turning your innovative ideas into actionable results. While your adaptability and enthusiasm are strengths, prioritizing tasks and following through can make your efforts more impactful. Practicing active listening and building patience will enhance relationships and foster collaboration. Developing self-discipline and managing time effectively will help you balance your curiosity with productivity. Embracing constructive feedback and learning to slow down when needed can improve decision-making. Lastly, aligning your creativity with structured goals and seeking input from others will amplify your influence while ensuring your visions are both practical and sustainable.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_empathetic_guide" model="scentopia.avatar">
+            <field name="name">The Empathetic Guide</field>
+            <field name="title">The Empathetic Guide</field>
+            <field name="emotions">Empathetic, passionate, sensitive, introspective, caring</field>
+            <field name="goal">Inspire others, build meaningful connections</field>
+            <field name="judges_other_by">Intelligence, creativity, adaptability, authenticity, wit</field>
+            <field name="influences_other_by">Charisma, empathy, vision, encouragement, warmth</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Overthinks, emotional, self-critical, overwhelmed</field>
+            <field name="fears">Rejection, failure, conflict, disconnection, being unneeded</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your empathy and passion for helping others with self-care and assertiveness. While your dedication to relationships is a strength, setting boundaries ensures your energy remains sustainable. Developing resilience to criticism and focusing on long-term objectives can help you maintain confidence in your decisions. Practicing clear prioritization and avoiding overcommitting to others will allow you to achieve your personal goals without feeling overwhelmed. Embracing constructive feedback and valuing your own needs as much as others' will foster growth. Lastly, learning to trust others' abilities and delegating responsibilities will amplify your leadership while reducing unnecessary stress.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_thoughtful_protector" model="scentopia.avatar">
+            <field name="name">The Thoughtful Protector</field>
+            <field name="title">The Thoughtful Protector</field>
+            <field name="emotions">Empathetic, sensitive, reflective, nurturing, thoughtful</field>
+            <field name="goal">Support others, maintain harmonious connections</field>
+            <field name="judges_other_by">Kindness, loyalty, reliability, respect, sincerity</field>
+            <field name="influences_other_by">Compassion, attentiveness, dedication, sincerity</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, overthinks, seeks reassurance, overwhelmed</field>
+            <field name="fears">Conflict, rejection, failure, being unappreciated, change</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by learning to balance your nurturing nature with self-care and assertiveness. While your dedication to helping others is a strength, prioritizing your own needs and setting healthy boundaries will prevent burnout and maintain emotional resilience. Developing confidence in your abilities and trusting your judgment can reduce self-doubt. Practicing flexibility and adapting to change will help you handle unexpected challenges more comfortably. Embracing constructive feedback and focusing on long-term growth rather than immediate validation will enhance decision-making. Lastly, celebrating small achievements and acknowledging your contributions will reinforce your value and sustain your motivation.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4')])]"/>
+        </record>
+
+        <record id="avatar_the_charismatic_performer" model="scentopia.avatar">
+            <field name="name">The Charismatic Performer</field>
+            <field name="title">The Charismatic Performer</field>
+            <field name="emotions">Vibrant, empathetic, expressive, spontaneous, adaptable</field>
+            <field name="goal">Experience life, spread joy everywhere</field>
+            <field name="judges_other_by">Kindness, authenticity, humor, energy, generosity</field>
+            <field name="influences_other_by">Charisma, enthusiasm, warmth, encouragement</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Emotional, distracted, overextends, seeks reassurance</field>
+            <field name="fears">Rejection, insignificance, failure, boredom, disconnection</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your vibrant energy with intentional planning and focus. While your spontaneity and charisma are strengths, setting clear priorities and following through on commitments will help you achieve long-term success. Practicing mindfulness and learning to pause before making decisions can reduce impulsivity and improve outcomes. Developing patience and embracing structure in your routines can enhance productivity without stifling your creativity. Building resilience to criticism and focusing on personal growth over external validation will strengthen your confidence. Lastly, nurturing self-care and creating moments for introspection will sustain your enthusiasm and allow you to inspire others with clarity and balance.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_conscientious_planner" model="scentopia.avatar">
+            <field name="name">The Conscientious Planner</field>
+            <field name="title">The Conscientious Planner</field>
+            <field name="emotions">Reserved, logical, steady, pragmatic, introspective</field>
+            <field name="goal">Maintain order, achieve reliable success</field>
+            <field name="judges_other_by">Responsibility, integrity, competence, dedication</field>
+            <field name="influences_other_by">Logic, consistency, discipline, dependability</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, self-doubts, overanalyzes, becomes stubborn</field>
+            <field name="fears">Failure, chaos, inefficiency, incompetence, losing control</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your structured approach with flexibility and openness to new perspectives. While your discipline and focus are strengths, learning to adapt to unexpected changes will enhance your resilience. Developing emotional awareness and expressing your thoughts more openly can improve relationships and foster trust. Practicing delegation and collaboration can lighten your workload and strengthen teamwork. Embracing constructive feedback and understanding that imperfection is part of growth will reduce self-doubt. Lastly, taking time to reflect on long-term goals and celebrating small wins along the way will maintain your motivation and ensure steady progress.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_sensitive_idealist" model="scentopia.avatar">
+            <field name="name">The Sensitive Idealist</field>
+            <field name="title">The Sensitive Idealist</field>
+            <field name="emotions">Sensitive, empathetic, creative, introspective, adaptable</field>
+            <field name="goal">Express authenticity, create meaningful beauty</field>
+            <field name="judges_other_by">Kindness, authenticity, creativity, sincerity, compassion</field>
+            <field name="influences_other_by">Warmth, passion, relatability, creativity, sincerity</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, becomes indecisive, self-critical, emotional</field>
+            <field name="fears">Rejection, conflict, failure, disconnection, conformity</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by balancing your spontaneity with intentional planning and follow-through. While your creativity and adaptability are strengths, focusing on setting clear goals and prioritizing tasks will help you achieve long-term success. Developing assertiveness and expressing your thoughts openly can strengthen relationships and prevent misunderstandings. Practicing emotional resilience and self-compassion can help you navigate self-doubt and criticism more effectively. Embracing structure and routine without sacrificing your need for flexibility will enhance productivity. Lastly, seeking collaboration and valuing feedback from others will broaden your perspective, refine your ideas, and amplify the impact of your unique talents and vision
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_compassionate_creator" model="scentopia.avatar">
+            <field name="name">The Compassionate Creator</field>
+            <field name="title">The Compassionate Creator</field>
+            <field name="emotions">Deep, sensitive, empathetic, introspective, idealistic</field>
+            <field name="goal">Live authentically, inspire meaningful change</field>
+            <field name="judges_other_by">Values, kindness, creativity, authenticity, empathy</field>
+            <field name="influences_other_by">Passion, sincerity, imagination, connection, vision</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, self-doubts, overwhelmed, indecisive</field>
+            <field name="fears">Rejection, failure, purposelessness, disconnection, inauthenticity</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by grounding your idealism in actionable steps and practical strategies. While your creativity and passion are remarkable, focusing on setting priorities and breaking goals into manageable tasks can help you achieve your vision. Developing emotional resilience and practicing self-compassion will reduce self-doubt and enhance confidence. Practicing assertive communication and establishing boundaries will strengthen relationships and prevent burnout. Embracing flexibility and accepting that imperfection is part of growth can ease stress and encourage progress. Lastly, seeking collaboration and valuing feedback will provide diverse perspectives, helping you refine your ideas and create a greater impact.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+        <record id="avatar_the_versatile_visionary" model="scentopia.avatar">
+            <field name="name">The Versatile Visionary</field>
+            <field name="title">The Versatile Visionary</field>
+            <field name="emotions">Reserved, pragmatic, introspective, adaptable, curious</field>
+            <field name="goal">Solve problems, explore new challenges</field>
+            <field name="judges_other_by">Competence, logic, resourcefulness, adaptability</field>
+            <field name="influences_other_by">Pragmatism, ingenuity, confidence, reliability, action</field>
+            <field name="strengths">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="communication">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="values_to_org">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</field>
+            <field name="under_pressure">Withdraws, overanalyzes, becomes indecisive, isolates</field>
+            <field name="fears">Stagnation, dependence, failure, restrictions, incompetence</field>
+            <field name="personality">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            </field>
+            <field name="increase_effectiveness">You can increase your effectiveness by combining your natural resourcefulness with intentional collaboration and communication. While your independent nature is a strength, seeking input from others and building stronger connections can broaden your perspective and foster trust. Developing emotional awareness and expressing your thoughts more openly will enhance relationships and create better teamwork. Practicing patience and considering long-term consequences can help you make more balanced decisions. Learning to accept imperfection and manage risks effectively will prevent overanalysis from stalling progress. Lastly, aligning your adaptability with structured goals will help you achieve consistency and ensure your efforts yield tangible and lasting results.
+            </field>
+            <field name="fragrance_family_ids" eval="[(6, 0, [ref('gm_scentopia.fragrance_family_1'),ref('gm_scentopia.fragrance_family_2'),ref('gm_scentopia.fragrance_family_3'),ref('gm_scentopia.fragrance_family_4'),ref('gm_scentopia.fragrance_family_5')])]"/>
+        </record>
+
+    </data>
+</odoo>

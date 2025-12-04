@@ -1,0 +1,285 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		<template id="oil_drop_added_template" name="Oil Drop Added">
+			<t t-call="website.layout">
+				<t t-set="title">Perfume Journey - Oil Drop Added</t>
+				<t t-set="additional_title">Scentzania</t>
+				<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+				<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+				<t t-if="font_url">
+						<link rel="stylesheet" t-att-href="font_url"/>
+				</t>
+				<style>
+					body {
+						font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+					}
+					.perfume-wrapper {
+						min-height: 100vh;
+						padding-top: 60px;
+						padding-bottom: 20px;
+					}
+					
+					.category-header {
+						background-color: rgba(255, 255, 255, 0.6);
+						backdrop-filter: blur(10px);
+						top: 0;
+						z-index: 10;
+					}
+					
+					.perfume-card {
+						background-color: rgba(255, 255, 255, 0.6);
+						backdrop-filter: blur(10px);
+						transition: transform 0.3s ease;
+						max-width: 500px;
+						border-radius: 25px;
+					}
+					
+					.bottom-nav {
+						background: #f7e0d5;
+						height: 60px;
+					}
+					
+					.dynamic-avatar {
+						width: 55px;
+						height: 55px;
+						object-fit: contain;
+						filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+					}
+					
+					/* Category-specific styles */
+					.perfume-wrapper.citrus {
+						background-image: url('/gm_web/static/src/img/05_perfume_start_01_citrus.png');
+						background-color: #FFB347;
+						background-size: cover;
+						background-position: center;
+					}
+					
+					.perfume-wrapper.fresh {
+						background-image: url('/gm_web/static/src/img/05_perfume_start_01_fresh.png');
+						background-color: #4FC3F7;
+						background-size: cover;
+						background-position: center;
+					}
+					
+					.perfume-wrapper.floral {
+						background-image: url('/gm_web/static/src/img/05_perfume_start_01_floral.png');
+						background-color: #FF6B9D;
+						background-size: cover;
+						background-position: center;
+					}
+					
+					.perfume-wrapper.woody {
+						background-image: url('/gm_web/static/src/img/05_perfume_start_01_woody.png');
+						background-color: #8B4513;
+						background-size: cover;
+						background-position: center;
+					}
+					
+					.perfume-wrapper.oriental {
+						background-image: url('/gm_web/static/src/img/05_perfume_start_01_oriental.png');
+						background-color: #D32F2F;
+						background-size: cover;
+						background-position: center;
+					}
+					
+					.citrus .btn-add-another {
+						background: linear-gradient(135deg, #FFB347, #ff9a56) !important;
+						color: #fff !important;
+					}
+					
+					.fresh .btn-add-another {
+						background: linear-gradient(135deg, #4FC3F7, #4facfe) !important;
+						color: #fff !important;
+					}
+					
+					.floral .btn-add-another {
+						background: linear-gradient(135deg, #FF6B9D, #ff6b9d) !important;
+						color: #fff !important;
+					}
+					
+					.woody .btn-add-another {
+						background: linear-gradient(135deg, #8B4513, #8b4513) !important;
+						color: #fff !important;
+					}
+					
+					.oriental .btn-add-another {
+						background: linear-gradient(135deg, #D32F2F, #8b0000) !important;
+						color: #fff !important;
+					}
+					.citrus .btn-explore-zones {
+						background: #FFB347 !important;
+						color: #fff !important;
+					}
+					
+					.fresh .btn-explore-zones {
+						background: #4FC3F7 !important;
+						color: #fff !important;
+					}
+					
+					.floral .btn-explore-zones {
+						background: #FF6B9D !important;
+						color: #fff !important;
+					}
+					
+					.woody .btn-explore-zones {
+						background: #8B4513 !important;
+						color: #fff !important;
+					}
+					
+					.oriental .btn-explore-zones {
+						background: #D32F2F !important;
+						color: #fff !important;
+					}
+					
+					.perfume-card-container {
+						min-height: calc(100vh - 120px);
+						margin-bottom: 140px;
+						overflow-y: auto;
+						overflow-x: hidden;
+					}
+					
+					@media (max-height: 700px) {
+						.perfume-card-container {
+							min-height: calc(100vh - 400px);
+							margin-top: 20px;
+							margin-bottom: 200px;
+							overflow-y: auto;
+							overflow-x: hidden;
+						}
+					}
+				</style>
+				
+				<div style="height: 100vh; position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;" t-att-class="'perfume-wrapper ' + category">
+					<div id="perfumeStartWrapper" class="d-flex flex-column position-relative" style="height:100vh">
+						<div id="categoryHeader" class="category-header d-flex justify-content-between align-items-center position-fixed w-100 py-2 px-3" style="color:black !important; top: 0;">
+							<t t-if="location == 'team_building'">
+								<div class="text-start">
+									<span id="categoryCounter" class="d-block">This Is your <t t-esc="oil_order"/> Oil</span>
+									<span id="scentType" class="d-block small"> <t t-esc="category.capitalize()"/> Scent Wand</span>
+								</div>
+								<div class="text-end">
+									<span id="totalCounter" class="d-block"><t t-esc="oil_added_count"/> / <t t-esc="oil_max"/> Drops</span>
+									<span id="totalCounterText" class="d-block small">Remaining <t t-esc="oil_max - oil_added_count"/> Drops </span>
+								</div>
+							</t>
+							<t t-else="">
+								<div class="text-start">
+									<span id="categoryCounter" class="d-block">This <t t-esc="oil_added_count"/> / <t t-esc="oil_max"/></span>
+									<span id="scentType" class="d-block small"> <t t-esc="category.capitalize()"/> Scent Wand</span>
+								</div>
+								<div class="text-end">
+									<span id="totalCounter" class="d-block"><t t-esc="oil_added_all"/> / <t t-esc="oil_max_all"/></span>
+									<span id="totalCounterText" class="d-block small">Total scent wands</span>
+								</div>
+							</t>
+						</div>
+						
+						<div class="flex-fill d-flex flex-column justify-content-center align-items-center px-3 position-relative perfume-card-container">
+							<t t-if="location == 'team_building'">
+								<div class="perfume-card mx-auto mb-4 p-4 w-100">
+									<div class="text-center">
+										<h1 id="oilCode" style="font-weight: 800; font-size: 50px; color:#2C2C2C !important;"><t t-esc="oil_code"/> </h1>
+										<h3 id="fragranceName" style="color:#2C2C2C !important">Added to your formula</h3>
+									</div>
+								</div>
+							</t>
+							<t t-else="">
+								<div class="perfume-card mx-auto mb-2 p-2 w-100">
+									<div class="text-center" style="color:#2C2C2C !important">
+										Added to your formula
+										<h2 id="oilCode" style="font-weight: 800; font-size: 50px; color:#2C2C2C !important;"><t t-esc="oil_code"/> </h2>
+										Apply oil to your butterfly test paper
+									</div>
+								</div>
+								<div class="perfume-card mx-auto mb-3 p-2 w-100">
+									<div class="d-flex justify-content-center align-items-center" style="max-height: 120px;">
+										<t t-if="flashcard_id">
+											<img t-att-src="'data:%s;base64,%s' % (flashcard_id.get_image_mime(), flashcard_id.decode_image(flashcard_id.image_1))" 
+													class="rounded" style="max-height: 120px; max-width: 100%; object-fit: contain;"/>
+										</t>
+										<t t-else="">
+											<div class="d-flex align-items-center justify-content-center rounded-circle bg-light text-muted" 
+													style="width: 80px; height: 80px; font-size: 2rem;">
+												👤
+											</div>
+											<p class="small text-muted mt-2 mb-0">Person with scent wand</p>
+											<div class="d-flex align-items-center justify-content-center rounded-circle bg-light text-muted position-relative" 
+													style="width: 80px; height: 80px; font-size: 2rem;">
+												🦋
+												<div class="position-absolute rounded-circle" 
+														style="bottom: 5px; left: 15px; width: 20px; height: 20px; background: #FFD700; opacity: 0.7;"></div>
+											</div>
+											<p class="small text-muted mt-2 mb-0">Sample 1</p>
+										</t>
+									</div>
+								</div>
+							</t>
+							
+							<div class="d-flex flex-column">
+								<t t-if="oil_remain > 0">
+									<button type="button" id="addAnotherBtn" class="btn btn-primary btn-add-another rounded-pill mb-2 font-weight-semibold border-0 shadow" t-att-data-oil-remaining="oil_remain">
+										Add another <t t-esc="category"/>?
+									</button>
+								</t>
+								<button type="button" id="exploreZonesBtn" class="btn rounded-pill font-weight-semibold shadow" style="background: rgba(255,255,255,0.9);">
+									Explore other zones
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="z-index: 1000;">
+					<div style="width: 40px;"></div>
+					<img src="/gm_web/static/src/img/logo.png" class="img-fluid" style="width: 150px; margin-right:30px; margin-top:-20px;" alt="Logo"/>
+					<div style="width: 40px;"></div>
+				</div>
+
+				<div class="fixed-bottom p-3" style="z-index: 2000; pointer-events: none;">
+					<div class="text-end me-2">
+						<img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+							alt="Avatar Image"
+							class="img-fluid"
+							style="height: 100px;" />
+					</div>
+				</div>
+
+				<script>
+					<![CDATA[
+					document.addEventListener('DOMContentLoaded', function() {
+						const urlParams = new URLSearchParams(window.location.search);
+						const category = urlParams.get('category') || localStorage.getItem('selectedFragranceCategory') || 'citrus';
+						
+						// Store values
+						localStorage.setItem('selectedFragranceCategory', category);
+						
+						// Handle explore zones button click
+						const exploreZonesBtn = document.getElementById('exploreZonesBtn');
+						if (exploreZonesBtn) {
+							exploreZonesBtn.addEventListener('click', function() {
+								window.location.href = '/perfume-journey/fragrance-selection';
+							});
+						}
+
+						// Handle add another button click
+						const addAnotherBtn = document.getElementById('addAnotherBtn');
+						if (addAnotherBtn) {
+							addAnotherBtn.addEventListener('click', function() {
+								const remainingDrops = parseInt(this.getAttribute('data-oil-remaining')) || 0;
+								
+								if (remainingDrops <= 0) {
+									alert('No more drops remaining! You have reached the maximum limit.');
+								} else {
+									window.location.href = `/perfume-journey/select-oil?category=${category}`;
+								}
+							});
+						}
+					});
+					]]>
+				</script>
+			</t>
+		</template>
+	</data>
+</odoo>

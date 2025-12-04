@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_report_page_1_template" name="avatar_report_page_1_template">
+        <t t-name="gm_survey.avatar_report_page_1_template">
+            <t t-call="web.basic_layout">
+                <style>
+                    table, th, td {
+                        border: 0px solid #fff !important;
+                    }
+                    td {
+                        padding:0px;
+                    }
+                </style>
+                <t t-foreach="docs" t-as="doc">
+                    <main>
+                        <div class="page" style="font-weight:600; padding-top: 50px; padding-left:50px;">
+                            <span style="font-family: 'Montserrat'; font-size: 32px;" >Your Perfume Personality Profile</span>
+                            <h1 style="font-family: 'Prompt'; font-size: 120px; color: #E39B9B; font-weight: 900;">Scentzania</h1>
+                            <table>
+                                <tr>
+                                    <td style="width:100px; font-family: 'Montserrat';">
+                                        <span>Name</span>    
+                                    </td>
+                                    <td style="width:610px; font-family: 'Montserrat';color: #E39B9B;">
+                                        <span><t t-esc="doc.partner_id.name"/></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-family: 'Montserrat';">
+                                        <span>Date</span>
+                                    </td>
+                                    <td style="font-family: 'Montserrat';color: #E39B9B;">
+                                        <span><t t-esc="doc.create_date.strftime('%d %B %Y')"/></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <img src="/gm_survey/static/src/img/page1.png" style="width: 610px; height: 610px; margin-top: 20px;"/>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="avatar_report_page_1" model="ir.actions.report">
+        <field name="name">Avatar Detail Report Page 1</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_survey.avatar_report_page_1_template</field>
+        <field name="report_file">gm_survey.avatar_report_page_1_template</field>
+        <field name="paperformat_id" ref="gm_survey.paperformat_a4_with_minimum_margin"/>
+        <!-- <field name="print_report_name">'Avatar Detail'</field> -->
+    </record>
+</odoo>
+

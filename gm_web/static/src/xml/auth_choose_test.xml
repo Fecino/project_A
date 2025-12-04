@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<odoo>
+	<template id="choose_test_template" name="Choose Test">
+		<t t-name="gm_web.choose_test">
+			<t t-call="web.basic_layout">
+				<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+				<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+				<t t-if="font_url">
+						<link rel="stylesheet" t-att-href="font_url"/>
+				</t>
+				<style>
+					body {
+						font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+						position: relative;
+						background-color: #F9F2F0;
+					}
+					.btn-custom{
+						width: 100% !important;
+						border: 1px solid #5F3529  !important;
+						padding: 20px 0px;
+						border-radius: 1rem !important;
+					}
+					@media (min-width: 768px) {
+						.title {
+							text-align: center !important;
+						}
+					}
+				</style>
+				<t t-set="title">Choose Test | Scentzania</t>
+				<div class="container d-flex align-items-center justify-content-center" style="height: 80vh;">
+					<div>
+						<div class="row title" style="color:#5F3529; !important;">
+							<h1>Perfume Personality Test</h1>
+						</div>
+						<div class="row justify-content-md-center">
+							<div class="col-sm-3 text-center mb-3">
+								<a role="button" class="btn btn-primary bg-white btn-lg btn-custom" href="/take_a_survey?questions=20&amp;fixed_questions=7">
+									<h5 style="margin-bottom:0px !important;">A Quick Test?</h5>
+									<span style="color:#5F3529; font-size:12px !important;">(27 Questions)</span>
+								</a>
+								<span style="color:#5F3529; font-size:12px !important;">Recommended</span>
+							</div>
+							<div class="col-sm-3 text-center">
+								<a role="button" class="btn btn-primary bg-white btn-lg btn-custom" href="/take_a_survey?questions=40&amp;fixed_questions=7">
+									<h5 style="margin-bottom:0px !important;">Deep Dive</h5>
+									<span style="color:#5F3529; font-size:12px !important;">(47 Questions)</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="z-index: 999;">
+					<a href="/language-selector" class="text-decoration-none d-flex align-items-center justify-content-center">
+						<img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+					</a>
+					<div class="d-flex justify-content-center">
+						<img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+					</div>
+					<div style="width: 40px;"></div>
+				</div>
+			</t>
+		</t>
+	</template>
+</odoo>

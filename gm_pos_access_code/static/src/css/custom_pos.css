@@ -1,0 +1,104 @@
+/* Custom POS CSS separation */
+/* Hide custom elements by default */
+[data-custom-only] {
+    display: none !important;
+}
+
+/* Show custom elements only when pos-custom class is present */
+body.pos-custom [data-custom-only] {
+    display: block !important;
+}
+
+/* Show/rehide pads only in custom POS */
+body.pos-custom .pads[data-custom-only] {
+    display: none !important;
+}
+
+/* Show/rehide order summary only in custom POS */
+body.pos-custom .order-summary[data-custom-only] {
+    display: none !important;
+}
+
+/* GM POS Access Code - Custom Styles to match mockup */
+
+/* Layout */
+.product-screen { background: #f3f4f6; }
+.booking-form { width: 320px; border-right: 1px solid #dee2e6; }
+.print-preview-section { background: transparent; }
+.print-preview-container { width: 100%; max-width: 100%; }
+.preview-content { background: #f0f1f3; border: 1px solid #dee2e6; border-radius: 6px; }
+
+/* Typography */
+.booking-form h5 { font-weight: 700; font-size: 16px; color: #111827; }
+.form-label { color: #374151; font-size: 12px; }
+
+/* Inputs */
+.booking-form .form-control, .booking-form .form-select { height: 34px; font-size: 13px; }
+.booking-form .form-control::placeholder { color: #9ca3af; }
+
+/* Buttons - dark green (force) */
+.btn-primary-mock { background-color: #166534 !important; border-color: #166534 !important; color: #fff !important; }
+.btn-primary-mock:hover { background-color: #14532d !important; border-color: #14532d !important; }
+.btn-primary-mock:focus { box-shadow: 0 0 0 0.15rem rgba(22, 101, 52, 0.35) !important; }
+/* Disabled primary button should remain green */
+.btn-primary-mock:disabled, .btn-primary-mock[disabled] { background-color: #166534 !important; border-color: #166534 !important; color: #ffffff !important; opacity: 0.6; }
+.btn-outline-secondary { border-color: #d1d5db; color: #374151; }
+.btn-outline-secondary:hover { background: #f9fafb; }
+
+/* Preview grid */
+.access-code-card { height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.access-code-card small { color: #6b7280; }
+
+/* Header */
+.print-preview-title { font-size: 18px; font-weight: 700; }
+.total-page-badge { background: #0ea5e9; }
+
+/* Left panel gutters */
+.booking-form .mb-3, .booking-form .mb-4 { margin-bottom: 12px !important; }
+
+/* Action buttons area */
+.preview-actions .btn { height: 38px; }
+
+/* Scroll area */
+.preview-content { max-height: 520px; overflow: auto; }
+
+/* Bulk Generate heading emphasis */
+.booking-form h6 { font-size: 18px; font-weight: 700; }
+
+/* Right side title (same as Bulk Generate) */
+.print-preview-title { font-size: 18px; font-weight: 700; color: #111827; margin-top: 6px; }
+
+/* Wrapper white and stretch; content grey */
+.preview-wrapper { background: #ffffff !important; border: 1px solid #dee2e6; border-radius: 6px; padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
+.preview-content { background: #f0f1f3 !important; border: 1px solid #dee2e6; border-radius: 6px; flex-grow: 1; overflow: auto; padding-bottom: 10px !important; }
+
+/* Card layout and sizing */
+.access-code-card { height: 210px; width: 95%; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 8px; }
+.access-code-card .code { font-weight: 700; font-size: 25px; letter-spacing: 2px; color: #111827; margin: 6px 0; }
+.access-code-card .page { color: #6b7280; font-size: 12px; margin-top: 6px; }
+.access-code-card .card-logo { margin-top: 4px; }
+.access-code-card .card-logo img { height: 30px; }
+
+/* Action bar bottom-right */
+.action-bar { display: flex; gap: 12px; justify-content: flex-end; margin-top: 8px; }
+.action-bar .btn { min-width: 260px; }
+
+/* Buttons: both green (matching Generate Access Code) */
+.btn-download, .btn-print, .btn-primary-mock { background-color: #166534 !important; color: #fff !important; border: none !important; border-radius: 8px; font-weight: 600; }
+.btn-download:hover, .btn-print:hover, .btn-primary-mock:hover { background-color: #14532d !important; }
+
+/* Total Page label smaller */
+.total-page-label { font-size: 14px; font-weight: 600; color: #111827; }
+
+/* Prevent left pane from shrinking */
+.product-screen { display: flex; flex-wrap: nowrap; }
+.booking-form { flex: 0 0 320px; min-width: 320px; }
+
+/* Make preview grow downward (less columns) handled via grid cols in XML */
+
+/* Adjust spacing so code sits a bit lower */
+.access-code-card small { margin-bottom: 6px; }
+.access-code-card .code { margin-top: 10px; }
+
+
+

@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <!-- Inherit the product.template form view -->
+        <record id="view_product_template_form_inherit_gm_scentopia" model="ir.ui.view">
+            <field name="name">product.template.form.inherit.gm.scentopia</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Example: Add a new field after the name field -->
+                <xpath expr="//field[@name='categ_id']" position="before">
+                    <field name="commission_rate"/>
+                </xpath>
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="manufacturer_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

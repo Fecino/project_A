@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Inherit the res.users form view -->
+        <record id="res_user_form_inherit" model="ir.ui.view">
+            <field name="name">res.users.form.inherit.gm.scentopia</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="hr.res_users_view_form_profile"/>
+            <field name="arch" type="xml">
+                <!-- Example: Add a new field after the login field -->
+                <field name="coach_id" position="after">
+                    <field name="daily_access_code"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

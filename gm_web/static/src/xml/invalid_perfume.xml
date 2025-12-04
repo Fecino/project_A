@@ -1,0 +1,207 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		<template id="invalid_perfume_template" name="Invalid Perfume">
+			<t t-name="gm_web.invalid_perfume_template">
+				<t t-call="web.basic_layout">
+					<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+					<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+					<t t-if="font_url">
+							<link rel="stylesheet" t-att-href="font_url"/>
+					</t>
+					<style>
+						body {
+							font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+						}
+						html, body {
+							height: 100% !important;
+							margin: 0 !important;
+							padding: 0 !important;
+							background-color: #F9F2F0 !important;
+						}
+						.o_body_html {
+							padding: 0 !important;
+						}
+						.img-profile {
+							width: 128px;
+							height: 128px;
+							border-radius: 50%;
+						}
+						.text-brown {
+							color: #5F3529 !important;
+						}
+						.img-avatar {
+							max-width: 300px;
+							height: auto;
+							display: block;
+							margin: 0 auto;
+						}
+						.btn-custom {
+							padding: 12px 25px;
+							font-size: 16px;
+							background-color: #B17B67 !important;
+							border: 1px solid #bb8470ff !important;
+							color: white !important;
+							border-radius: 25px;
+							width: 100% !important;
+							height: 50px !important;
+						}
+						@media (max-width: 500px) {
+							.img-profile {
+								width: 90px;
+								height: 90px;
+							}
+							.img-avatar {
+								max-width: 200px;
+							}
+							.bubble{
+								margin-left: 25px !important;
+							}
+						}
+
+						/* Bubble styling */
+						.bubble {
+							max-width: 200px !important;
+							position: relative;
+							font-size: 12px;
+							line-height: 14px;
+							background: #fff;
+							border-radius: 40px;
+							padding: 15px;
+							text-align: center;
+							color: #000;
+							border: 1px solid #fff;
+						}
+						.bubble-bottom-right:before {
+							content: "";
+							width: 0px;
+							height: 0px;
+							position: absolute;
+							border-right: 24px solid #fff;
+							border-left: 12px solid transparent;
+							border-top: 12px solid #fff;
+							border-bottom: 20px solid transparent;
+							right: 32px;
+							bottom: -24px;
+						}
+
+						/* Fullscreen container with dynamic background */
+						.container-home {
+							width: 100vw !important;
+							height: 100vh !important;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							flex-direction: column;
+							background-size: cover !important;
+							background-position: center !important;
+							background-repeat: no-repeat !important;
+							transition: all 0.5s ease;
+						}
+
+						.container-home.citrus {
+							background-image: url('/gm_web/static/src/img/05_perfume_start_01_citrus.png');
+							background-color: #FFB347;
+						}
+						.container-home.fresh {
+							background-image: url('/gm_web/static/src/img/05_perfume_start_01_fresh.png');
+							background-color: #4FC3F7;
+						}
+						.container-home.floral {
+							background-image: url('/gm_web/static/src/img/05_perfume_start_01_floral.png');
+							background-color: #FF6B9D;
+						}
+						.container-home.woody {
+							background-image: url('/gm_web/static/src/img/05_perfume_start_01_woody.png');
+							background-color: #8B4513;
+						}
+						.container-home.oriental {
+							background-image: url('/gm_web/static/src/img/05_perfume_start_01_oriental.png');
+							background-color: #D32F2F;
+						}
+
+						.citrus .btn {
+							background-color: #fff7ccE6 !important;
+							color: #000 !important;
+						}
+						.fresh .btn {
+							background-color: #d4f1f9E6 !important;
+							color: #000 !important;
+						}
+						.floral .btn {
+							background-color: #ffd6e7E6 !important;
+							color: #000 !important;
+						}
+						.woody .btn {
+							background-color: #e6d5b8E6 !important;
+							color: #000 !important;
+						}
+						.oriental .btn {
+							background-color: #f9d5d5E6 !important;
+							color: #000 !important;
+						}
+					</style>
+
+					<t t-set="title">Invalid Perfume | Scentzania</t>
+
+					<!-- FULLSCREEN CONTENT -->
+					<div t-att-class="'container-home ' + (fragrance_category or '')">
+						<div class="d-flex align-items-center justify-content-center" style="height: 100%; width: 100%;">
+							<div class="text-center" style="max-width: 400px; width: 100%;">
+								<!-- Bubble -->
+								<div class="bubble bubble-bottom-right text-brown mb-4">
+									<p style="margin-bottom: 0;">
+										Your <t t-esc="fragrance_category.title()"/> test score is 0, so <t t-esc="fragrance_category.title()"/> oils aren't needed in your blend.
+										<br/>
+										<br/>
+										Ideally, you should skip it — but if you'd like to include it, just click the right arrow below to add it. 
+									</p>
+								</div>
+								<!-- Avatar -->
+								<img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+									 alt="Avatar Image"
+									 class="img-avatar" />
+							</div>
+						</div>
+					</div>
+
+					<!-- Fixed bottom bar -->
+					<div class="fixed-bottom d-flex align-items-center justify-content-between p-3"
+					     style="z-index: 1000;">
+						<a href="/perfume-journey/fragrance-selection"
+						   class="text-decoration-none d-flex align-items-center justify-content-center"
+						   style="background:#F9F2F0 !important; border-radius:15px;">
+							<img src="/gm_web/static/src/img/prev.svg"
+							     alt="Back"
+							     class="img-fluid"
+							     style="width: 40px; height: 40px; object-fit: contain;" />
+						</a>
+						<img src="/gm_web/static/src/img/logo.png"
+						     class="img-fluid"
+						     style="width: 150px; margin-top:-20px;"
+						     alt="Logo" />
+						<a t-att-href="f'/perfume-journey/change-value?uuid={uuid}'"
+						   class="text-decoration-none d-flex align-items-center justify-content-center"
+						   style="background:#F9F2F0 !important; border-radius:15px;">
+							<img src="/gm_web/static/src/img/next.svg"
+							     alt="Next"
+							     class="img-fluid"
+							     style="width: 40px; height: 40px; object-fit: contain;" />
+						</a>
+					</div>
+
+					<!-- Mini avatar (bottom right) -->
+					<div class="fixed-bottom p-3" style="z-index: 2000; pointer-events: none;">
+						<div class="text-end">
+							<img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+							     alt="Avatar Image"
+							     class="img-fluid"
+							     style="height: 100px !important; z-index: 999; margin-right: 10%;" />
+						</div>
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

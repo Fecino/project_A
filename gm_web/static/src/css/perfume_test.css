@@ -1,0 +1,3349 @@
+/* ========================================
+   PERFUME TEST - PIXEL PERFECT MOCKUP MATCH
+   Background: #f3e2dd
+   ======================================== */
+
+/* Main Container */
+.perfume-test-wrapper {
+  min-height: 100vh;
+  background-color: #f3e2dd;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Main Content */
+.perfume-test-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 120px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Template Images Container */
+.template-images-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 40px;
+}
+
+/* Individual Panels */
+.fragrance-categories-panel,
+.butterfly-paper-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Template Images */
+.template-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+  object-fit: contain;
+}
+
+.template-left {
+  max-width: 380px;
+}
+
+.template-right {
+  max-width: 420px;
+}
+
+/* Instructions Container */
+.instructions-container {
+  text-align: center;
+  margin-top: 20px;
+  max-width: 600px;
+}
+
+.instruction-text {
+  margin: 8px 0;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #8b6f47;
+  font-weight: 400;
+}
+
+.instruction-text.primary {
+  font-weight: 500;
+  color: #7a5f42;
+}
+
+.instruction-text.secondary {
+  color: #9d7f5f;
+}
+
+/* Bottom Navigation */
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f3e2dd;
+  padding: 20px 0 30px 0;
+  border-top: 1px solid rgba(139, 111, 71, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #d4b5a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #c4a085;
+}
+
+.nav-arrow:hover {
+  background-color: #c4a085;
+  transform: scale(1.05);
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.nav-arrow i {
+  font-size: 18px;
+  color: #8b6f47;
+}
+
+/* Character Avatar */
+.nav-character {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.character-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d4b5a0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet View */
+@media (max-width: 768px) {
+  .template-images-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .fragrance-categories-panel,
+  .butterfly-paper-panel {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .template-left,
+  .template-right {
+    max-width: 100%;
+  }
+  
+  .instruction-text {
+    font-size: 16px;
+  }
+  
+  .perfume-test-main {
+    padding: 30px 15px 120px 15px;
+  }
+  
+  .nav-container {
+    padding: 0 30px;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+  .perfume-test-main {
+    padding: 20px 10px 120px 10px;
+  }
+  
+  .template-images-container {
+    gap: 15px;
+  }
+  
+  .instruction-text {
+    font-size: 14px;
+  }
+  
+  .nav-arrow {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .nav-arrow i {
+    font-size: 16px;
+  }
+  
+  .character-avatar {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .nav-container {
+    padding: 0 20px;
+    max-width: 300px;
+  }
+}
+
+/* Large Desktop View */
+@media (min-width: 1200px) {
+  .template-images-container {
+    gap: 50px;
+  }
+  
+  .template-left {
+    max-width: 420px;
+  }
+  
+  .template-right {
+    max-width: 460px;
+  }
+  
+  .instruction-text {
+    font-size: 20px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY & INTERACTIONS
+   ======================================== */
+
+/* Focus States */
+.nav-arrow:focus {
+  outline: 2px solid #8b6f47;
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+.template-image {
+  transition: transform 0.3s ease;
+}
+
+.template-image:hover {
+  transform: scale(1.02);
+}
+
+/* Print Styles */
+@media print {
+  .bottom-navigation {
+    display: none;
+  }
+  
+  .perfume-test-main {
+    padding-bottom: 40px;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .template-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ================================
+   PERFUME START 01 PAGE
+   ================================ */
+
+.perfume-start-wrapper {
+  min-height: 100vh;
+  background-color: #f3e2dd;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.5s ease;
+}
+
+.start-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 120px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header Section */
+.start-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.start-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.start-header p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  line-height: 1.5;
+}
+
+/* Selected Category Display */
+.selected-category-display {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.category-info h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.category-info p {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Next Steps */
+.next-steps {
+  width: 100%;
+  max-width: 600px;
+}
+
+.next-steps h3 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.step-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: #ff6b35;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 auto 15px auto;
+}
+
+.step-card h4 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.step-card p {
+  font-size: 0.9rem;
+  color: #6c757d;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR PERFUME START
+   ======================================== */
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .start-main-content {
+    padding: 30px 15px 120px 15px;
+  }
+  
+  .start-header h1 {
+    font-size: 2rem;
+  }
+  
+  .start-header p {
+    font-size: 1rem;
+  }
+  
+  .selected-category-display {
+    padding: 25px 20px;
+  }
+  
+  .category-badge {
+    font-size: 1.3rem;
+    padding: 12px 25px;
+  }
+  
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .step-card {
+    padding: 20px 15px;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+  .start-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .start-header p {
+    font-size: 0.9rem;
+  }
+  
+  .category-info h2 {
+    font-size: 1.3rem;
+  }
+  
+  .category-badge {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+  
+  .next-steps h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .start-header h1 {
+    font-size: 3rem;
+  }
+  
+  .start-header p {
+    font-size: 1.3rem;
+  }
+  
+  .steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========================================
+   PERFUME START 01 PAGE
+   ======================================== */
+
+.perfume-start-wrapper {
+  min-height: 100vh;
+  background-color: #f3e2dd;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.5s ease, background 0.5s ease;
+  padding: 20px;
+}
+
+/* Dynamic Background Colors for Categories */
+.perfume-start-wrapper.citrus-bg {
+  background-color: #ff9a56;
+}
+
+.perfume-start-wrapper.fresh-bg {
+  background-color: #4facfe;
+}
+
+.perfume-start-wrapper.floral-bg {
+  background-color: #ff6b9d;
+}
+
+.perfume-start-wrapper.woody-bg {
+  background-color: #8b4513;
+}
+
+.perfume-start-wrapper.oriental-bg {
+  background-color: #8b0000;
+}
+
+/* Header Info Section */
+.scent-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+
+.scent-counter, .total-counter {
+  text-align: left;
+}
+
+.scent-counter {
+  text-align: left;
+}
+
+.total-counter {
+  text-align: right;
+}
+
+.current-scent, .total-scent {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 2px;
+}
+
+.scent-type, .total-type {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+}
+
+/* Main Input Section */
+.scent-input-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Input Container */
+.input-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.scent-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  font-size: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.scent-input:focus {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scent-input::placeholder {
+  color: #999;
+}
+
+.check-button {
+  padding: 15px 25px;
+  background: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.check-button:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.check-button:active {
+  transform: translateY(0);
+}
+
+/* OR Divider */
+.or-divider {
+  margin: 20px 0;
+  text-align: center;
+  position: relative;
+}
+
+.or-divider span {
+  background: transparent;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Scan QR Button */
+.scan-qr-button {
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+}
+
+.scan-qr-button:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.scan-qr-button:active {
+  transform: translateY(0);
+}
+
+/* Trivia Section */
+.trivia-section {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0 100px 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.trivia-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.trivia-section p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Bottom Navigation - Updated for this page */
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  padding: 20px 0 30px 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.nav-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-arrow:hover {
+  background-color: white;
+  transform: scale(1.1);
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.nav-arrow i {
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-character {
+  margin: 0 20px;
+}
+
+.character-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  object-fit: cover;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR PERFUME START 01
+   ======================================== */
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .perfume-start-wrapper {
+    padding: 15px;
+  }
+  
+  .scent-info-header {
+    margin-bottom: 20px;
+  }
+  
+  .current-scent, .total-scent {
+    font-size: 0.8rem;
+  }
+  
+  .scent-type, .total-type {
+    font-size: 0.7rem;
+  }
+  
+  .input-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .check-button {
+    width: 100%;
+  }
+  
+  .trivia-section {
+    padding: 15px;
+    margin-bottom: 120px;
+  }
+  
+  .trivia-section h3 {
+    font-size: 1rem;
+  }
+  
+  .trivia-section p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+  .scent-input, .check-button, .scan-qr-button {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-arrow {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .nav-arrow i {
+    font-size: 16px;
+  }
+  
+  .character-avatar {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .scent-input-section {
+    max-width: 500px;
+  }
+  
+  .scent-input, .check-button, .scan-qr-button {
+    padding: 18px 25px;
+    font-size: 1.1rem;
+  }
+  
+  .trivia-section {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Enhanced Fragrance Selection Wrapper */
+.fragrance-selection-wrapper {
+  transition: background-color 0.5s ease, background 0.5s ease;
+}
+
+.fragrance-selection-wrapper.citrus-bg {
+  background-color: #ff9a56 !important;
+}
+
+.fragrance-selection-wrapper.fresh-bg {
+  background-color: #4facfe !important;
+}
+
+.fragrance-selection-wrapper.floral-bg {
+  background-color: #ff6b9d !important;
+}
+
+.fragrance-selection-wrapper.woody-bg {
+  background-color: #8b4513 !important;
+}
+
+.fragrance-selection-wrapper.oriental-bg {
+  background-color: #8b0000 !important;
+}
+
+/* ========================================
+   PERFUME DETAIL PAGE (06_perfume_start_02.xml)
+   ======================================== */
+
+.perfume-detail-wrapper {
+  min-height: 100vh;
+  background-color: #f3e2dd;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.5s ease, background 0.5s ease;
+  padding: 20px;
+}
+
+/* Dynamic Background Colors for Detail Page */
+.perfume-detail-wrapper.citrus-bg {
+  background-color: #ff9a56;
+}
+
+.perfume-detail-wrapper.fresh-bg {
+  background-color: #4facfe;
+}
+
+.perfume-detail-wrapper.floral-bg {
+  background-color: #ff6b9d;
+}
+
+.perfume-detail-wrapper.woody-bg {
+  background-color: #8b4513;
+}
+
+.perfume-detail-wrapper.oriental-bg {
+  background-color: #8b0000;
+}
+
+/* Perfume Code Display */
+.perfume-code-display {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.perfume-code {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content */
+.perfume-detail-content {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Perfume Title Section */
+.perfume-title-section {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 20px;
+}
+
+.perfume-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.perfume-meta {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.perfume-category,
+.perfume-strength,
+.perfume-gender {
+  background: #f8f9fa;
+  color: #495057;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid #e9ecef;
+}
+
+/* About Section */
+.about-section {
+  margin-bottom: 25px;
+}
+
+.about-section h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #495057;
+  text-align: justify;
+}
+
+/* Main Note Section */
+.main-note-section {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  border-left: 4px solid #007bff;
+}
+
+.main-note-section h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.main-note-section span {
+  color: #007bff;
+  font-weight: 700;
+}
+
+/* Fragrance Pyramid */
+.fragrance-pyramid {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid #e9ecef;
+}
+
+.fragrance-pyramid h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pyramid-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.note-level {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #28a745;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.note-level strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.note-level p {
+  font-size: 0.95rem;
+  color: #495057;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto 30px auto;
+}
+
+.add-to-formula-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.add-to-formula-btn:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.cancel-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR PERFUME DETAIL
+   ======================================== */
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .perfume-detail-wrapper {
+    padding: 15px;
+  }
+  
+  .perfume-detail-content {
+    padding: 20px;
+  }
+  
+  .perfume-title {
+    font-size: 1.5rem;
+  }
+  
+  .perfume-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .perfume-code {
+    font-size: 1.3rem;
+    padding: 10px 20px;
+  }
+  
+  .action-buttons {
+    max-width: 100%;
+  }
+  
+  .pyramid-notes {
+    gap: 12px;
+  }
+  
+  .note-level {
+    padding: 12px;
+  }
+}
+
+/* Tablet View */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .perfume-detail-content {
+    max-width: 700px;
+    padding: 25px;
+  }
+  
+  .perfume-title {
+    font-size: 1.7rem;
+  }
+}
+
+/* Desktop View */
+@media (min-width: 1025px) {
+  .perfume-detail-content {
+    max-width: 800px;
+  }
+  
+  .pyramid-notes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .action-buttons {
+    flex-direction: row;
+    justify-content: center;
+    max-width: 600px;
+  }
+  
+  .add-to-formula-btn,
+  .cancel-btn {
+    flex: 1;
+    max-width: 250px;
+  }
+}
+
+/* ===== FORMULA CONFIRMATION PAGE STYLES ===== */
+.formula-confirmation-wrapper {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+
+.formula-confirmation-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.success-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.success-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.perfume-code-large {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.instruction-text {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 20px;
+  line-height: 1.4;
+}
+
+.formula-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  margin-bottom: 80px;
+}
+
+.add-another-btn, .explore-zones-btn {
+  padding: 16px 24px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-family: inherit;
+}
+
+.add-another-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.add-another-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.explore-zones-btn {
+  background: rgba(138, 43, 226, 0.8);
+  color: white;
+  border: 2px solid rgba(138, 43, 226, 0.3);
+}
+
+.explore-zones-btn:hover {
+  background: rgba(138, 43, 226, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+/* Dynamic background classes for formula confirmation */
+.formula-confirmation-wrapper.citrus-bg {
+  background-color: #ff9a56;
+}
+
+.formula-confirmation-wrapper.fresh-bg {
+  background-color: #4facfe;
+}
+
+.formula-confirmation-wrapper.floral-bg {
+  background-color: #ff6b9d;
+}
+
+.formula-confirmation-wrapper.woody-bg {
+  background-color: #8b4513;
+}
+
+.formula-confirmation-wrapper.oriental-bg {
+  background-color: #8b0000;
+}
+
+/* Responsive Design for Formula Confirmation */
+@media (max-width: 768px) {
+  .success-card {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+  
+  .success-title {
+    font-size: 1.2rem;
+  }
+  
+  .perfume-code-large {
+    font-size: 2.5rem;
+  }
+  
+  .formula-action-buttons {
+    padding: 15px;
+  }
+  
+  .add-another-btn, .explore-zones-btn {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formula-confirmation-content {
+    padding: 20px 10px;
+  }
+  
+  .success-card {
+    padding: 25px 15px;
+  }
+  
+  .perfume-code-large {
+    font-size: 2rem;
+  }
+  
+  .success-title {
+    font-size: 1.1rem;
+  }
+  
+  .instruction-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== FORMULA SUMMARY PAGE STYLES ===== */
+.formula-summary-wrapper {
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.formula-categories-container {
+  flex: 1;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.category-section {
+  margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.category-header {
+  padding: 30px 25px 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.category-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.perfume-codes-container {
+  padding: 0 25px 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+  min-height: 40px;
+}
+
+.perfume-code-tag {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.perfume-code-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Category-specific backgrounds - matching category selection design */
+.citrus-section {
+  background: linear-gradient(135deg, #ff9a56 0%, #ffad56 100%);
+}
+
+.fresh-section {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.floral-section {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8a9d 100%);
+}
+
+.woody-section {
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+}
+
+.oriental-section {
+  background: linear-gradient(135deg, #8b0000 0%, #a52a2a 100%);
+}
+
+.confirm-button-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.confirm-formula-btn {
+  background: linear-gradient(135deg, #40e0d0 0%, #48d1cc 100%);
+  color: white;
+  border: none;
+  padding: 18px 50px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 6px 20px rgba(64, 224, 208, 0.4);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.confirm-formula-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(64, 224, 208, 0.5);
+  background: linear-gradient(135deg, #48d1cc 0%, #40e0d0 100%);
+}
+
+.bottom-info {
+  padding: 20px 25px;
+  text-align: center;
+  margin-bottom: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.bottom-info p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-info strong {
+  color: white;
+  font-weight: 700;
+}
+
+/* Responsive Design for Formula Summary */
+@media (max-width: 768px) {
+  .formula-summary-wrapper {
+    padding: 15px;
+  }
+  
+  .category-header {
+    padding: 15px 20px;
+  }
+  
+  .category-title {
+    font-size: 2rem;
+  }
+  
+  .perfume-codes-container {
+    padding: 10px 20px 20px;
+    gap: 8px;
+  }
+  
+  .perfume-code-tag {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .confirm-formula-btn {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+  
+  .bottom-info {
+    padding: 10px 15px;
+    margin-bottom: 70px;
+  }
+  
+  .bottom-info p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-title {
+    font-size: 1.8rem;
+  }
+  
+  .perfume-codes-container {
+    padding: 8px 15px 15px;
+  }
+  
+  .perfume-code-tag {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .confirm-formula-btn {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== SAVE FORMULA DIALOG STYLES ===== */
+.save-formula-wrapper {
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ffd700;
+  animation: confetti-fall 3s linear infinite;
+}
+
+.confetti-piece:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  background: #ff6b9d;
+}
+
+.confetti-piece:nth-child(2) {
+  left: 20%;
+  animation-delay: 0.5s;
+  background: #4facfe;
+}
+
+.confetti-piece:nth-child(3) {
+  left: 30%;
+  animation-delay: 1s;
+  background: #ff9a56;
+}
+
+.confetti-piece:nth-child(4) {
+  left: 40%;
+  animation-delay: 1.5s;
+  background: #8b4513;
+}
+
+.confetti-piece:nth-child(5) {
+  left: 60%;
+  animation-delay: 0.3s;
+  background: #ffd700;
+}
+
+.confetti-piece:nth-child(6) {
+  left: 70%;
+  animation-delay: 0.8s;
+  background: #ff6b9d;
+}
+
+.confetti-piece:nth-child(7) {
+  left: 80%;
+  animation-delay: 1.3s;
+  background: #4facfe;
+}
+
+.confetti-piece:nth-child(8) {
+  left: 90%;
+  animation-delay: 1.8s;
+  background: #ff9a56;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.save-formula-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.congratulations-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.congrats-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 10px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.congrats-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0 0 5px 0;
+  font-weight: 400;
+}
+
+.congrats-message {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 0 30px 0;
+  font-weight: 500;
+}
+
+.character-container {
+  margin: 20px 0 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.character-avatar-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  animation: character-bounce 2s ease-in-out infinite;
+}
+
+.character-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+@keyframes character-bounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.formula-input-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.formula-name-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.formula-name-input:focus {
+  border-color: #ffd700;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.formula-name-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.submit-formula-btn {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #333;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  min-width: 100px;
+}
+
+.submit-formula-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+}
+
+.submit-formula-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design for Save Formula */
+@media (max-width: 768px) {
+  .save-formula-content {
+    padding: 20px 15px;
+  }
+  
+  .congratulations-card {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+  
+  .congrats-title {
+    font-size: 1.8rem;
+  }
+  
+  .character-avatar-large {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .character-img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .formula-input-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .submit-formula-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .congratulations-card {
+    padding: 25px 15px;
+  }
+  
+  .congrats-title {
+    font-size: 1.6rem;
+  }
+  
+  .congrats-subtitle, .congrats-message {
+    font-size: 0.9rem;
+  }
+  
+  .character-avatar-large {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .character-img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .formula-name-input, .submit-formula-btn {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== OIL DETAILS PAGE STYLES ===== */
+.oil-details-wrapper {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.oil-details-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header Section */
+.oil-details-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.oil-details-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Oil Info Card */
+.oil-info-card {
+  background: #ffffff;
+  border: 2px solid #e9ecef;
+  border-radius: 20px;
+  padding: 25px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Perfume Code Display */
+.perfume-code-display {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.oil-info-card .perfume-code-tag {
+  padding: 8px 16px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #333;
+  background: #fff3cd;
+  border: 2px solid #ffeaa7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(255, 234, 167, 0.3);
+}
+
+/* Perfume Name */
+.perfume-oil-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Meta Info */
+.perfume-meta-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.meta-separator {
+  color: #ccc;
+  margin: 0 4px;
+}
+
+.meta-gender i {
+  margin-right: 4px;
+}
+
+/* Section Styling */
+.about-section,
+.main-note-section,
+.fragrance-pyramid-section,
+.main-accords-section {
+  margin-bottom: 25px;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title i {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* About Text */
+.about-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Fragrance Pyramid */
+.pyramid-level {
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pyramid-level:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.pyramid-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 6px 0;
+}
+
+.pyramid-notes {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Main Accords */
+.accords-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accord-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accord-name {
+  font-size: 0.85rem;
+  color: #555;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.accord-bar {
+  flex: 1;
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.accord-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9a56 0%, #ff6b35 100%);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Bottom Navigation for Oil Details */
+.oil-details-wrapper .bottom-navigation {
+  background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+  padding: 20px;
+  margin-top: auto;
+}
+
+.oil-details-wrapper .nav-container {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.oil-details-wrapper .nav-arrow {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.oil-details-wrapper .nav-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  color: #333;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.oil-details-wrapper .nav-character {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 154, 86, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.oil-details-wrapper .character-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Responsive Design for Oil Details */
+@media (max-width: 768px) {
+  .oil-details-content {
+    padding: 20px 15px;
+  }
+  
+  .oil-details-title {
+    font-size: 1.3rem;
+  }
+  
+  .oil-info-card {
+    padding: 20px 15px;
+  }
+  
+  .perfume-oil-name {
+    font-size: 1.1rem;
+  }
+  
+  .perfume-meta-info {
+    font-size: 0.8rem;
+  }
+  
+  .about-text {
+    font-size: 0.85rem;
+  }
+  
+  .section-title {
+    font-size: 0.95rem;
+  }
+  
+  .pyramid-title {
+    font-size: 0.85rem;
+  }
+  
+  .pyramid-notes {
+    font-size: 0.8rem;
+  }
+  
+  .accord-name {
+    font-size: 0.8rem;
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .oil-details-content {
+    padding: 15px 10px;
+  }
+  
+  .oil-details-title {
+    font-size: 1.2rem;
+  }
+  
+  .oil-info-card {
+    padding: 18px 12px;
+  }
+  
+  .perfume-oil-name {
+    font-size: 1rem;
+  }
+  
+  .perfume-meta-info {
+    font-size: 0.75rem;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .meta-separator {
+    display: none;
+  }
+  
+  .about-text {
+    font-size: 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 0.9rem;
+  }
+  
+  .pyramid-title {
+    font-size: 0.8rem;
+  }
+  
+  .pyramid-notes {
+    font-size: 0.75rem;
+  }
+  
+  .accord-name {
+    font-size: 0.75rem;
+    min-width: 60px;
+  }
+  
+  .accord-bar {
+    height: 5px;
+  }
+}
+
+/* ===== FORMULA DETAIL PAGE STYLES ===== */
+.formula-detail-wrapper {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.formula-detail-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header Section */
+.formula-detail-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.formula-options-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Formula Info Card */
+.formula-info-card {
+  background: #ffffff;
+  border: 2px solid #e9ecef;
+  border-radius: 20px;
+  padding: 25px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.formula-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.formula-codes-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.formula-code-tag {
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.formula-code-tag:hover {
+  transform: translateY(-1px);
+}
+
+.formula-code-tag.citrus {
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+}
+
+.formula-code-tag.fresh {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.formula-code-tag.floral {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+}
+
+.formula-code-tag.woody {
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+}
+
+.formula-code-tag.oriental {
+  background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
+}
+
+/* Clickable Code Tags Enhancement */
+.formula-code-tag.clickable-code {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.formula-code-tag.clickable-code:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.formula-code-tag.clickable-code:active {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.formula-code-tag.clickable-code::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.formula-code-tag.clickable-code:hover::before {
+  left: 100%;
+}
+
+/* Action Buttons */
+.formula-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.formula-action-btn {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.formula-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.formula-action-btn:active {
+  transform: translateY(0px);
+}
+
+.formula-action-btn i {
+  font-size: 1.1rem;
+}
+
+/* Bottle This Up Button */
+.bottle-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #ffffff;
+}
+
+.bottle-btn:hover {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+}
+
+/* Recreate Button */
+.recreate-btn {
+  background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+  color: #ffffff;
+}
+
+.recreate-btn:hover {
+  background: linear-gradient(135deg, #fd7e14 0%, #dc3545 100%);
+}
+
+/* Add to Cart Button */
+.cart-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #ffffff;
+}
+
+.cart-btn:hover {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: #ffffff;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+}
+
+/* Bottom Navigation for Formula Detail */
+.formula-detail-wrapper .bottom-navigation {
+  background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+  padding: 20px;
+  margin-top: auto;
+}
+
+.formula-detail-wrapper .nav-container {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formula-detail-wrapper .nav-arrow {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.formula-detail-wrapper .nav-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  color: #333;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.formula-detail-wrapper .nav-character {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 154, 86, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.formula-detail-wrapper .character-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Responsive Design for Formula Detail */
+@media (max-width: 768px) {
+  .formula-detail-content {
+    padding: 20px 15px;
+  }
+  
+  .formula-options-title {
+    font-size: 1.3rem;
+  }
+  
+  .formula-info-card {
+    padding: 20px 15px;
+  }
+  
+  .formula-name {
+    font-size: 1.2rem;
+  }
+  
+  .formula-code-tag {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .formula-action-btn {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formula-detail-content {
+    padding: 15px 10px;
+  }
+  
+  .formula-options-title {
+    font-size: 1.2rem;
+  }
+  
+  .formula-info-card {
+    padding: 18px 12px;
+  }
+  
+  .formula-name {
+    font-size: 1.1rem;
+  }
+  
+  .formula-code-tag {
+    padding: 5px 8px;
+    font-size: 0.7rem;
+    gap: 6px;
+  }
+  
+  .formula-action-btn {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+  
+  .formula-actions {
+    gap: 12px;
+  }
+}
+
+/* ===== ORDER HISTORY PAGE STYLES ===== */
+.order-history-wrapper {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.order-history-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header Section */
+.order-history-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ordered-before-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Order Detail Card */
+.order-detail-card {
+  background: #ffffff;
+  border: 2px solid #e9ecef;
+  border-radius: 20px;
+  padding: 25px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.perfume-order-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+/* Perfume Bottle Container */
+.perfume-bottle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.bottle-image-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.perfume-bottle-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.bottle-overlay {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
+  background: rgba(40, 167, 69, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.bottle-check-icon {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+/* Order Codes Display */
+.order-codes-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-code-tag {
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.order-code-tag:hover {
+  transform: translateY(-1px);
+}
+
+.order-code-tag.citrus {
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+}
+
+.order-code-tag.fresh {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.order-code-tag.floral {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+}
+
+.order-code-tag.woody {
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+}
+
+.order-code-tag.oriental {
+  background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
+}
+
+/* Order Action Buttons */
+.order-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.order-action-btn {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.order-action-btn:active {
+  transform: translateY(0px);
+}
+
+.order-action-btn i {
+  font-size: 1.1rem;
+}
+
+/* Bottle This Up Button */
+.bottle-up-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #ffffff;
+}
+
+.bottle-up-btn:hover {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+}
+
+/* Add to Cart Button */
+.add-cart-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: #ffffff;
+}
+
+.add-cart-btn:hover {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: #ffffff;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+}
+
+/* Bottom Navigation for Order History */
+.order-history-wrapper .bottom-navigation {
+  background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+  padding: 20px;
+  margin-top: auto;
+}
+
+.order-history-wrapper .nav-container {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-history-wrapper .nav-arrow {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.order-history-wrapper .nav-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  color: #333;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.order-history-wrapper .nav-character {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 154, 86, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.order-history-wrapper .character-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Responsive Design for Order History */
+@media (max-width: 768px) {
+  .order-history-content {
+    padding: 20px 15px;
+  }
+  
+  .ordered-before-title {
+    font-size: 1.3rem;
+  }
+  
+  .order-detail-card {
+    padding: 20px 15px;
+  }
+  
+  .perfume-order-name {
+    font-size: 1.2rem;
+  }
+  
+  .bottle-image-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .perfume-bottle-image {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .order-code-tag {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .order-action-btn {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-history-content {
+    padding: 15px 10px;
+  }
+  
+  .ordered-before-title {
+    font-size: 1.2rem;
+  }
+  
+  .order-detail-card {
+    padding: 18px 12px;
+  }
+  
+  .perfume-order-name {
+    font-size: 1.1rem;
+  }
+  
+  .bottle-image-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .perfume-bottle-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .order-code-tag {
+    padding: 5px 8px;
+    font-size: 0.7rem;
+    gap: 6px;
+  }
+  
+  .order-action-btn {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+  
+  .order-actions {
+    gap: 12px;
+  }
+}
+
+/* ========================================
+   FRAGRANCE CATEGORY SELECTION CARDS
+   Background Images Integration
+   ======================================== */
+
+.fragrance-selection-container {
+  min-height: 100vh;
+  background-color: #f3e2dd;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px;
+}
+
+.fragrance-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.fragrance-card {
+  position: relative;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.fragrance-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.fragrance-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+  transition: all 0.3s ease;
+}
+
+.fragrance-card:hover::before {
+  background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.fragrance-card .card-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.fragrance-card .card-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Background images for each fragrance category */
+.citrus-card {
+  background-image: url('/gm_web/static/src/img/background_citrus.png');
+}
+
+.fresh-card {
+  background-image: url('/gm_web/static/src/img/background_fresh.png');
+}
+
+.floral-card {
+  background-image: url('/gm_web/static/src/img/background_floral.png');
+}
+
+.woody-card {
+  background-image: url('/gm_web/static/src/img/background_woody.png');
+}
+
+.oriental-card {
+  background-image: url('/gm_web/static/src/img/background_oriental.png');
+}
+
+/* Selection bottom section styling */
+.selection-bottom {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.selection-text h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #8b6f47;
+  margin-bottom: 10px;
+}
+
+.selection-text p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.selection-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #8b4513;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background: #a0522d;
+  transform: scale(1.1);
+  color: white;
+  text-decoration: none;
+}
+
+.nav-character-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #8b4513;
+}
+
+/* Responsive design for fragrance selection */
+@media (max-width: 768px) {
+  .fragrance-cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .fragrance-card {
+    height: 250px;
+  }
+  
+  .fragrance-card .card-title {
+    font-size: 2rem;
+  }
+  
+  .selection-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .selection-navigation {
+    gap: 20px;
+  }
+  
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-character-img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fragrance-selection-container {
+    padding: 20px 10px;
+  }
+  
+  .fragrance-card {
+    height: 200px;
+  }
+  
+  .fragrance-card .card-title {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .selection-text h3 {
+    font-size: 1.2rem;
+  }
+  
+  .selection-text p {
+    font-size: 1rem;
+  }
+}
+
+/* ===== FRAGRANCE CATEGORY SELECTION WITH BACKGROUND IMAGES ===== */
+
+/* Main wrapper */
+.fragrance-selection-wrapper {
+    min-height: 100vh;
+    background-color: #f3e2dd;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Cards container - full width stacked */
+.fragrance-cards-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+/* Enhanced fragrance section styling - full width */
+.fragrance-section {
+    height: 20vh; /* Each section takes 20% of viewport height */
+    min-height: 120px;
+    width: 100%;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    transform: translateY(0);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    border: none;
+}
+
+/* Dark overlay for better text readability */
+.fragrance-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Hover effects */
+.fragrance-section:hover::before {
+    background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.fragrance-section:hover {
+    transform: scale(1.01);
+    z-index: 10;
+}
+
+.fragrance-section.active {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+.fragrance-section.active::before {
+    background: linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+/* Content positioning */
+.fragrance-section .section-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+/* Enhanced title styling */
+.fragrance-section .section-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Background images for each fragrance category */
+.citrus-section {
+    background-image: url('/gm_web/static/src/img/background_citrus.png');
+    background-color: #FFB347; /* Fallback color */
+}
+
+.fresh-section {
+    background-image: url('/gm_web/static/src/img/background_fresh.png');
+    background-color: #4FC3F7; /* Fallback color */
+}
+
+.floral-section {
+    background-image: url('/gm_web/static/src/img/background_floral.png');
+    background-color: #FF8A95; /* Fallback color */
+}
+
+.woody-section {
+    background-image: url('/gm_web/static/src/img/background_woody.png');
+    background-color: #A1887F; /* Fallback color */
+}
+
+.oriental-section {
+    background-image: url('/gm_web/static/src/img/background_oriental.png');
+    background-color: #D32F2F; /* Fallback color */
+}
+
+/* Bottom section styling */
+.bottom-section {
+    background-color: #f3e2dd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.selection-text {
+    text-align: center;
+}
+
+.personality-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #8b6f47;
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Navigation styling */
+.bottom-navigation {
+    width: 100%;
+    max-width: 400px;
+}
+
+.nav-container {
+  position: fixed;
+  bottom: 20px; /* Jarak dari bawah */
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;        /* atau max-width: 400px */
+  max-width: 400px;
+  left: 50%;
+  transform: translateX(-50%); /* Biar center horizontal */
+
+  background: #f3e2dd;  /* opsional */
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.nav-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-character {
+    margin: 0 20px;
+}
+
+.character-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    object-fit: cover;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fragrance-section {
+        height: 18vh;
+        min-height: 100px;
+    }
+    
+    .fragrance-section .section-title {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+    }
+    
+    .fragrance-section .section-content {
+        padding: 0 20px;
+    }
+    
+    .bottom-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fragrance-section {
+        height: 16vh;
+        min-height: 80px;
+    }
+    
+    .fragrance-section .section-title {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    
+    .fragrance-section .section-content {
+        padding: 0 15px;
+    }
+    
+    .bottom-section {
+        padding: 10px;
+    }
+    
+    .personality-text {
+        font-size: 14px;
+    }
+}
+
+/* Loading state for background images */
+.fragrance-section.loading {
+    background-color: #f0f0f0;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* High DPI display support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .fragrance-section {
+        background-size: cover;
+        background-position: center center;
+    }
+}

@@ -1,0 +1,286 @@
+<?xml version="1.0" ?>
+<odoo>
+	<template id="change_value_template" name="Change Value Fragrance">
+		<t t-name="gm_web.change_value_template">
+			<t t-call="web.basic_layout">
+				<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+				<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+				<t t-if="font_url">
+						<link rel="stylesheet" t-att-href="font_url"/>
+				</t>
+				<style>
+					body {
+						font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+						background-color: #F9F2F0 !important;
+					}
+					.o_body_html {
+						padding: 16px !important;
+					}
+					.button-row {
+						display: flex;
+						justify-content: center;
+						gap: 20px;
+						margin-top: 20px;
+						padding: 0 10%;
+					}
+					.button-col {
+						flex: 1;
+					}
+					.custom-btn {
+						display: block;
+						width: 100%;
+						color: #fff;
+						text-align: center;
+						border: none;
+						padding: 12px;
+						font-size: 16px;
+						border-radius: 12px;
+						cursor: pointer;
+						text-decoration: none;
+						box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+						transition: background-color 0.2s ease;
+					}
+					.fragrance_card,
+					.info-wrapper {
+						border-radius: 1em;
+						width: 100%;
+						padding: 15px;
+						background-color: white;
+					}
+					.info-box {
+						border-radius: 1rem;
+					}
+					.fragrance-name,
+					.fragrance-description,
+					.fragrance-value {
+						width: 70%;
+						height: inherit;
+					}
+					.fragrance-value {
+						width: 30%;
+						padding: 0;
+					}
+					.fragrance-description p {
+						margin: 0 !important;
+					}
+					.number-circle {
+						display: inline-flex;
+						align-items: center;
+						justify-content: center;
+						width: 32px;
+						height: 32px;
+						border: 2px solid #333;
+						border-radius: 50%;
+						font-weight: 500;
+						font-size: 16px;
+						color: #333;
+					}
+					.image-wrapper {
+						max-width: 400px;
+						margin: 0 auto;
+					}
+					@media (max-width: 500px) {
+						.fragrance-value {
+							padding: 0;
+						}
+					}
+				</style>
+				<t t-set="title">Change Value</t>
+				<div class="wrap">
+					<t t-if="all_oil">
+						<t t-set="link_prev" t-value="'/perfume-journey/fragrance-selection' + ('?location=%s' % location if location else '')"/>
+					</t>
+					<t t-else="">
+						<t t-set="link_prev" t-value="'/perfume-journey/invalid-perfume?category=%s&amp;uuid=%s' % (fragrance_selected, uuid)"/>
+					</t>
+					<div class="container mt-5" style="padding-bottom: 80px;">
+						<form class="login-form" role="form" method="post" action="/perfume-journey/set-value">
+							<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+							<input type="hidden" name="uuid" t-att-value="uuid"/>
+							<div class="row mx-auto">
+								<div class="col-7 info-box p-2 text-center">
+									<h6 class="fw-bold m-0" style="color: #B17B67">
+										Current Test Score
+									</h6>
+								</div>
+								<div class="col-5 p-2">
+									<div class="text-center">
+										<h6 class="fw-bold m-0" style="color: #B17B67">
+											Change to
+										</h6>
+									</div>
+								</div>
+							</div>
+							<t t-foreach="values" t-as="value">
+								<t t-set="name" t-value="value.name"/>
+								<t t-set="color" t-value="value.color"/>
+								<div class="row mx-auto">
+									<div class="col-7 info-box my-2 p-2 d-flex justify-content-between align-items-center" t-att-style="'background-color: %s;' % color">
+										<div class="fragrance-name d-flex align-items-center">
+											<h5 class="fw-bold m-0" t-att-style="'color:white; !important;' if name.lower() == 'oriental' else 'color:black !important;'">
+												<t t-esc="name"/>
+											</h5>
+										</div>
+										<div class="fragrance-value d-flex align-items-center">
+											<span class="number-circle mx-auto" t-att-style="'color:white; !important; border: 2px solid white;' if name.lower() == 'oriental' else ''">
+												<t t-esc="int(values[value])"/>
+											</span>
+										</div>
+									</div>
+									<div class="col-5 my-2">
+										<input type="number" step="0.1" class="form-control form-control-lg" t-att-name="name" placeholder="New value" t-att-value="value_changes.get(name, '')" style="font-size: 14px; height: auto; min-height: 48px; background: white; text-align: center;"/>
+									</div>
+								</div>
+							</t>
+							<div class="row mx-auto">
+								<div class="col-5 offset-7 p-2">
+									<div class="text-center">
+										<div class="btn btn-custom auto-add-btn" style="background: white !important; color: #B17B67; width: 80%; border-radius: 1rem; cursor: pointer;" t-att-data-bottle_size="bottle_size">
+											Auto Add
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row my-2">
+								<div class="col-12 text-center">
+									<t t-if="bottle_size == '100ml'">
+										<span style="font-weight:bold;color:#B17B67">Total Score should add up to 20</span>
+									</t>
+									<t t-elif="bottle_size == '50ml'">
+										<span style="font-weight:bold;color:#B17B67">Total Score should add up to 10</span>
+									</t>
+									<t t-else="">
+										<span style="font-weight:bold;color:#B17B67">Total Score should add up to 6</span>
+									</t>
+								</div>
+							</div>
+							<div>
+								<div style="display: flex; flex-direction: column; gap: 15px; align-items: center; max-width: 300px; margin: 0 auto;">
+									<button type="submit" class="btn custom-btn" style="width: 80%; background: #B17B67 !important; color: white; padding:15px;" t-att-data-bottle_size="bottle_size">
+										Proceed
+									</button>
+									<a t-att-href="link_prev" style="color: #B17B67; text-decoration: underline; font-size: 16px; text-align: center;">
+										Cancel
+									</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- Fixed bottom bar -->
+				<div class="fixed-bottom d-flex align-items-center justify-content-between p-3"
+						style="z-index: 1000;">
+					<a t-att-href="link_prev"
+						class="text-decoration-none d-flex align-items-center justify-content-center"
+						style="background:#F9F2F0 !important; border-radius:15px;">
+						<img src="/gm_web/static/src/img/prev.svg"
+								alt="Back"
+								class="img-fluid"
+								style="width: 40px; height: 40px; object-fit: contain;" />
+					</a>
+					<img src="/gm_web/static/src/img/logo.png"
+							class="img-fluid"
+							style="width: 150px; margin-top:-20px;"
+							alt="Logo" />
+					<div style="width: 40px; height: 40px;"></div>
+				</div>
+
+				<!-- Mini avatar (bottom right) -->
+				<div class="fixed-bottom p-3" style="z-index: 2000; pointer-events: none;">
+					<div class="text-end">
+						<img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+								alt="Avatar Image"
+								class="img-fluid"
+								style="height: 100px !important; z-index: 999; margin-right: 10%;" />
+					</div>
+				</div>
+
+				<script type="text/javascript">
+					<![CDATA[
+						document.addEventListener('DOMContentLoaded', function () {
+							// Auto Add functionality
+							const autoAddBtn = document.querySelector('.auto-add-btn');
+							if (autoAddBtn) {
+								autoAddBtn.addEventListener('click', function() {
+									const bottleSize = this.getAttribute('data-bottle_size');
+									const inputs = document.querySelectorAll('input[type="number"]');
+									
+									let valuePerInput;
+									if (bottleSize === '100ml') {
+										valuePerInput = 4;
+									} else if (bottleSize === '50ml') {
+										valuePerInput = 2;
+									} else { // 30ml
+										valuePerInput = 1;	
+									}
+									
+									inputs.forEach(input => {
+										input.value = valuePerInput;
+									});
+									
+									if (bottleSize === '30ml') {
+										const fragranceValues = document.querySelectorAll('.fragrance-value .number-circle');
+										let maxValue = -1;
+										let maxIndex = -1;
+										
+										fragranceValues.forEach((circle, index) => {
+											const currentValue = parseInt(circle.textContent.trim());
+											if (currentValue > maxValue) {
+												maxValue = currentValue;
+												maxIndex = index;
+											}
+										});
+										
+										if (maxIndex !== -1) {
+											inputs[maxIndex].value = 2;
+										}
+									}
+								});
+							}
+
+							// Form validation
+							const form = document.querySelector('.login-form');
+							const submitBtn = form.querySelector('button[type="submit"]');
+							const inputs = form.querySelectorAll('input[type="number"]');
+							const bottleSize = submitBtn.getAttribute('data-bottle_size');
+							
+							let requiredTotal;
+							if (bottleSize === '100ml') {
+								requiredTotal = 20;
+							} else if (bottleSize === '50ml') {
+								requiredTotal = 10;
+							} else { // 30ml
+								requiredTotal = 6;
+							}
+							
+							submitBtn.addEventListener('click', function (e) {
+								let sum = 0;
+								let hasDecimal = false;
+								inputs.forEach(input => {
+									const val = parseFloat(input.value) || 0;
+									if (val % 1 !== 0) {
+										hasDecimal = true;
+									}
+									sum += val;
+								});
+								
+								if (hasDecimal) {
+									e.preventDefault();
+									alert('All values must be integers (whole numbers).');
+									return;
+								}
+								
+								if (sum != requiredTotal) {
+									e.preventDefault();
+									alert('Total score must be ' + requiredTotal + '.');
+								}
+							});
+						});
+					]]>
+				</script>
+			</t>
+		</t>
+	</template>
+</odoo>

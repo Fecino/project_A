@@ -1,0 +1,217 @@
+<templates xml:space="preserve">
+    <t t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
+        <!-- Replace leftpane with booking form -->
+        <xpath expr="//div[@class='product-screen d-flex h-100']" position="replace">
+            <div class="product-screen d-flex h-100" style="background: #f5f5f5;">
+                <!-- Left side: Booking Form -->
+                <div class="booking-form bg-white p-4 d-flex flex-column" style="width: 800px; border-right: 1px solid #dee2e6;">
+                    <h6 class="mb-1 fw-bold">Generate access code</h6>
+                    
+                    <div class="mb-1">
+                        <label class="form-label fw-semibold small">Booking code</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="ABC3"
+                            t-att-value="state.bookingCode"
+                            t-on-input="onBookingCodeChange"
+                        />
+                    </div>
+                    
+                    <div class="mb-1">
+                        <label class="form-label fw-semibold small">Booking from</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Website"
+                            t-att-value="state.bookingFrom"
+                            t-on-input="onBookingFromChange"
+                        />
+                    </div>
+                    
+                    <div class="mb-1">
+                        <label class="form-label fw-semibold small">Booking Price</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="150"
+                            t-att-value="state.bookingPrice"
+                            t-on-input="onBookingPriceChange"
+                        />
+                    </div>
+                    
+                    <div class="mb-1">
+                        <label class="form-label fw-semibold small">*Bottle Size</label>
+                        <select 
+                            class="form-select" 
+                            t-att-value="state.bottleSize"
+                            t-on-change="onBottleSizeChange"
+                        >
+                            <option value="">Select bottle size</option>
+                            <option value="30ml">30ml</option>
+                            <option value="50ml">50ml</option>
+                            <option value="100ml">100ml</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-1">
+                        <label class="form-label fw-semibold small">Code remains active after validation for</label>
+                        <div class="row g-2">
+                            <div class="col-8">
+                                <input 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="7"
+                                    t-att-value="state.activeDays"
+                                    t-on-input="onActiveDaysChange"
+                                />
+                            </div>
+                            <div class="col-4">
+                                <select 
+                                    class="form-select" 
+                                    t-att-value="state.activePeriod"
+                                    t-on-change="onActivePeriodChange"
+                                >
+                                    <option value="days">Days</option>
+                                    <option value="hours">Hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-1">
+                        <label class="form-label fw-semibold small">Number of copies</label>
+                        <input 
+                            type="number" 
+                            class="form-control" 
+                            placeholder="1"
+                            min="1"
+                            max="100"
+                            t-att-value="state.numberOfCopies"
+                            t-on-input="onNumberOfCopiesChange"
+                        />
+                    </div>
+                    
+                    <div class="mb-1">
+                        <button 
+                            class="btn btn-primary-mock w-100" 
+                            type="button"
+                            t-on-click="onGenerateAccessCode"
+                        >
+                            Generate Access Code
+                        </button>
+                    </div>
+                    
+                    <!-- Bulk Generate Section -->
+                    <div class="mt-1 border-top pt-1">
+                        <h6 class="fw-bold mb-1">Bulk Generate</h6>
+                        
+                        <!-- button download example -->
+                        <div class="mb-1">
+                            <div class="input-group">
+                                <button 
+                                    class="form-control text-start btn btn-outline-secondary" 
+                                    type="button"
+                                    t-on-click="onDownloadExample"
+                                    title="Download CSV example"
+                                >
+                                    <i class="fa fa-arrow-down me-1"></i>Download Example
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-1">
+                            <div class="input-group">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="D:\\Booking12march.xlsx"
+                                    readonly="readonly"
+                                    t-att-value="state.selectedFile || 'No file selected'"
+                                />
+                                <button 
+                                    class="btn btn-outline-secondary" 
+                                    type="button"
+                                    t-on-click="onBrowseFile"
+                                >
+                                    Browse
+                                </button>
+                            </div>
+                            <input 
+                                type="file" 
+                                accept=".xlsx,.xls,.csv" 
+                                style="display: none;" 
+                                id="gm-pos-file-input"
+                                t-ref="fileInput"
+                                t-on-change="onFileSelected"
+                            />
+                        </div>
+                        
+                        <button 
+                            class="btn btn-primary-mock w-100" 
+                            type="button"
+                            t-on-click="onBulkGenerate"
+                            t-att-disabled="!state.selectedFile"
+                        >
+                            Generate Access Codes
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right side: Print Preview -->
+                <div class="print-preview-section d-flex flex-column flex-grow-1 p-4">
+                    <div class="preview-wrapper mb-3">
+                        <h5 class="mb-3 fw-bold print-preview-title">Print Preview</h5>
+                        <div class="preview-content p-3 w-100 flex-grow-1">
+                            <!-- Total Page (left) -->
+                            <div class="mb-3 fw-bold print-preview-title">Total Page: <span t-esc="state.totalPages || 0"/></div>
+                            <t t-if="state.accessCodes and state.accessCodes.length">
+                                <div class="row g-2 mb-2">
+                                    <t t-foreach="state.accessCodes" t-as="accessCode" t-key="accessCode.id">
+                                        <div class="col-6 col-md-3">
+                                            <!-- Access Code Card -->
+                                            <div class="access-code-card bg-white p-2 border rounded text-center">
+                                                <p class="text-muted" style="margin-top: 55px;">Your access code is:</p>
+                                                <div class="code" style="margin-top: -55px; font-size: 23px; font-family: monospace;" t-esc="accessCode.code"/>
+                                                <t t-if="state.companyLogoUrl">
+                                                    <div class="card-logo">
+                                                        <img t-att-src="state.companyLogoUrl"/>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                            <!-- Page -->
+                                            <div class="page text-center">Page: <t t-esc="accessCode.pageNumber"/>/<t t-esc="state.totalPages"/></div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="d-flex align-items-center justify-content-center" style="height: 320px;">
+                                    <p class="text-muted text-center">Preview will appear here after generation</p>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="action-bar mt-auto">
+                            <button 
+                                class="btn btn-download" 
+                                type="button"
+                                t-on-click="onDownloadPDF"
+                                t-att-disabled="!state.accessCodes || !state.accessCodes.length"
+                            >
+                                Download as PDF
+                            </button>
+                            <button 
+                                class="btn btn-print" 
+                                type="button"
+                                t-on-click="onPrintPreview"
+                                t-att-disabled="!state.accessCodes || !state.accessCodes.length"
+                            >
+                                Print
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

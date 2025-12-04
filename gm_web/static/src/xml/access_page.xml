@@ -1,0 +1,204 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="access_page_template" name="Access Page">
+        <t t-name="gm_web.access_page_template">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .o_body_html{
+                        padding : 0px 25px !important;
+                    }
+                    .img-profile{
+                        width: 128px; 
+                        height: 128px; 
+                        border-radius: 50%;
+                    }
+                    .text-brown {
+                        color: #5F3529 !important;
+                    }
+                    .img-avatar{
+                        max-width: 300px; 
+                        max-height: 400px;
+                    }
+                    .btn-custom{
+                        padding: 12px 25px; 
+                        font-size: 16px; 
+                        background-color: #B17B67 !important; 
+                        border: 1px solid #bb8470ff  !important; 
+                        color: white !important; 
+                        border-radius: 25px;
+                        width: 100% !important;
+                        height: 50px !important;
+                    }
+                    @media (max-width: 500px) {
+                        .img-profile{
+                            width: 90px; 
+                            height: 90px; 
+                        }
+                        .img-avatar {
+                            max-width: 200px; 
+                            max-height: 300px; 
+                        }
+                        .container-home{
+                            padding-top: 20px !important;
+                        }
+                        .o_body_html{
+                            padding : 0px 10px !important;
+                        }
+                    }
+                </style>
+                <t t-set="title">Access Page | Scentzania</t>
+                <form method="post" action="/perfume-journey/access/submit">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="container py-5 container-home d-flex align-items-center justify-content-center" style="height: 85vh !important;">
+                    <div class="wrapper" style="max-width: 400px; width: 100%;">
+
+                        <!-- <div class="row">
+                            <div class="col-12">
+                                <label class="text-brown">Bottle Size</label>
+                                <select name="bottle_size" class="form-select mb-3" required="required" style="border-radius: 10px !important; background:white;">
+                                    <option value="">Choose bottle size...</option>
+                                    <option value="30ml">30ml</option>
+                                    <option value="50ml">50ml</option>
+                                    <option value="100ml">100ml</option>
+                                </select>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="text-brown">Access Code</label>
+                                <input type="text" name="access_code" class="form-control mb-3" style="border-radius: 10px !important; background:white;" placeholder="Enter your access code" required="required"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="text-brown">I am at</label>
+                                <select name="location" class="form-select mb-3" required="required" style="border-radius: 10px !important; background:white;">
+                                    <option value="">Choose location...</option>
+                                    <option value="scentzania">Scentzania</option>
+                                    <option value="team_building">Team Building</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex align-items-center">
+                                <input type="checkbox" name="age_check" style="height: 16px; width: 16px;" required="required"/>
+                                <span style="margin-left:5px;"> I am over 15 years old</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 mt-4 text-center">
+                                <button type="button" class="btn btn-custom" id="validateBtn">Validate</button>
+                                <span style="cursor: pointer; font-size:10px; margin-top:5px; display:block;" data-bs-toggle="modal" data-bs-target="#tncModal">
+                                    By clicking Validate, you agree to our <span style="text-decoration: underline;">Terms &amp; Conditions</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="tncModal" tabindex="-1" role="dialog" aria-labelledby="tncModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h5 class="modal-title" id="tncModalLabel">Disclaimer</h5>
+                                    <p>By entering Scentopia, Scentzania, or any of its franchises, subsidiaries, or affiliated locations, all visitors agree to the following terms and conditions:</p>
+                                    <ul>
+                                        <li>Children under the age of 15 must be accompanied and supervised by a responsible adult at all times.</li>
+                                        <li>The accompanying adult accepts full responsibility for the child and their actions during the visit.</li>
+                                        <li>Please avoid touching your eyes, nose, and mouth during the experience. In case any oils come into contact with your ear, nose, or throat, rinse immediately with water.</li>
+                                        <li>By entering the premises, you confirm that an adult has accepted these terms and takes full responsibility for themselves and any minors in their care.</li>
+                                    </ul>
+                                    <p>Your participation implies full acceptance of these terms. Thank you for your understanding and cooperation.</p>
+                                    <div class="text-end w-100">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </form>
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="background: #F9F2F0">
+                    <a href="/my" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                    </a>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+                    <div style="width: 40px;"></div>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const form = document.querySelector('form');
+                        const validateBtn = document.getElementById('validateBtn');
+                        
+                        validateBtn.addEventListener('click', async function(e) {
+                            e.preventDefault();
+                            
+                            const accessCode = form.querySelector('input[name="access_code"]').value.trim();
+                            const location = form.querySelector('select[name="location"]').value;
+                            const ageCheck = form.querySelector('input[name="age_check"]').checked;
+
+                            if (!ageCheck) {
+                                alert("You must confirm that you are over 15 years old");
+                                return;
+                            }
+                            
+                            if (!accessCode) {
+                                alert("Access Code must be filled");
+                                return;
+                            }
+                            
+                            if (!location) {
+                                alert("Location must be selected");
+                                return;
+                            }
+                            
+                            try {
+                                const response = await fetch('/perfume-journey/check-access-code', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                    },
+                                    body: JSON.stringify({ access_code: accessCode }),
+                                });
+                                
+                                console.log(response);
+                                
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+                                
+                                const result = await response.json();
+                                console.log(result);
+                                
+                                if (result.success === true) {
+                                    window.localStorage.setItem('location', location);
+                                    form.submit();
+                                } else {
+                                    alert(result.message || "Access denied");
+                                }
+                            } catch (err) {
+                                console.error("Fetch error:", err);
+                                alert("An error occurred, please try again later.");
+                            }
+                        });
+                    });
+                </script>
+            </t>
+        </t>
+    </template>
+</odoo>

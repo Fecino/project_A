@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Import perfume details from CSV -->
+        <function model="perfume.details" name="load">
+            <value eval="[{
+                'file': 'gm_scentopia/data/scm_perfume_details.csv',
+                'format': 'csv'
+            }]"/>
+        </function>
+    </data>
+</odoo>

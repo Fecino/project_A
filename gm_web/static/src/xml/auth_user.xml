@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<odoo>
+  <template id="dashboard_page" name="News Reader Dashboard">
+    <t t-name="gm_web.dashboard_page">
+      <t t-call="web.layout">
+        <t t-set="title">Dashboard - News Reader App</t>
+        <t t-set="assets">
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&amp;display=swap" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        </t>
+        <t t-call-assets="web.assets_frontend" t-js="true"/>
+        <header role="banner" class="o_web_client">
+          <div class="header-inner">
+            <a href="#" class="logo" aria-label="Scentzania">
+              <img src="/gm_web/static/src/img/logo.png" alt="Scentzania Logo" style="width: 120px;"/>
+            </a>
+            <div style="position: relative;">
+              <button class="settings-btn" id="settingsButton">
+                <i class="fa fa-cog"/>
+              </button>
+              <nav class="dropdown-menu" id="settingsMenu" role="menu" aria-labelledby="settingsButton" tabindex="-1">
+                <a href="#settings" role="menuitem" tabindex="0">Settings</a>
+                <a href="/web/session/logout" role="menuitem" tabindex="0">Log Out</a>
+              </nav>
+            </div>
+          </div>
+        </header>
+        <main class="container" role="main">
+          <h1 style="font-weight: 700; font-size: 2.5rem; color: #111827;">Welcome to your dashboard</h1>
+          <p style="margin-top: 8px; font-size: 1rem; max-width: 600px; color: #6b7280;">
+          Select an option below to proceed
+        </p>
+          <div class="dashboard-grid" role="list" aria-label="Dashboard navigation options">
+            <a href="/take_a_survey?questions=20&amp;fixed_questions=7" class="card">
+              <i class="fa fa-file-alt"/>
+              <span class="card-text">Take a Test (20 questions)</span>
+            </a>
+            <a href="/take_a_survey?questions=40&amp;fixed_questions=4" class="card">
+              <i class="fa fa-file-alt"/>
+              <span class="card-text">Take a Test (40 questions)</span>
+            </a>
+            <a href="#my-answers" class="card">
+              <i class="fa fa-check-square"/>
+              <span class="card-text">My Answer Test</span>
+            </a>
+          </div>
+        </main>
+      </t>
+    </t>
+  </template>
+</odoo>

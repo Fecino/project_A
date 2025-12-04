@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="formula_bottling_access_page" name="Access Page">
+        <t t-name="gm_web.formula_bottling_access_page">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .o_body_html{
+                        padding : 0px 25px !important;
+                    }
+                    .img-profile{
+                        width: 128px; 
+                        height: 128px; 
+                        border-radius: 50%;
+                    }
+                    .text-brown {
+                        color: #5F3529 !important;
+                    }
+                    .img-avatar{
+                        max-width: 300px; 
+                        max-height: 400px;
+                    }
+                    .btn-custom{
+                        padding: 12px 25px; 
+                        font-size: 16px; 
+                        background-color: #B17B67 !important; 
+                        border: 1px solid #bb8470ff  !important; 
+                        color: white !important; 
+                        border-radius: 25px;
+                        width: 100% !important;
+                        height: 50px !important;
+                    }
+                    @media (max-width: 500px) {
+                        .img-profile{
+                            width: 90px; 
+                            height: 90px; 
+                        }
+                        .img-avatar {
+                            max-width: 200px; 
+                            max-height: 300px; 
+                        }
+                        .container-home{
+                            padding-top: 20px !important;
+                        }
+                        .o_body_html{
+                            padding : 0px 10px !important;
+                        }
+                    }
+                </style>
+                <t t-set="title">Access Page | Scentzania</t>
+                <div class="container py-5 container-home d-flex align-items-center justify-content-center" style="height: 100vh !important; margin-bottom:75px !important;">
+                    <div class="wrapper" style="max-width: 400px; width: 100%;">
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="text-brown">Access Code</label>
+                                <input type="text" name="access_code" class="form-control mb-3" style="border-radius: 10px !important; background:white;" placeholder="Enter your access code" required="required"/>
+                                <input type="hidden" name="formula_id" t-att-value="formulas.id"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mt-4 text-center">
+                                <button type="button" class="btn btn-custom" id="validateBtn">Validate</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="background: #F9F2F0">
+                    <a t-att-href="f'/my/formula/{formulas.id}'" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                    </a>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+                    <div style="width: 40px;"></div>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const validateBtn = document.getElementById('validateBtn');
+                        
+                        validateBtn.addEventListener('click', async function(e) {
+                            e.preventDefault();
+                            
+                            const accessCode = document.querySelector('input[name="access_code"]').value.trim();
+                            const formula_id = document.querySelector('input[name="formula_id"]').value.trim();
+                            
+                            if (!accessCode) {
+                                alert("Access Code must be filled");
+                                return;
+                            }
+                            
+                            try {
+                                const response = await fetch('/my/formula/bottling/check_access', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                    },
+                                    body: JSON.stringify({ access_code: accessCode, formula_id: formula_id }),
+                                });
+                                
+                                console.log(response);
+                                
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+                                
+                                const result = await response.json();
+                                console.log(result);
+                                
+                                if (result.success === true) {
+                                    // Redirect or perform success action
+                                    window.location.href = result.redirect_url || '/';
+                                } else {
+                                    alert(result.message || "Access denied");
+                                }
+                            } catch (err) {
+                                console.error("Fetch error:", err);
+                                alert("An error occurred, please try again later.");
+                            }
+                        });
+                    });
+                </script>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_detail_report_template" name="Avatar Detail">
+        <t t-name="gm_survey.avatar_detail_report">
+            <t t-call="web.basic_layout">
+                <style>
+                    .info-card {
+                        background-color: #F2F2F2; 
+                        border-radius: 10px; 
+                        padding: 10px; 
+                        vertical-align: top;
+                        height:100%;
+                    }
+                    .avatar-title {
+                        font-weight: bold;
+                        font-size: xx-large;
+                    }
+                    .progress-bar {
+                        height: 5px;
+                        display: inline-block;
+                    }
+                    .table-no-border {
+                        border: none;
+                        width: 100%;
+                    }
+                    table, th, td {
+                        border: 0px solid #fff !important;
+                    }
+                    .table-no-border td {
+                        border: none;
+                        vertical-align: top;
+                        padding: 5px;
+                    }
+                    .table-no-border-fv {
+                        border: none;
+                        width: 100%;
+                    }
+                    .table-no-border-fv td {
+                        border: 0px solid #F2F2F2 !important;
+                        border: none;
+                        vertical-align: top;
+                        padding: 5px;
+                    }
+                </style>
+
+                <t t-set="title">Avatar Detail | Scentzania</t>
+
+                <t t-foreach="docs" t-as="doc">
+                    <main>
+                        <table class="table-no-border">
+                            <!-- HEADER AVATAR -->
+                            <tr>
+                                <td style="width:65%; height:150px;">
+                                    <div class="info-card" style="display: table;width: 100%;height: 100%;text-align: center;">
+                                        <span class="avatar-title" style=" display: table-cell;vertical-align: middle;">You are a "<t t-esc="doc.avatar_id.name"/>"</span>
+                                    </div>
+                                </td>
+                                <td style="width:35%; height:150px;">
+                                    <div class="info-card">
+                                        <table class="table-no-border">
+                                            <tr>
+                                                <td>
+                                                    Hi,<br/>
+                                                    My name is <t t-esc="doc.opportunity_id.avatar_name"/> and I will be your guide on this fragrant journey.
+                                                </td>
+                                                <td style="text-align:right;">
+                                                    <t t-set="gender" t-value="doc.opportunity_id.gender or 'other'"/>
+                                                    <t t-if="gender == 'other'">
+                                                        <img t-att-src="'data:%s;base64,%s' % (doc.avatar_id.get_image_mime(gender), doc.avatar_id.decode_image(doc.avatar_id.image))" 
+                                                            alt="Avatar Image" style="height:100px;"/>
+                                                    </t>
+                                                    <t t-if="gender == 'female'">
+                                                        <img t-att-src="'data:%s;base64,%s' % (doc.avatar_id.get_image_mime(gender), doc.avatar_id.decode_image(doc.avatar_id.female_image))" 
+                                                            alt="Avatar Image" style="height:100px;"/>
+                                                    </t>
+                                                    <t t-if="gender == 'male'">
+                                                        <img t-att-src="'data:%s;base64,%s' % (doc.avatar_id.get_image_mime(gender), doc.avatar_id.decode_image(doc.avatar_id.male_image))" 
+                                                            alt="Avatar Image" style="height:100px;"/>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- MAIN CONTENT -->
+                            <tr>
+                                <td colspan="2">
+                                    <table class="table-no-border">
+                                        <tr>
+                                            <!-- Radar Chart -->
+                                            <td style="width:50%; height:500px;" rowspan="5">
+                                                <div class="info-card" style="text-align:center;">
+                                                    <img t-att-src="'data:png;base64,%s' % (doc.render_radar_chart())" 
+                                                        alt="Avatar Chart Image" style="height:250px;width:250px;"/>
+                                                    <div style="text-align:left;">
+                                                        <span>Your Dominant Dimension:</span><br/>
+                                                        <span style="font-weight:bold;">( <t t-esc="', '.join(doc.avatar_id.fragrance_family_ids.mapped('name'))"/> )</span>
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam enim, eget facilisis quam erat nec sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <!-- Right content row 1: Ideal Scent Ratio & Personality Overview -->
+                                            <td>
+                                                <table class="table-no-border">
+                                                    <tr>
+                                                        <td style="width:50%; height:250px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Your ideal scent ratio:</span><br/>
+                                                                <t t-set="sum_value" t-value="sum(fv.value for fv in doc.fragrance_value_ids)"/>
+                                                                <table class="table-no-border-fv">
+                                                                    <t t-foreach="doc.fragrance_value_ids" t-as="fv">
+                                                                        <t t-set="perc" t-value="fv.value / sum_value * 100"/>
+                                                                        <tr>
+                                                                            <td style='width:25px;'>
+                                                                                <span><t t-esc="fv.fragrance_family_id.name"/></span>
+                                                                            </td>
+                                                                            <td style="width:25px;">
+                                                                                <span><t t-esc="str(perc)"/>%</span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="progress-bar" t-att-style="'width:'+str(perc)+'%; background-color:'+fv.fragrance_family_id.color+';'"></div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </t>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:50%; height:250px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Personality Overview:</span><br/>
+                                                                <span t-esc="doc.avatar_id.overview"/>
+                                                            </div>    
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 2: Emotions & Goals -->
+                                        <tr>
+                                            <td>
+                                                <table class="table-no-border">
+                                                    <tr>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Emotions:</span><br/>
+                                                                <span t-esc="doc.avatar_id.emotions"/>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Goals:</span><br/>
+                                                                <span t-esc="doc.avatar_id.goal"/>
+                                                            </div>
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 3: Judges others by & Influences others by -->
+                                        <tr>
+                                            
+                                            <td>
+                                                <table class="table-no-border">
+                                                    <tr>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Judges others by:</span><br/>
+                                                                <span t-esc="doc.avatar_id.judges_other_by"/>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Influences others by:</span><br/>
+                                                                <span t-esc="doc.avatar_id.influences_other_by"/>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 4: Strengths & Communication -->
+                                        <tr>
+                                            
+                                            <td>
+                                                <table class="table-no-border">
+                                                    <tr>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Strengths and Limitations:</span><br/>
+                                                                <span t-esc="doc.avatar_id.strengths"/>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Communication &amp; Decision-Making Style:</span><br/>
+                                                                <span t-esc="doc.avatar_id.communication"/>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 5: Values & Under Pressure -->
+                                        <tr>
+                                            
+                                            <td>
+                                                <table class="table-no-border">
+                                                    <tr>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Values to the Organization:</span><br/>
+                                                                <span t-esc="doc.avatar_id.values_to_org"/>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:50%; height:125px;">
+                                                            <div class="info-card">
+                                                                <span style="font-weight:bold;">Under Pressure:</span><br/>
+                                                                <span t-esc="doc.avatar_id.under_pressure"/>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row bawah: Personally & Would increase effectiveness -->
+                                        <tr>
+                                            <td style="width:50%; height:250px;">
+                                                <div class="info-card">
+                                                    <span style="font-weight:bold;">Personally:</span><br/>
+                                                    <span t-esc="doc.avatar_id.personality"/>
+                                                </div>
+                                            </td>
+                                            <td style="width:50%; height:250px;">
+                                                <div class="info-card">
+                                                    <span style="font-weight:bold;">Would increase effectiveness with more:</span><br/>
+                                                    <span t-esc="doc.avatar_id.increase_effectiveness"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+
+    <record id="paperformat_avatar_detail_landscape" model="report.paperformat">
+        <field name="name">Avatar Detail Landscape</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">500</field>
+        <field name="page_width">350</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="avatar_detail_report" model="ir.actions.report">
+        <field name="name">Avatar Detail Report</field>
+        <field name="model">survey.user_input</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_survey.avatar_detail_report_template</field>
+        <field name="report_file">gm_survey.avatar_detail_report_template</field>
+        <field name="paperformat_id" ref="gm_survey.paperformat_avatar_detail_landscape"/>
+        <!-- <field name="print_report_name">'Avatar Detail'</field> -->
+    </record>
+</odoo>

@@ -1,0 +1,323 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="post_intro_page_template" name="Post-Intro Page">
+        <t t-name="gm_web.post_intro_page_template">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .o_body_html{
+                        padding : 0px 25px !important;
+                    }
+                    .img-profile{
+                        width: 128px; 
+                        height: 128px; 
+                        border-radius: 50%;
+                    }
+                    .text-brown {
+                        color: #5F3529 !important;
+                    }
+                    .img-avatar{
+                        max-width: 340px; 
+                        max-height: 500px;
+                    }
+                    .btn-custom{
+                        padding: 12px 25px; 
+                        font-size: 16px; 
+                        background-color: #B17B67 !important; 
+                        border: 1px solid #bb8470ff  !important; 
+                        color: white !important; 
+                        border-radius: 25px;
+                        width: 100% !important;
+                        height: 50px !important;
+                    }
+                    @media (max-width: 500px) {
+                        .img-profile{
+                            width: 90px; 
+                            height: 90px; 
+                        }
+                        .container-home{
+                            padding-top: 20px !important;
+                        }
+                        .o_body_html{
+                            padding : 0px !important;
+                        }
+                    }
+                    .bubble {
+                        position: relative;
+                        font-size: 12px;
+                        line-height: 14px;
+                        background: #fff;
+                        border-radius: 40px;
+                        padding: 15px;
+                        text-align: center;
+                        color: #000;
+                        border: 1px solid #fff;
+                    }
+
+                    .bubble-bottom-left:before {
+                        content: "";
+                        width: 0px;
+                        height: 0px;
+                        position: absolute;
+                        border-left: 24px solid #fff;
+                        border-right: 12px solid transparent;
+                        border-top: 12px solid #fff;
+                        border-bottom: 20px solid transparent;
+                        left: 32px;
+                        bottom: -24px;
+                    }
+                    .bubble-bottom-right:before {
+                        content: "";
+                        width: 0px;
+                        height: 0px;
+                        position: absolute;
+                        border-right: 24px solid #fff;
+                        border-left: 12px solid transparent;
+                        border-top: 12px solid #fff;
+                        border-bottom: 20px solid transparent;
+                        right: 32px;
+                        bottom: -24px;
+                    }
+                    .bubble-right-middle {
+                        position: relative;
+                    }
+
+                    .bubble-right-middle:before {
+                        content: "";
+                        position: absolute;
+                        right: -20px;        
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 0;
+                        height: 0;
+                        border-top: 12px solid transparent;
+                        border-bottom: 12px solid transparent;
+                        border-left: 20px solid #fff; 
+                    }
+                    .bubble-wrapper {
+                        display: flex;
+                        align-items: center; 
+                        justify-content: flex-end; 
+                        gap: 10px; 
+                        pointer-events: none;
+                        margin-right: 10%;
+                        margin-bottom: 50px;
+                    }
+                    .avatar-img{
+                        height: 100px !important; 
+                        z-index: 999; 
+                        margin-right:8% !important;
+                    }
+                    @media (min-width: 768px) {
+                        .avatar-img {
+                            margin-right:20% !important;
+                        }
+                    }
+                </style>
+                <div class="container d-flex flex-column position-relative" style="height: 75vh !important;">
+                    <div class="flex-fill d-flex flex-column justify-content-start align-items-center py-3">
+                        <t t-if="page_name == 'test_result'">
+                            <div class="col-12 text-center">
+                                <div class="table-responsive">
+                                    <table class="table" style="background-color: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                        <thead style="background-color: #B17B67;">
+                                            <tr>
+                                                <th style="color: white; padding: 5px; font-weight: 600; font-size:14px !important; border: none; text-align: center !important;">Fragrance Type</th>
+                                                <th style="color: white; padding: 5px; font-weight: 600; font-size:14px !important; border: none; text-align: center !important;">Score</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="value_data.items()" t-as="item">
+                                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                                    <td style="padding: 5px; color: #5F3529; font-weight: 500; font-size:12px !important; border: none;"><t t-esc="item[0].title()"/></td>
+                                                    <td style="padding: 5px; color: #5F3529; font-weight: 600; font-size:12px !important; border: none;"><t t-esc="item[1]"/></td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </t>
+                        <div class="col-12 text-center">
+                            <t t-if="flashcard.has_youtube_link and flashcard.youtube_link">
+                                <div class="ratio ratio-16x9 mb-3">
+                                    <iframe t-att-src="'https://www.youtube.com/embed/%s' % flashcard.youtube_link" title="YouTube video" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                                </div>
+                            </t>
+                            <t t-if="flashcard.has_image_2 or page_name == 'test_result'">
+                                <t t-set="max_height" t-value="'30vh'"/>
+                            </t>
+                            <t t-elif="page_name == 'part_of_plants'">
+                                <t t-set="max_height" t-value="'45vh'"/>
+                            </t>
+                            <t t-else="">
+                                <t t-set="max_height" t-value="'50vh'"/>
+                            </t>
+                            <t t-if="flashcard.image_1">
+                                <div class="d-block mb-2">
+                                    <img t-att-src="'data:%s;base64,%s' % (flashcard.get_image_mime(), flashcard.decode_image(flashcard.image_1))"
+                                        alt="Flashcard Image"
+                                        class="img-fluid d-block mx-auto"
+                                        t-att-style="'max-height: %s;' % max_height" />
+                                </div>
+                            </t>
+                            
+                            <t t-if="flashcard.image_2 and flashcard.has_image_2">
+                                <div class="d-block">
+                                    <img t-att-src="'data:%s;base64,%s' % (flashcard.get_image_mime(), flashcard.decode_image(flashcard.image_2))"
+                                        alt="Flashcard Image"
+                                        class="img-fluid d-block mx-auto"
+                                        t-att-style="'max-height: %s;' % max_height" />
+                                </div>
+                            </t>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12 text-center my-1">
+                                <t t-if="page_name in ['scent_paper','collect_sticker', 'test_result', 'formula_guide']">
+                                    <a t-att-href="next_link" class="btn btn-lg" style="background-color:#B17B67 !important; color: white !important; border: 1px solid #bb8470ff  !important; padding: 12px 24px !important; border-radius: 25px !important;">
+                                        <t t-if="page_name == 'scent_paper'">I have Scent Paper</t>
+                                        <t t-elif="page_name in ['collect_sticker','test_result']">Done!</t>
+                                        <t t-elif="page_name == 'formula_guide'">Im Ready to Choose</t>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <h3 class="text-brown">
+                                        <t t-esc="text"/>
+                                    </h3>
+                                </t>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3"
+                    style="background: #F9F2F0; z-index: 1000;">
+                    <t t-if="prev_link">
+                        <a t-att-href="prev_link" class="text-decoration-none d-flex align-items-center justify-content-center">
+                            <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid"
+                                style="width: 40px; height: 40px; object-fit: contain;"/>
+                        </a>
+                    </t>
+                    <t t-else="">
+                        <div style="width: 40px; height: 40px;"></div>
+                    </t>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid"
+                        style="width: 150px; margin-right:30px; margin-top:-20px;" alt="Logo"/>
+                    <t t-if="page_name in ['scent_paper','collect_sticker', 'test_result', 'formula_guide']">
+                        <div style="width: 40px; height: 40px;"></div>
+                    </t>
+                    <t t-else="">
+                        <a t-att-href="next_link" class="text-decoration-none d-flex align-items-center justify-content-center">
+                            <img src="/gm_web/static/src/img/next.svg" alt="Next" class="img-fluid"
+                                style="width: 40px; height: 40px; object-fit: contain; "/>
+                        </a>
+                    </t>
+                </div>
+
+                <div class="fixed-bottom d-flex align-items-center justify-content-end p-3"
+                    style="z-index: 1500;pointer-events: none;">
+                    <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+                        alt="Avatar Image"
+                        class="img-fluid avatar-img"/>
+                </div>
+                <div class="fixed-bottom p-3"
+                    style="z-index: 2000; pointer-events: none;">
+                    <div class="bubble-wrapper">
+                        <div class="bubble bubble-right-middle text-brown" style="max-width: 400px; margin-right:30%;">
+                            <p style="margin-bottom:0px !important;">
+                                <t t-if="flashcard.mastertext and not flashcard.subtext">
+                                    <t t-esc="flashcard.mastertext or ''"/>
+                                </t>
+                                <t t-elif="flashcard.subtext and not flashcard.mastertext">
+                                    <t t-esc="flashcard.subtext or ''"/>
+                                </t>
+                                <t t-elif="flashcard.mastertext and flashcard.subtext">
+                                    <strong><t t-esc="flashcard.mastertext or ''"/></strong><br/>
+                                    <t t-esc="flashcard.subtext or ''"/>
+                                </t>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </t>
+        </t>
+    </template>
+
+
+    <template id="intro_scent_paper_page_template" name="Scent Paper Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Scent Paper Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro</t>
+            <t t-set="next_link">/perfume-journey/intro/collect-sticker</t>
+        </t>
+    </template>
+    <template id="intro_collect_sticker_page_template" name="Collect Sticker Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Collect Sticker Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro/scent-paper</t>
+            <t t-set="next_link">/perfume-journey/intro/test-result</t>
+        </t>
+    </template>
+    <template id="intro_test_result_page_template" name="Test Result Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Test Result Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro/collect-sticker</t>
+            <t t-set="next_link">/perfume-journey/intro/female-wand</t>
+        </t>
+    </template>
+    <template id="intro_female_wand_page_template" name="Female Wand Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Female Wand Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro/test-result</t>
+            <t t-set="next_link">/perfume-journey/intro/male-wand</t>
+        </t>
+    </template>
+    <template id="intro_male_wand_page_template" name="Male Wand Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Male Wand Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro/female-wand</t>
+            <t t-set="next_link">/perfume-journey/intro/unisex-wand</t>
+        </t>
+    </template>
+    <template id="intro_unisex_wand_page_template" name="Unisex Wand Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Unisex Wand Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro/male-wand</t>
+            <t t-set="next_link">/perfume-journey/intro/marking-scent-paper</t>
+        </t>
+    </template>
+    <template id="intro_marking_scent_paper_page_template" name="Marking Scent Paper Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Marking Scent Paper Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro/smell-scent-ward</t>
+            <t t-set="next_link">/perfume-journey/intro/part-of-plant</t>
+        </t>
+    </template>
+    <template id="intro_part_of_plants_page_template" name="Part of Plants Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Part of Plants Page | Scentzania</t>
+            <t t-set="prev_link">/perfume-journey/intro/marking-scent-paper</t>
+            <t t-set="next_link">/perfume-journey/fragrance-selection?location=scentzania</t>
+        </t>
+    </template>
+    <template id="intro_formula_guide_page_template" name="Formula Guide Page">
+        <t t-call="gm_web.post_intro_page_template">
+            <t t-set="title">Formula Guide Page | Scentzania</t>
+            <t t-set="prev_link"></t>
+            <t t-set="next_link">/my</t>
+        </t>
+    </template>
+
+</odoo>

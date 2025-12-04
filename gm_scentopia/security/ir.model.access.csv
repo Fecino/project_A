@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fragrance_family,access.fragrance.family,model_fragrance_family,base.group_user,1,1,1,1
+access_fragrance_family_value,access.fragrance.family.value,model_fragrance_family_value,base.group_user,1,1,1,1
+access_fragrance_intensity_index,access.fragrance.intensity.index,model_fragrance_intensity_index,base.group_user,1,1,1,1
+access_scentopia_avatar,access.scentopia.avatar,model_scentopia_avatar,base.group_user,1,1,1,1
+access_scentopia_avatar_title,access.scentopia.avatar.title,model_scentopia_avatar_title,base.group_user,1,1,1,1
+access_perfume_details,access.perfume.details,model_perfume_details,base.group_user,1,1,1,1
+access_info_card,access.info.card,model_info_card,base.group_user,1,1,1,1
+access_trivia_card,access.trivia.card,model_trivia_card,base.group_user,1,1,1,1
+access_access_code_helper,access.access.code.helper,model_access_code_helper,base.group_user,1,1,1,1

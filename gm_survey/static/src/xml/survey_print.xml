@@ -1,0 +1,110 @@
+<odoo>
+    <data>
+        <template id="survey_page_print_custom" name="Survey: print page">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    .image-wrapper {
+                        max-width: 400px;
+                        margin: 0 auto; /* untuk center */
+                    }
+                    .o_body_html{
+                        padding-left: 0px !important;
+                        padding-right: 0px !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    body{
+                        background-color: #F9F2F0 !important;
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                    }
+                    .container-info {
+                        background-color: #eee0db;
+                        border-radius: 2rem;
+                    }
+                    .info-wrapper {
+                        border-radius: 1.5rem;
+                        background-color: white;
+                    }
+                    .info-box {
+                        border-radius: 1rem;
+                    }
+                    .fragrance-name{
+                        height: inherit;
+                    }
+                    .fragrance-description{
+                        height: inherit;
+                    }
+                    
+                    .fragrance-description p{
+                        margin: 0 !important;
+                    }
+                    .fragrance-value{
+                        height: inherit;
+                    }
+                    .number-circle {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 32px;
+                        height: 32px;
+                        border: 2px solid #333;
+                        border-radius: 50%;
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: #333;
+                    }
+                    @media (max-width: 500px) {
+                        .fragrance-value{
+                            padding: 0px;
+                        }
+                    }
+
+
+                </style>
+                <t t-set="survey_form_readonly" t-value="true"/>
+                <t t-if="answer.test_entry" t-call="survey.survey_button_form_view" />
+                <div class="wrap">
+                    <div class="o_survey_print container" style="padding-bottom:140px;">
+                        <div class="col-sm-12 mx-auto text-center" style="padding-top: 20px; padding-bottom: 10px;">
+                            <h3>Your Personality Test Result</h3>
+                        </div>
+                        <div class="col-sm-12 mx-auto container-info p-4">
+                            <div class="mx-auto info-wrapper px-3 py-2">
+                                <t t-foreach="data.items()" t-as="item">
+                                    <t t-set="name" t-value="item[0]"/>
+                                    <t t-set="info" t-value="item[1]"/>
+                                    <t t-set="color" t-value="item[1]['color']"/>
+                                    <div class="info-box my-2 p-2 row mx-auto" t-att-style="'background-color: %s;' % color">
+                                        <div class="fragrance-name d-flex align-items-center col-sm-12 col-md-3">
+                                            <h4 class='fw-bold m-0'> <t t-esc="name"/></h4>
+                                        </div>
+                                        <div class="fragrance-description d-flex align-items-center col-sm-8 col-md-6 col-9">
+                                            <t t-esc="info['description']"/>
+                                        </div>
+                                        <div class="fragrance-value d-flex align-items-center col-sm-4 col-md-3 col-3">
+                                            <span class="number-circle mx-auto"><t t-esc="info['value']"/></span> 
+                                        </div>
+                                    </div>
+                                </t> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fixed-bottom text-center p-3" style="background: #F9F2F0">
+                        <div class="col-sm-12 text-center">
+                            <a role="button" class="btn btn-primary mb-2" t-att-href="'/show_avatar/%s' % answer.access_token" style="background-color: #B17B67 !important; background: #B17B67 !important; color: white; max-width: 400px; padding: 0.5rem 1rem; border-radius: 25rem !important;">
+                                Meet Your Avatar
+                            </a>
+                        </div>
+                        <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 120px;" alt="Logo"/>
+                    </div>
+                    <t t-set="question" t-value="False"/>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

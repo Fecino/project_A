@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<odoo>
+  <template id="thank_you_template" name="Choose Test">
+    <t t-name="gm_web.choose_test">
+      <t t-call="web.basic_layout">
+	  	<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+		<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+		<t t-if="font_url">
+				<link rel="stylesheet" t-att-href="font_url"/>
+		</t>
+		<style>
+			body {
+				font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+				position: relative;
+				background-color: #F9F2F0;
+			}
+			.btn-custom{
+				padding: 12px 25px; 
+				font-size: 16px; 
+				background-color: #B17B67 !important; 
+				border: 1px solid #bb8470ff  !important; 
+				color: white !important; 
+				border-radius: 25px;
+				width: 100% !important;
+				height: 50px !important;
+			}
+			.btn-custom:hover{
+				background-color: #cc9191 !important;
+			}
+		</style>
+        <t t-set="title">Thank You | Scentzania</t>
+        <div class="container text-center">
+          <div class="d-flex align-items-center justify-content-center flex-column" style="height: 100vh; padding-bottom:75px !important;">
+            <h2 style="color:#5F3529;">Email Sent</h2>
+            <a role="button" class="btn btn-primary btn-lg mb-2 btn-custom" href="/my">
+				Ready to meet your avatar?
+			</a>
+          </div>
+        </div>
+		<div class="text-center p-3" style="background: #F9F2F0">
+			<img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+		</div>
+      </t>
+    </t>
+  </template>
+</odoo>

@@ -1,0 +1,29 @@
+<odoo>
+    <data noupdate="1">
+        <record id="fragrance_family_1" model="fragrance.family">
+            <field name="name">Citrus</field>
+            <field name="description">Cheerful, bright, extroverted, innocent &amp; energetic people, who often like scent of fruits &amp; fresh things, Young at heart &amp; happy personality</field>
+            <field name="color">#FEF2D5</field>
+        </record>
+        <record id="fragrance_family_2" model="fragrance.family">
+            <field name="name">Fresh</field>
+            <field name="description">Happy go lucky, team players, who like taking calculated risks &amp; re natural entrepreneur, Functional extroverts &amp; easy-going</field>
+            <field name="color">#AAD2ED</field>
+        </record>
+        <record id="fragrance_family_3" model="fragrance.family">
+            <field name="name">Floral</field>
+            <field name="description">Your feelings and ability to connect with people are intense, love people &amp; things. Passionately &amp; feel life very deeply, Emotional, romantic</field>
+            <field name="color">#FEE1DC</field>
+        </record>
+        <record id="fragrance_family_4" model="fragrance.family">
+            <field name="name">Woody</field>
+            <field name="description">Sophisticated, elegant &amp; often deep-thinking, reserve &amp; private nature, Like deeper darker, woody scents, Sexy &amp; Mysterious personality</field>
+            <field name="color">#BB8D77</field>
+        </record>
+        <record id="fragrance_family_5" model="fragrance.family">
+            <field name="name">Oriental</field>
+            <field name="description">Charismatic, bold, dramatic, flamboyant &amp; unique, oriental fragrance lovers &amp; who loves spices, vanilla and exoctic florls, Glamorous &amp; Exotic</field>
+            <field name="color">#B74C00</field>
+        </record>
+    </data>
+</odoo>

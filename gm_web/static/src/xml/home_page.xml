@@ -1,0 +1,212 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="home_page" name="Perfume Journey Create Page">
+        <t t-name="gm_web.home_page">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .o_body_html{
+                        padding : 0px 25px !important;
+                    }
+                    .img-profile{
+                        width: 128px; 
+                        height: 128px; 
+                        border-radius: 50%;
+                    }
+                    .text-brown {
+                        color: #5F3529 !important;
+                    }
+                    .img-avatar{
+                        max-width: 300px; 
+                        max-height: 400px;
+                    }
+                    .btn-custom{
+                        padding: 12px 25px; 
+                        font-size: 16px; 
+                        background-color: #B17B67 !important; 
+                        border: 1px solid #bb8470ff  !important; 
+                        color: white !important; 
+                        border-radius: 25px;
+                        width: 100% !important;
+                        height: 50px !important;
+                    }
+                    @media (max-width: 500px) {
+                        .img-profile{
+                            width: 90px; 
+                            height: 90px; 
+                        }
+                        .img-avatar {
+                            max-width: 200px; 
+                            max-height: 300px; 
+                        }
+                        .container-home{
+                            padding-top: 20px !important;
+                        }
+                        <!-- .o_body_html{
+                            padding : 0px !important;
+                        } -->
+                    }
+                    .row::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .formula_card{
+                        border: 1px solid #bb8470ff; 
+                        border-radius: 15px; 
+                        padding: 15px; 
+                        margin-bottom: 15px; 
+                        background: white;  
+                    }
+                </style>
+                <t t-set="title">Perfume Journey | Scentzania</t>
+                <div class="container py-5 container-home" style="padding-bottom:100px !important;">
+                    <!-- Profile section -->
+                    <div class="row align-items-center mb-4">
+                        <div class="col-5 col-md-3 text-end">
+                            <img id="profile-photo"
+                                t-att-src="user.image_1920 and '/web/image/res.users/%s/image_1920' % user.id or '/gm_web/static/src/img/upload.png'"
+                                class="img-fluid img-profile rounded-circle" 
+                                style="object-fit: cover; cursor: pointer;"
+                                alt="Profile photo"/>
+                                <input type="file" id="photo-input" accept="image/*" style="display:none;"/>
+                        </div>
+                        <div class="col-7 col-md-9" style="padding-left: 0px;">
+                            <h4 class="text-brown fw-bold mb-0">
+                                <t t-esc="user.name.title()"/>
+                            </h4>
+                            <p class="text-brown mb-0" style="font-size: 12px;">
+                                <t t-esc="avatar.name"/>
+                            </p>
+                            <a href="/perfume-journey/access" class="btn" style="padding: 6px 12px !important;font-size: 10px;background-color: #B17B67 !important;border: 1px solid #bb8470ff !important;color: white !important;border-radius: 10px;">Create Formula</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="text-brown" style="font-weight: bold;">Your Formulas</h5>
+                        </div>
+                    </div>
+                    <div class="row" style="display: flex; flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; gap: 15px; scrollbar-width: none; -ms-overflow-style: none;">
+                        <t t-foreach="formulas[:2]" t-as="formula_data" t-key="formula_data.id">
+                            <div style="flex: 0 0 auto; max-width: 200px; white-space: normal; padding:0 !important; cursor: pointer;" onclick="window.location.href='/my/formula/' + this.getAttribute('data-formula-id')" t-att-data-formula-id="formula_data.id">
+                                <div class="formula_card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h5 class="mb-1 text-brown"><t t-esc="formula_data.bottle_size"/></h5>
+                                            <br/>
+                                            <h6 class="mb-1 text-brown"><t t-esc="formula_data.formula_name"/></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-if="len(formulas) > 2">
+                            <div style="flex: 0 0 auto; max-width: 200px; white-space: normal; padding:0 !important; cursor: pointer; display: flex;" onclick="window.location.href='/my/formula/all'">
+                                <div class="formula_card" style="flex: 1; display: flex; min-height: 100px;">
+                                    <div class="d-flex flex-column justify-content-center align-items-center text-center w-100">
+                                        <div class="mb-2">
+                                            <i class="fa fa-arrow-right text-brown"></i>
+                                        </div>
+                                        <span class="text-brown" style="font-size:12px !important;">All Formulas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <hr class="my-4" style="border-color: #bb8470ff; opacity: 0.5;"/>
+                    <!-- Avatar image section -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="text-brown" style="font-weight: bold;">Your Perfumes Ordered till date</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <t t-foreach="purchased_formula[:5]" t-as="purchased_formula_data" t-key="purchased_formula_data.id">
+                            <div class="col-4" style="padding:0 5px; !important; cursor: pointer;" onclick="window.location.href='/my/formula-purchased/' + this.getAttribute('data-formula-id')" t-att-data-formula-id="purchased_formula_data.id">
+                                <div class="formula_card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div style="overflow-x: auto; white-space: nowrap; max-width: 100%;">
+                                            <h5 class="mb-1 text-brown" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><t t-esc="purchased_formula_data.bottle_size"/></h5>
+                                            <span class="mb-1 text-brown" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; font-size:12px !important;"><t t-esc="purchased_formula_data.formula_name"/></span>
+                                            <br/>
+                                            <span class="mb-1 text-brown" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; font-size:12px !important;">Date : <t t-esc="purchased_formula_data.purchase_date.strftime('%d %B %Y')"/></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-if="len(purchased_formula) > 5">
+                            <div class="col-4" style="padding:0 5px; !important; cursor: pointer; display: flex;" onclick="window.location.href='/my/formula-purchased/all'">
+                                <div class="formula_card" style="flex: 1; display: flex; min-height: 100px;">
+                                    <div class="d-flex flex-column justify-content-center align-items-center text-center w-100">
+                                        <div class="mb-2">
+                                            <i class="fa fa-arrow-right text-brown"></i>
+                                        </div>
+                                        <span class="text-brown" style="font-size:12px !important;">All Perfumes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    
+                </div>
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3"
+                    style="background: #F9F2F0; z-index: 1000;">
+                    <div style="width:40px;"></div>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid" style="width: 150px; margin-right:30px; margin-top:-20px;" alt="Logo"/>
+                    <div style="width:40px;"></div>
+                </div>
+                <div class="fixed-bottom p-3"
+                    style="z-index: 2000; pointer-events: none;">
+                    <div class="text-end">
+                        <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+                                    alt="Avatar Image"
+                                    class="img-fluid"
+                                    style="height: 100px !important; z-index: 999; margin-right: 10%;" />
+                    </div>
+                </div>
+                <script>
+                    <![CDATA[
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const photo = document.getElementById("profile-photo");
+                            const input = document.getElementById("photo-input");
+                            if (!photo || !input) return;
+                            photo.addEventListener("click", () => input.click());
+                            input.addEventListener("change", async () => {
+                                const file = input.files[0];
+                                if (!file) return;
+                                const reader = new FileReader();
+                                reader.onload = async function (e) {
+                                    try {
+                                        const response = await fetch("/api/upload_photo_profile", {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ image: e.target.result.split(",")[1] }),
+                                        });                                     
+                                        const result = await response.text();
+                                        if (result === "success") {
+                                            photo.src = e.target.result;
+                                        } else {
+                                            alert("Failed to upload photo.");
+                                        }
+                                    } catch {
+                                        alert("An error occurred while uploading photo.");
+                                    }
+                                };
+                                reader.readAsDataURL(file);
+                            });
+                        });
+                    ]]>
+                </script>
+            </t>
+        </t>
+    </template>
+</odoo>

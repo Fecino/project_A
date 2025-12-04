@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<template id="success_change_template" name="Success Change">
+			<t t-call="web.basic_layout">
+				<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+				<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+				<t t-if="font_url">
+						<link rel="stylesheet" t-att-href="font_url"/>
+				</t>
+				<style>
+					body {
+						font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+					}
+					.o_body_html {
+						padding: 16px !important;
+					}
+					.o_body_html::after {
+						content: "";
+						position: fixed;
+						left: 0;
+						bottom: 0;
+						width: 100%;
+						height: 60px;
+						background: linear-gradient(to top, #f7e0d5, rgba(255,255,255,0));
+						pointer-events: none; /* biar gak ganggu klik tombol */
+					}
+					.button-row {
+						display: flex;
+						justify-content: center;
+						gap: 20px;
+						margin-top: 20px;
+						padding: 0 10%;
+					}
+					.button-col {
+						flex: 1;
+					}
+					.custom-btn {
+						display: block;
+						width: 100%;
+						color: white;
+						text-align: center;
+						border: none;
+						padding: 12px;
+						font-size: 16px;
+						border-radius: 12px;
+						cursor: pointer;
+						text-decoration: none;
+						box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+						transition: background-color 0.2s ease;
+					}
+				</style>
+				<t t-set="title">Invalid Perfume</t>
+				<div class="col-sm-12 mt-5">
+					<image alt="Header" src="/gm_web/static/src/img/logo.png" class="img-fluid mx-auto" style="max-height:150px !important;"/>
+				</div>
+				<div class="col-sm-12" style="margin-top: 125px; background:#F8F8F8; padding: 20px; border-radius:15px;">
+					<p>
+						Congratulations!
+						<br/>
+						<br/>
+						Your preferences have been updated. Please choose your fragrance again.
+					</p>
+				</div>
+				<div style="margin-top: 125px;">
+					<div class="button-row">
+						<div class="button-col">
+							<a class="btn custom-btn" style="background: #FF2D94;" href="/my/fragrance-selection">
+								Continue
+							</a>
+						</div>
+					</div>
+				</div>
+			</t>
+			<script type="text/javascript">
+				document.addEventListener('DOMContentLoaded', function() {
+					var continueBtn = document.querySelector('.custom-btn[href="/my/fragrance-selection"]');
+					if (continueBtn) {
+						continueBtn.addEventListener('click', function() {
+							localStorage.removeItem('fragranceMaxValues');
+						});
+					}
+				});
+			</script>
+		</template>
+	</data>
+</odoo>

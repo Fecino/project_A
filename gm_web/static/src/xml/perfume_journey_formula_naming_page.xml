@@ -1,0 +1,343 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="formula_naming_template" name="Formula Naming Page">
+        <t t-name="gm_web.formula_naming_template">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .o_body_html{
+                        padding : 0px 25px !important;
+                    }
+                    .img-profile{
+                        width: 128px; 
+                        height: 128px; 
+                        border-radius: 50%;
+                    }
+                    .text-brown {
+                        color: #5F3529 !important;
+                    }
+                    .img-avatar{
+                        max-width: 300px; 
+                        max-height: 400px;
+                    }
+                    .btn-custom{
+                        padding: 12px 25px; 
+                        font-size: 16px; 
+                        background-color: #B17B67 !important; 
+                        border: 1px solid #bb8470ff  !important; 
+                        color: white !important; 
+                        border-radius: 25px;
+                        width: 100% !important;
+                        height: 50px !important;
+                    }
+                    @media (max-width: 500px) {
+                        .img-profile{
+                            width: 90px; 
+                            height: 90px; 
+                        }
+                        .img-avatar {
+                            max-width: 200px; 
+                            max-height: 300px; 
+                        }
+                        .container-home{
+                            padding-top: 20px !important;
+                        }
+                        .o_body_html{
+                            padding : 0px !important;
+                        }
+                    }
+                    /* Confetti Styles */
+					.confetti {
+						width: 1rem;
+						height: 1rem;
+						display: inline-block;
+						position: absolute;
+						top: -5vh;
+						left: 0;
+						z-index: 50;
+					}
+					
+					.confetti .rotate {
+						animation: driftyRotate 1s infinite both ease-in-out;
+						perspective: 1000;
+					}
+					
+					.confetti .askew {
+						background: linear-gradient(
+							var(--grad-direction, to bottom),
+							hsl(63, 100%, 50%) 25%,
+							hsl(23, 100%, 50%) 0% 66.667%,
+							hsl(43, 100%, 100%) 0% 100%
+						);
+						transform: skewY(10deg);
+						width: 2rem;
+						height: 3.2rem;
+						animation: drifty 1s infinite alternate both ease-in-out;
+						perspective: 1000;
+						clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+					}
+					
+					/* Confetti Animation Delays - Askew */
+					.confetti:nth-of-type(7n) .askew {
+						animation-delay: -0.6s;
+						animation-duration: 2.25s;
+					}
+					
+					.confetti:nth-of-type(7n + 1) .askew {
+						animation-delay: -0.879s;
+						animation-duration: 3.5s;
+					}
+					
+					.confetti:nth-of-type(7n + 2) .askew {
+						animation-delay: -0.11s;
+						animation-duration: 1.95s;
+					}
+					
+					.confetti:nth-of-type(7n + 3) .askew {
+						animation-delay: -0.246s;
+						animation-duration: 0.85s;
+					}
+					
+					.confetti:nth-of-type(7n + 4) .askew {
+						animation-delay: -0.43s;
+						animation-duration: 2.5s;
+					}
+					
+					.confetti:nth-of-type(7n + 5) .askew {
+						animation-delay: -0.56s;
+						animation-duration: 1.75s;
+					}
+					
+					.confetti:nth-of-type(7n + 6) .askew {
+						animation-delay: -0.76s;
+						animation-duration: 1.5s;
+					}
+					
+					/* Confetti Animation Delays - Rotate */
+					.confetti:nth-of-type(9n) .rotate {
+						animation-duration: 2s;
+					}
+					
+					.confetti:nth-of-type(9n + 1) .rotate {
+						animation-duration: 2.3s;
+					}
+					
+					.confetti:nth-of-type(9n + 2) .rotate {
+						animation-duration: 1.1s;
+					}
+					
+					.confetti:nth-of-type(9n + 3) .rotate {
+						animation-duration: 0.75s;
+					}
+					
+					.confetti:nth-of-type(9n + 4) .rotate {
+						animation-duration: 4.3s;
+					}
+					
+					.confetti:nth-of-type(9n + 5) .rotate {
+						animation-duration: 3.05s;
+					}
+					
+					.confetti:nth-of-type(9n + 6) .rotate {
+						animation-duration: 2.76s;
+					}
+					
+					.confetti:nth-of-type(9n + 7) .rotate {
+						animation-duration: 7.6s;
+					}
+					
+					.confetti:nth-of-type(9n + 8) .rotate {
+						animation-duration: 1.78s;
+					}
+					
+					/* Confetti Animations */
+					@keyframes drifty {
+						0% {
+							transform: skewY(10deg) translate3d(-250%, 0, 0);
+						}
+						100% {
+							transform: skewY(-12deg) translate3d(250%, 0, 0);
+						}
+					}
+					
+					@keyframes driftyRotate {
+						0% {
+							transform: rotateX(0);
+						}
+						100% {
+							transform: rotateX(359deg);
+						}
+					}			
+					
+					/* Bookmarks Type Colors */
+					[data-type="bookmarks"] .confetti:nth-child(4n) {
+						color: hsl(18, 100%, 50%);
+					}
+					
+					[data-type="bookmarks"] .confetti:nth-child(4n + 1) {
+						color: hsl(183, 100%, 50%);
+					}
+					
+					[data-type="bookmarks"] .confetti:nth-child(4n + 2) {
+						color: hsl(43, 100%, 50%);
+					}
+					
+					[data-type="bookmarks"] .confetti:nth-child(4n + 3) {
+						color: hsl(133, 100%, 90%);
+					}
+					
+					/* Bookmarks Type Styling */
+					[data-type="bookmarks"] .confetti .askew {
+						background: currentColor;
+						width: 1rem;
+						height: 2rem;
+						clip-path: polygon(evenodd, 0% 0%, 100% 0%, 100% 100%, 50% 90%, 0% 100%);
+					}
+                    
+                </style>
+                <t t-set="title">Perfume Journey | Scentzania</t>
+                <div class="container py-5 container-home" style="padding-bottom:100px !important;">
+                    <div class="confetti-land">
+						<t t-foreach="range(100)" t-as="i">
+							<div class="confetti"/>
+						</t>
+					</div>
+                    <div class="d-flex align-items-center justify-content-center" style="min-height: 60vh;">
+                        <div class="text-center w-100">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <div style="border-radius:25px; background: white; padding: 30px 15px;">
+                                        <h2 class="text-brown">Congratulations,</h2>
+                                        <h2 class="text-brown">you are all done!</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="input_section">
+                                <div class="col-12 mt-4 text-start">
+                                    <label class="text-brown">Name your formula</label>
+                                    <input type="text" name="formula_name" id="formula_name" class="form-control mt-2" placeholder="Magical purple meadow" style="border-radius: 20px;; height: 50px; font-size: 18px; background: white !important;" required="required"/>
+                                    <button id="confirm_btn" class="btn btn-lg mt-2 w-100" style="background: #B17B67 !important; color:white !important; border-radius:20px !important;" t-att-data-formula-id="formula_id" onclick="confirmFormula()">Confirm</button>
+                                </div>
+                            </div>
+
+                            <div class="row" id="action_section" style="display:none;">
+                                <div class="col-12 text-center mt-4">
+                                    <t t-if="formula_data.location == 'scentzania'">
+                                        <a href="/perfume-journey/formula-guide" class="btn btn-lg mb-3 d-block" style="background: #B17B67 !important; color:white !important; border-radius:20px; !important;">Ready to make my perfume &amp; go to perfume bar</a>
+                                    </t>
+                                    <t t-else="">
+                                        <a href="/my" class="btn btn-lg mb-3 d-block" style="background: #B17B67 !important; color:white !important; border-radius:20px; !important;">Go To Home Page</a>
+                                    </t>
+                                    <a href="/perfume-journey/access" class="btn btn-lg d-block" style="background: #B17B67 !important; color:white !important; border-radius:20px; !important;">Make another sample</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3"
+                    style="background: #F9F2F0; z-index: 1000;">
+                    <div style="width: 40px;"></div>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid"
+                        style="width: 150px; margin-right:30px; margin-top:-20px;" alt="Logo"/>
+                    <div style="width: 40px;"></div>
+                </div>
+
+                <div class="fixed-bottom p-3"
+                    style="z-index: 2000; pointer-events: none;">
+                    <div class="text-end">
+                        <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+                            alt="Avatar Image"
+                            class="img-fluid"
+                            style="height: 100px !important; margin-right: 10%;" />
+                    </div>
+                </div>
+                <script>
+                    <![CDATA[
+                        async function confirmFormula() {
+                            console.log("Confirm button clicked.");
+                            const formulaNameInput = document.getElementById("formula_name");
+                            const confirmBtn = document.getElementById("confirm_btn");
+                            const formulaName = formulaNameInput.value.trim();
+                            const formulaId = confirmBtn.getAttribute("data-formula-id");
+                            
+                            if (!formulaName) {
+                                alert("Please enter a formula name.");
+                                return;
+                            }
+                            
+                            try {
+                                const response = await fetch("/api/change-name-formula", {
+                                    method: "POST",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify({ 
+                                        formula_name: formulaName,
+                                        formula_id: formulaId
+                                    }),
+                                });
+                                
+                                const result = await response.text();
+                                if (result === "success" || response.ok) {
+                                    // Hide input section and show action section
+                                    document.getElementById("input_section").style.display = "none";
+                                    document.getElementById("action_section").style.display = "block";
+                                } else {
+                                    alert("Failed to update formula name.");
+                                }
+                            } catch (error) {
+                                console.error("Error:", error);
+                                alert("An error occurred while updating formula name.");
+                            }
+                        }
+                        
+                        var confettiPlayers = [];
+
+                        function makeItConfetti() {
+                        var confetti = document.querySelectorAll('.confetti');
+                        
+                        if (!confetti[0].animate) {
+                            return false;
+                        }
+
+                        for (var i = 0, len = confetti.length; i < len; ++i) {
+                            var candycorn = confetti[i];
+                            candycorn.innerHTML = '<div class="rotate"><div class="askew"></div></div>';
+                            var scale = Math.random() * .7 + .3;
+                            var player = candycorn.animate([
+                                { transform: `translate3d(${(i/len*100)}vw,-5vh,0) scale(${scale}) rotate(0turn)`, opacity: scale },
+                                { transform: `translate3d(${(i/len*100 + 10)}vw,105vh,0) scale(${scale}) rotate(${ Math.random() > .5 ? '' : '-'}2turn)`, opacity: 1 }
+                            ], {
+                                duration: Math.random() * 3000 + 4000,
+                                iterations: 3,
+                                delay: -(Math.random() * 7000)
+                                });
+                                confettiPlayers.push(player);
+                                
+                                // Hide confetti after animation completes
+                                player.onfinish = function() {
+                                    candycorn.style.visibility = 'hidden';
+                                    candycorn.style.opacity = '0';
+                                };
+                            }
+                        }
+
+                        // Set bookmark type and initialize confetti
+                        document.body.setAttribute('data-type', 'bookmarks');
+                        makeItConfetti();
+                        confettiPlayers.forEach(player => player.playbackRate = 2);
+                    ]]>
+                </script>
+            </t>
+        </t>
+    </template>
+</odoo>

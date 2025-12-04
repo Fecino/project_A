@@ -1,0 +1,207 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		<template id="fragrance_selection_edit_drop_template" name="Fragrance Category Selection - Edit Drop">
+			<t t-call="website.layout">
+				<t t-set="title">Choose Your Fragrance</t>
+				<t t-set="additional_title">Scentzania</t>
+				<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+				<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+				<t t-if="font_url">
+						<link rel="stylesheet" t-att-href="font_url"/>
+				</t>
+				<!-- Custom CSS for features not available in Bootstrap -->
+				<style>
+					body {
+						font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+					}
+					/* Bottom bar positioning and backdrop effects */
+					.bottom-bar {
+						position: fixed !important;
+						bottom: 0 !important;
+						left: 0 !important;
+						right: 0 !important;
+						z-index: 9999 !important;
+						backdrop-filter: blur(10px) !important;
+						background: rgba(248, 244, 240, 0.95) !important;
+					}
+					.display-5{
+						font-size:2rem !important;
+					}
+
+					/* Background images for fragrance sections */
+					.fragrance-section {
+						cursor: pointer;
+						min-height: 120px;
+					}
+
+					.citrus-section { background: url('/gm_web/static/src/img/background_citrus.png') center/cover no-repeat, #FFB347; }
+					.fresh-section { background: url('/gm_web/static/src/img/background_fresh.png') center/cover no-repeat, #FFB347; }
+					.woody-section { background: url('/gm_web/static/src/img/background_woody.png') center/cover no-repeat, #FFB347; }
+					.floral-section { background: url('/gm_web/static/src/img/background_floral.png') center/cover no-repeat, #FFB347; }
+					.oriental-section { background: url('/gm_web/static/src/img/background_oriental.png') center/cover no-repeat, #FFB347; }
+
+					/* Responsive adjustments */
+					@media (max-width: 480px) {
+						.bottom-bar { min-height: 75px !important; }
+						.message-bubble { max-width: 250px !important; }
+					}
+					.bubble {
+						position: relative;
+						font-size: 12px;
+						line-height: 14px;
+						background: #fff;
+						border-radius: 40px;
+						padding: 15px;
+						text-align: center;
+						color: #000;
+						border: 1px solid #fff;
+					}
+
+					.bubble-bottom-left:before {
+						content: "";
+						width: 0px;
+						height: 0px;
+						position: absolute;
+						border-left: 24px solid #fff;
+						border-right: 12px solid transparent;
+						border-top: 12px solid #fff;
+						border-bottom: 20px solid transparent;
+						left: 32px;
+						bottom: -24px;
+					}
+					.bubble-bottom-right:before {
+						content: "";
+						width: 0px;
+						height: 0px;
+						position: absolute;
+						border-right: 24px solid #fff;
+						border-left: 12px solid transparent;
+						border-top: 12px solid #fff;
+						border-bottom: 20px solid transparent;
+						right: 32px;
+						bottom: -24px;
+					}
+				</style>
+
+				<div id="fragranceWrapper" t-att-data-location="location" class="fragrance-wrapper min-vh-100 d-flex flex-column position-relative" style="background-color: #f8f4f0; padding-bottom: 150px;">
+
+					<!-- Fragrance Sections -->
+					<div class="flex-fill d-flex flex-column m-0 p-0">
+						<t t-foreach="values" t-as="fragrance_name">
+							<t t-set="fragrance_data" t-value="values[fragrance_name]"/>
+							<div t-att-class="'fragrance-section flex-fill w-100 position-relative d-flex flex-column align-items-center justify-content-center ' + fragrance_name + '-section'" 
+									 t-att-data-category="fragrance_name" 
+									 t-attf-data-oil-added="{{ fragrance_data.get('oil_added', 0) }}" 
+									 t-attf-data-oil-max="{{ fragrance_data.get('oil_max', 0) }}">
+								
+								<!-- Counter Badge -->
+								<div class="d-flex align-items-center text-white w-100 px-3">
+									<t t-foreach="fragrance_data.get('oil_codes', [])" t-as="oil_code">
+										<span class="badge bg-secondary rounded-pill position-relative oil-badge mx-1" 
+											style="font-size: 1rem; padding: 0.5rem 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+											<t t-esc="oil_code"/>
+											<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger close-btn" 
+												style="font-size: 0.7rem; cursor: pointer; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;">
+												×
+											</span>
+										</span>
+									</t>
+								</div>
+								
+							</div>
+						</t>
+					</div>
+				</div>
+
+				<!-- Bottom Navigation Bar -->
+				<div class="fixed-bottom d-flex align-items-start justify-content-center p-3" style="z-index: 1500;height: 150px;pointer-events: none;">
+					<button type="button" id="overrideButton" class="btn btn-lg" style="pointer-events: auto;background: #B17B67;color: white;padding: 10px 20px;width: 150px;">
+						Save
+					</button>
+				</div>
+				
+				<div class="fixed-bottom d-flex align-items-end justify-content-between p-3" style="background: #F9F2F0; height: 150px;">
+                    <a t-attf-href="/perfume-journey/fragrance-selection?location={{location}}" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                    </a>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+                    <div style="width: 40px;"></div>
+                </div>
+
+				<script>
+					<![CDATA[
+						document.addEventListener('DOMContentLoaded', function() {
+							// Add click event listeners to fragrance sections
+							const fragranceSections = document.querySelectorAll('.fragrance-section');
+
+							// Add close button functionality for oil badges
+							document.addEventListener('click', function(event) {
+								if (event.target.classList.contains('close-btn')) {
+									event.preventDefault();
+									event.stopPropagation();
+									
+									// Hide the parent badge
+									const badge = event.target.closest('.oil-badge');
+									if (badge) {
+										badge.style.display = 'none';
+									}
+								}
+							});
+
+							// Add override button functionality
+							document.getElementById('overrideButton').addEventListener('click', function() {
+								// Collect data from visible oil badges
+								const data = {};
+								
+								fragranceSections.forEach(function(section) {
+									const fragranceName = section.getAttribute('data-category');
+									const visibleBadges = section.querySelectorAll('.oil-badge:not([style*="display: none"])');
+									const oilCodes = [];
+									
+									visibleBadges.forEach(function(badge) {
+										const oilCode = badge.textContent.trim().replace('×', '').trim();
+										if (oilCode) {
+											oilCodes.push(oilCode);
+										}
+									});
+									data[fragranceName] = oilCodes;
+								});
+								
+								// Add location to the data
+								const location = document.getElementById('fragranceWrapper').getAttribute('data-location');
+								data.location = location;
+								
+								console.log('Collected Data:', data);
+								
+								// Make API call
+								fetch('/perfume-journey/api/update-selected-oil', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify(data)
+								})
+								.then(response => response.json())
+								.then(result => {
+									console.log('Success:', result);
+									// Check if result has the expected structure
+									if (result && result.result && result.result.success) {
+										console.log(result.result.message);
+										window.location.href = '/perfume-journey/fragrance-selection?location=' + location;
+									} else {
+										console.error('API Error:', result && result.result ? result.result.message : 'Unknown error');
+									}
+								})
+								.catch(error => {
+									console.error('Error:', error);
+								});
+							});
+						});
+					]]>
+					</script>
+			</t> 
+		</template>
+	</data>
+</odoo>

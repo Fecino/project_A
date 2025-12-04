@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_lead_survey_answer_user,access.crm.lead.survey.answer.user,model_crm_lead_survey_answer,base.group_user,1,1,1,1
+access_crm_lead_survey_answer_manager,access.crm.lead.survey.answer.manager,model_crm_lead_survey_answer,base.group_system,1,1,1,1
+access_crm_lead_personality_mapping_user,access.crm.lead.personality.mapping.user,model_crm_lead_personality_mapping,base.group_user,1,1,1,1
+access_crm_lead_personality_mapping_manager,access.crm.lead.personality.mapping.manager,model_crm_lead_personality_mapping,base.group_system,1,1,1,1
+access_crm_lead_purchased_formula_user,crm.lead.purchased.formula user,model_crm_lead_purchased_formula,base.group_user,1,1,1,1
+access_crm_lead_purchased_formula_manager,crm.lead.purchased.formula manager,model_crm_lead_purchased_formula,base.group_system,1,1,1,1
+access_crm_lead_purchase_history_user,crm.lead.purchase.history user,model_crm_lead_purchase_history,base.group_user,1,1,1,1
+access_crm_lead_purchase_history_manager,crm.lead.purchase.history manager,model_crm_lead_purchase_history,base.group_system,1,1,1,1
+
+access_survey_user_input_fragrance_value,access.survey.user.input.fragrance.value,model_survey_user_input_fragrance_value,base.group_user,1,1,1,1
+
+access_crm_lead_purchased_formula_drop,access.crm.lead.purchased.formula.drop,model_crm_lead_purchased_formula_drop,base.group_user,1,1,1,1
+access_crm_lead_purchased_formula_drop_line,access.crm.lead.purchased.formula.drop.line,model_crm_lead_purchased_formula_drop_line,base.group_user,1,1,1,1

@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_helpfull_card_form" model="ir.ui.view">
+        <field name="name">helpfull.card.form</field>
+        <field name="model">helpfull.card</field>
+        <field name="arch" type="xml">
+            <form string="Helpfull Card">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="fragrance_family_id" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_helpfull_card_tree" model="ir.ui.view">
+        <field name="name">helpfull.card.tree</field>
+        <field name="model">helpfull.card</field>
+        <field name="arch" type="xml">
+            <list string="Helpfull Cards">
+                <field name="name"/>
+                <field name="fragrance_family_id" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_helpfull_card" model="ir.actions.act_window">
+        <field name="name">Helpfull Cards</field>
+        <field name="res_model">helpfull.card</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_helpfull_card_menuitem" name="Helpfull" action="action_helpfull_card" parent="gm_scentopia.scentopia_settings_menu_category"/>
+</odoo>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_report_page_6_template" name="avatar_report_page_6_template">
+        <t t-name="gm_survey.avatar_report_page_6_template">
+            <t t-call="web.basic_layout">
+                <style>
+                    .image-wrapper {
+                        width: 600px;
+                        margin: 0 auto; 
+                    }
+                    .info-wrapper {
+                        border-radius: 1.5rem;
+                        background-color: white;
+                    }
+                    .info-box {
+                        border-radius: 1rem;
+                    }
+                    .fragrance-name{
+                        width:25%;
+                        height: inherit;
+                    }
+                    .fragrance-description{
+                        width:60%;
+                        height: inherit;
+                    }
+                    
+                    .fragrance-description p{
+                        margin: 0 !important;
+                    }
+                    .fragrance-value{
+                        width:15%;
+                        height: inherit;
+                        padding: 0px;
+                    }
+                    .number-circle {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 500;
+                        font-size: 24px;
+                        color: #333;
+                    }
+
+
+                </style>
+                <t t-foreach="docs" t-as="doc">
+                    <main>
+                        <div class="page" style="font-weight:600; padding-top: 50px;">
+                            <div class="container">
+                                <div class="col-sm-12">
+                                    <h2 style="font-weight:bold; font-family: 'Prompt'">Your Perfume Personality Pentagram</h2>
+                                    <p style="font-family: 'Prompt'; font-weight:400;">
+                                        The graph below shows your score on each dimensions. Read on to know more about your highest dimensions, potential strengths, weaknesses and profile patterns.
+                                    </p>
+                                </div>
+                                <div class="col-sm-12 mx-auto mt-5 p-4" style="text-align: center;">
+                                    <h2 style="font-weight:bold; font-family: 'Prompt'">
+                                        <t t-esc="' '.join(doc.avatar_id.mapped('fragrance_family_ids.name'))"/>
+                                    </h2>
+                                    <img t-att-src="'data:png;base64,%s' % (doc.survey_user_input_id.render_radar_chart())" 
+                                                    alt="Avatar Chart Image" class="image-wrapper"/>
+                                </div>
+                                <div class="col-sm-12" style="text-align: center;">
+                                    <h1 style="font-weight:900; font-family: 'Prompt'; font-size:40px; color:#E39B9B"><t t-esc="doc.avatar_id.name"/></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="avatar_report_page_6" model="ir.actions.report">
+        <field name="name">Avatar Detail Report Page 6</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_survey.avatar_report_page_6_template</field>
+        <field name="report_file">gm_survey.avatar_report_page_6_template</field>
+        <field name="paperformat_id" ref="gm_survey.paperformat_a4_with_minimum_margin"/>
+        <!-- <field name="print_report_name">'Avatar Detail'</field> -->
+    </record>
+
+</odoo>

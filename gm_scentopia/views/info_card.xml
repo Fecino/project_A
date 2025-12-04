@@ -1,0 +1,63 @@
+<odoo>
+    <record id="view_info_card_form" model="ir.ui.view">
+        <field name="name">info.card.form</field>
+        <field name="model">info.card</field>
+        <field name="arch" type="xml">
+            <form string="Flashcards">
+                <sheet>
+                    <group>
+                        <group string="Basic">
+                            <field name="name"/>
+                            <field name="fragrance_family_id" invisible="name != 'oil_added'"/>
+                        </group>
+                        <group string="Checklist">
+                            <field name="has_youtube_link"/>
+                            <field name="has_mastertext"/>
+                            <field name="has_subtext"/>
+                            <field name="has_image_2"/>
+                            <field name="has_image_3"/>
+                            <field name="has_image_4"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Texts">
+                            <group>
+                                <field name="youtube_link" invisible="has_youtube_link == False" required="has_youtube_link == True"/>
+                                <field name="mastertext" widget="text" invisible="has_mastertext == False" required="has_mastertext == True"/>
+                                <field name="subtext" widget="text" invisible="has_subtext == False" required="has_subtext == True"/>
+                            </group>
+                        </page>
+                        <page string="Images">
+                            <group>
+                                <field name="image_1" widget="image"/>
+                                <field name="image_2" widget="image" invisible="has_image_2 == False"/>
+                                <field name="image_3" widget="image" invisible="has_image_3 == False"/>
+                                <field name="image_4" widget="image" invisible="has_image_4 == False"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_info_card_tree" model="ir.ui.view">
+        <field name="name">info.card.tree</field>
+        <field name="model">info.card</field>
+        <field name="arch" type="xml">
+            <list string="Flashcards">
+                <field name="name"/>
+                <field name="fragrance_family_id"/>
+                <field name="youtube_link"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_info_card" model="ir.actions.act_window">
+        <field name="name">Flashcards</field>
+        <field name="res_model">info.card</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_info_card_menuitem" name="Flashcards" action="action_info_card" parent="gm_scentopia.scentopia_settings_menu_category"/>
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_view" name="Avatar View">
+		<t t-name="gm_survey.avatar_view">
+			<t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                    }
+                    .image-wrapper {
+                        max-width: 400px;
+                        margin: 0 auto; /* untuk center */
+                    }
+                    .o_body_html {
+                        padding: 16px !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .btn-custom{
+                        border-radius: 25rem !important; 
+                        width: 100%; 
+                        background-color: #C48080; 
+                        color: white;
+                    }
+                </style>
+                <t t-set="title">Avatar | Scentzania</t>
+                <div class="container">
+                    <div class="col-sm-12 text-center py-2">
+                        <h5>You are <t t-esc="avatar.name"/></h5>
+                    </div>
+                    <t t-if="avatar.video_url">
+                        <div class="ratio ratio-16x9 mt-3" style="padding-bottom:150px;">
+                            <iframe 
+                                t-att-src="avatar.video_url" 
+                                class="w-100 h-100"
+                                title="YouTube video player" 
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen="allowfullscreen">
+                            </iframe>
+                        </div>
+                    </t>
+                    <t t-else="">                            
+                        <div class="image-wrapper col-sm-12 mt-3" style="padding-bottom:150px;">
+                            <t t-if="gender == 'other'">
+                                <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime(gender), avatar.decode_image(avatar.image))" alt="Avatar Image" class="img-fluid" style="height: auto;" />
+                            </t>
+                            <t t-if="gender == 'female'">
+                                <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime(gender), avatar.decode_image(avatar.female_image))" alt="Avatar Image" class="img-fluid" style="height: auto;" />
+                            </t>
+                            <t t-if="gender == 'male'">
+                                <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime(gender), avatar.decode_image(avatar.male_image))" alt="Avatar Image" class="img-fluid" style="height: auto;" />
+                            </t>
+                        </div>
+                    </t>
+                </div>
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="z-index: 999;">
+                    <a t-att-href="'/survey/print/%s?answer_token=%s&amp;review=True' % (survey_token, answer_token)" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                    </a>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 120px;" alt="Logo"/>
+                    <a  t-att-href="'/show_profile/%s' % (answer_token)" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/next.svg" alt="Next" style="width: 40px; height: 40px; object-fit: contain;"/>      
+                    </a>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

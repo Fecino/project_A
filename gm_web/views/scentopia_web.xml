@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="scentopia_web_form_view" model="ir.ui.view">
+            <field name="name">scentopia.web.form</field>
+            <field name="model">scentopia.web</field>
+            <field name="arch" type="xml">
+                <form create="false" delete="false">
+                    <sheet>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="active" widget="boolean_toggle"/>
+                            <field name="description"/>
+                        </group>
+                        <notebook>
+                            <page string="Lines">
+                                <field name="line_ids">
+                                    <list editable="bottom">
+                                        <field name="name"/>
+                                        <field name="image" filename="image_filename" widget="image" options="{'max_height': 48}"/>
+                                        <field name="image_filename" column_invisible="1"/>
+                                        <field name="image_mime" column_invisible="1"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="scentopia_web_form_action" model="ir.actions.act_window">
+            <field name="name">Scentzania Web</field>
+            <field name="res_model">scentopia.web</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" eval="False"/>
+            <field name="res_id" ref="gm_web.scentopia_web_data"/>
+        </record>
+        <menuitem id="scentopia_web_menu" name="Scentzania Web" sequence="10" action="gm_web.scentopia_web_form_action" parent="gm_scentopia.scentopia_settings_menu_category"/>
+    </data>
+</odoo>

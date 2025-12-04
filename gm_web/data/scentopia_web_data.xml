@@ -1,0 +1,8 @@
+<odoo>
+    <data noupdate="1">
+        <record id="scentopia_web_data" model="scentopia.web">
+            <field name="name">Scentzania Landing Page</field>
+            <field name="description">Scentzania Web</field>
+        </record>
+    </data>
+</odoo>

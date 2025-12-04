@@ -1,0 +1,184 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="perfume_journey_create_page" name="Perfume Journey Create Page">
+        <t t-name="gm_web.perfume_journey_create_page">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .o_body_html{
+                        padding : 0px 25px !important;
+                    }
+                    .img-profile{
+                        width: 128px; 
+                        height: 128px; 
+                        border-radius: 50%;
+                    }
+                    .text-brown {
+                        color: #5F3529 !important;
+                    }
+                    .img-avatar{
+                        max-width: 300px; 
+                        max-height: 225px;
+                    }
+                    .btn-custom{
+                        padding: 12px 25px; 
+                        font-size: 16px; 
+                        background-color: #B17B67 !important; 
+                        border: 1px solid #bb8470ff  !important; 
+                        color: white !important; 
+                        border-radius: 25px;
+                        width: 100% !important;
+                        height: 50px !important;
+                    }
+                    @media (max-width: 500px) {
+                        .img-profile{
+                            width: 90px; 
+                            height: 90px; 
+                        }
+                        .img-avatar {
+                            max-width: 200px; 
+                            max-height: 300px; 
+                        }
+                        .container-home{
+                            padding-top: 20px !important;
+                        }
+                        .o_body_html{
+                            padding : 0px !important;
+                        }
+                    }
+                    .bubble {
+                        position: relative;
+                        font-size: 12px;
+                        line-height: 14px;
+                        background: #fff;
+                        border-radius: 40px;
+                        padding: 15px;
+                        text-align: center;
+                        color: #000;
+                        border: 1px solid #fff;
+                    }
+
+                    .bubble-bottom-left:before {
+                        content: "";
+                        width: 0px;
+                        height: 0px;
+                        position: absolute;
+                        border-left: 24px solid #fff;
+                        border-right: 12px solid transparent;
+                        border-top: 12px solid #fff;
+                        border-bottom: 20px solid transparent;
+                        left: 32px;
+                        bottom: -24px;
+                    }
+                    .bubble-bottom-right:before {
+                        content: "";
+                        width: 0px;
+                        height: 0px;
+                        position: absolute;
+                        border-right: 24px solid #fff;
+                        border-left: 12px solid transparent;
+                        border-top: 12px solid #fff;
+                        border-bottom: 20px solid transparent;
+                        right: 32px;
+                        bottom: -24px;
+                    }
+                </style>
+                <t t-set="title">Perfume Journey | Scentzania</t>
+                <div class="container py-5 container-home" style="padding-bottom:80px !important;">
+                    <!-- Profile section -->
+                    <div class="row align-items-center mb-4">
+                        <div class="col-5 col-md-3 text-end">
+                            <img id="profile-photo"
+                                t-att-src="user.image_1920 and '/web/image/res.users/%s/image_1920' % user.id or '/gm_web/static/src/img/upload.png'"
+                                class="img-fluid img-profile rounded-circle" 
+                                style="object-fit: cover; cursor: pointer;"
+                                alt="Profile photo"/>
+                                <input type="file" id="photo-input" accept="image/*" style="display:none;"/>
+                        </div>
+                        <div class="col-7 col-md-9" style="padding-left: 0px;">
+                            <h4 class="text-brown fw-bold mb-0">
+                                <t t-esc="user.name.title()"/>
+                            </h4>
+                            <p class="text-brown mb-0" style="font-size: 12px;">
+                                <t t-esc="avatar.name"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Bubble section -->
+                    <div class="row mb-4">
+                        <div class="col-8 text-center offset-4 col-md-4 offset-md-6">
+                            <div class="bubble bubble-bottom-left text-brown">
+                                Hi,
+                                <br/>
+                                Nice to meet you.
+                                <br/>
+                                Let's make your perfume                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Avatar image section -->
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+                                alt="Avatar Image"
+                                class="img-fluid rounded img-avatar"
+                                style="height: auto;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-3 text-center mt-2">
+                            <a href="/perfume-journey/access" class="btn btn-custom">Create</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="fixed-bottom text-center p-3" style="background: #F9F2F0">
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+                </div>
+                <script>
+                    <![CDATA[
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const photo = document.getElementById("profile-photo");
+                            const input = document.getElementById("photo-input");
+                            if (!photo || !input) return;
+                            photo.addEventListener("click", () => input.click());
+                            input.addEventListener("change", async () => {
+                                const file = input.files[0];
+                                if (!file) return;
+                                const reader = new FileReader();
+                                reader.onload = async function (e) {
+                                    try {
+                                        const response = await fetch("/api/upload_photo_profile", {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ image: e.target.result.split(",")[1] }),
+                                        });                                     
+                                        const result = await response.text();
+                                        if (result === "success") {
+                                            photo.src = e.target.result;
+                                        } else {
+                                            alert("Failed to upload photo.");
+                                        }
+                                    } catch {
+                                        alert("An error occurred while uploading photo.");
+                                    }
+                                };
+                                reader.readAsDataURL(file);
+                            });
+                        });
+                    ]]>
+                </script>
+            </t>
+        </t>
+    </template>
+</odoo>

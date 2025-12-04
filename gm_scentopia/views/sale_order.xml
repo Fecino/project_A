@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <!-- Inherit the sale.order form view -->
+        <record id="view_order_form_inherit_gm_scentopia" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.gm.scentopia</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Example: Add a new field after the customer field -->
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="quote_number" readonly="state != 'draft'"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="customer_no"/>
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="date_time_1"/>
+                    <field name="sales_commission"/>
+                </xpath>
+                <xpath expr="//group[@name='sale_shipping']" position="inside">
+                    <field name="carrier_id" readonly="1" force_save="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

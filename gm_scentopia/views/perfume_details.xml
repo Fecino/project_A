@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_perfume_details_tree" model="ir.ui.view">
+            <field name="name">perfume.details.tree</field>
+            <field name="model">perfume.details</field>
+            <field name="arch" type="xml">
+                <list string="Perfume Details">
+                    <field name="name_code"/>
+                    <field name="perfume_name"/>
+                    <field name="gender"/>
+                    <field name="main_category_id"/>
+                    <field name="sub_category_id"/>
+                    <field name="strength"/>
+                    <field name="attribute_category"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_perfume_details_form" model="ir.ui.view">
+            <field name="name">perfume.details.form</field>
+            <field name="model">perfume.details</field>
+            <field name="arch" type="xml">
+                <form string="Perfume Details">
+                    <sheet>
+                        <h1><field name="display_name"/></h1>
+                        <group>
+                            <group string="Basic Information">
+                                <field name="gender"/>
+                                <field name="name_code"/>
+                                <field name="scentopia_oil"/>
+                                <field name="main_category_id"/>
+                                <field name="sub_category_id"/>
+                                <field name="perfume_name"/>
+                                <field name="main_note"/>
+                            </group>
+                            <group string="Attributes">
+                                <field name="strength"/>
+                                <field name="attribute_category"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Perfume Pyramid">
+                                <group>
+                                    <field name="top_note" widget="text"/>
+                                    <field name="middle_note" widget="text"/>
+                                    <field name="base_note" widget="text"/>
+                                </group>
+                            </page>
+                            <page string="Additional Information">
+                                <group>
+                                    <field name="main_accords" widget="text"/>
+                                    <field name="health_benefits" widget="text"/>
+                                    <field name="historical_significance" widget="text"/>
+                                    <field name="scent_writeup" widget="text"/>
+                                </group>
+                            </page>
+                            <page string="Product Images">
+                                <group>
+                                    <group string="Images">
+                                        <field name="image1" widget="image" class="oe_avatar"/>
+                                        <field name="image2" widget="image" class="oe_avatar"/>
+                                        <field name="image3" widget="image" class="oe_avatar"/>
+                                        <field name="image4" widget="image" class="oe_avatar"/>
+                                        <field name="image5" widget="image" class="oe_avatar"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_perfume_details_search" model="ir.ui.view">
+            <field name="name">perfume.details.search</field>
+            <field name="model">perfume.details</field>
+            <field name="arch" type="xml">
+                <search string="Search Perfume Details">
+                    <field name="perfume_name"/>
+                    <field name="name_code"/>
+                    <field name="main_category_id"/>
+                    <field name="sub_category_id"/>
+                    <field name="main_note"/>
+                    <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
+                    <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
+                    <filter string="Unisex" name="unisex" domain="[('gender', '=', 'unisex')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Gender" name="group_gender" context="{'group_by': 'gender'}"/>
+                        <filter string="Main Category" name="group_main_category" context="{'group_by': 'main_category_id'}"/>
+                        <filter string="Sub Category" name="group_sub_category" context="{'group_by': 'sub_category_id'}"/>
+                        <filter string="Attribute Category" name="group_attribute_category" context="{'group_by': 'attribute_category'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_perfume_details" model="ir.actions.act_window">
+            <field name="name">Perfume Details</field>
+            <field name="res_model">perfume.details</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_perfume_details_tree"/>
+            <field name="search_view_id" ref="view_perfume_details_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first perfume detail!
+                </p>
+                <p>
+                    Manage all your perfume details including fragrance pyramid, attributes, and descriptions.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,491 @@
+<?xml version="1.0" ?>
+<odoo>
+	<data>
+		<template id="fragrance_selection_drop_template" name="Fragrance Category Selection">
+			<t t-call="website.layout">
+				<script>
+					(function () {
+						try {
+							const hidden = localStorage.getItem("messageBubbleHidden") === "true";
+							if (hidden) {
+								document.documentElement.classList.add("bubble-hidden");
+							}
+						} catch (e) {
+							console.warn("LocalStorage blocked", e);
+						}
+					})();
+				</script>
+
+				<t t-set="title">Choose Your Fragrance</t>
+				<t t-set="additional_title">Scentzania</t>
+				<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+				<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+				<t t-if="font_url">
+						<link rel="stylesheet" t-att-href="font_url"/>
+				</t>
+				<style>
+					body {
+						font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+					}
+					/* Bottom bar positioning and backdrop effects */
+					.bottom-bar {
+						position: fixed !important;
+						bottom: 0 !important;
+						left: 0 !important;
+						right: 0 !important;
+						z-index: 9999 !important;
+						backdrop-filter: blur(10px) !important;
+						background: rgba(248, 244, 240, 0.95) !important;
+					}
+					.display-5{
+						font-size:2rem !important;
+					}
+
+					/* Background images for fragrance sections */
+					.fragrance-section {
+						cursor: pointer;
+						min-height: 120px;
+					}
+
+					.citrus-section { background: url('/gm_web/static/src/img/background_citrus.png') center/cover no-repeat, #FFB347; }
+					.fresh-section { background: url('/gm_web/static/src/img/background_fresh.png') center/cover no-repeat, #FFB347; }
+					.woody-section { background: url('/gm_web/static/src/img/background_woody.png') center/cover no-repeat, #FFB347; }
+					.floral-section { background: url('/gm_web/static/src/img/background_floral.png') center/cover no-repeat, #FFB347; }
+					.oriental-section { background: url('/gm_web/static/src/img/background_oriental.png') center/cover no-repeat, #FFB347; }
+
+					/* Three dot menu styles */
+					.menu-toggle {
+						position: fixed;
+						top: 10px;
+						right: 10px;
+						z-index: 3000;
+						background: rgba(255, 255, 255, 0.9);
+						border: none;
+						border-radius: 50%;
+						width: 40px;
+						height: 40px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						cursor: pointer;
+						box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+						backdrop-filter: blur(10px);
+					}
+
+					.menu-toggle:hover {
+						background: rgba(255, 255, 255, 1);
+					}
+
+					.menu-dots {
+						display: flex;
+						flex-direction: column;
+						gap: 3px;
+					}
+
+					.menu-dot {
+						width: 4px;
+						height: 4px;
+						background: #333;
+						border-radius: 50%;
+					}
+
+					.dropdown-menu-custom {
+						position: fixed;
+						top: 55px;
+						right: 10px;
+						z-index: 2999;
+						background: white;
+						border-radius: 12px;
+						box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+						min-width: 180px;
+						padding: 8px 0;
+						opacity: 0;
+						visibility: hidden;
+						transform: translateY(-10px);
+						transition: all 0.3s ease;
+					}
+
+					.dropdown-menu-custom.show {
+						opacity: 1;
+						visibility: visible;
+						transform: translateY(0);
+					}
+
+					.dropdown-item-custom {
+						display: block;
+						padding: 12px 20px;
+						color: #333;
+						text-decoration: none;
+						font-size: 14px;
+						transition: background-color 0.2s ease;
+						border: none;
+						background: none;
+						width: 100%;
+						text-align: left;
+						cursor: pointer;
+					}
+
+					.dropdown-item-custom:hover {
+						background-color: #f8f9fa;
+						color: #333;
+					}
+
+					/* Responsive adjustments */
+					@media (max-width: 480px) {
+						.bottom-bar { min-height: 75px !important; }
+						.message-bubble { max-width: 250px !important; }
+					}
+					.bubble {
+						position: relative;
+						font-size: 12px;
+						line-height: 14px;
+						background: #fff;
+						border-radius: 40px;
+						padding: 15px;
+						text-align: center;
+						color: #000;
+						border: 1px solid #fff;
+					}
+
+					.bubble-bottom-left:before {
+						content: "";
+						width: 0px;
+						height: 0px;
+						position: absolute;
+						border-left: 24px solid #fff;
+						border-right: 12px solid transparent;
+						border-top: 12px solid #fff;
+						border-bottom: 20px solid transparent;
+						left: 32px;
+						bottom: -24px;
+					}
+					.bubble-bottom-right:before {
+						content: "";
+						width: 0px;
+						height: 0px;
+						position: absolute;
+						border-right: 24px solid #fff;
+						border-left: 12px solid transparent;
+						border-top: 12px solid #fff;
+						border-bottom: 20px solid transparent;
+						right: 32px;
+						bottom: -24px;
+					}
+					.bubble-hidden #messageBubble {
+						display: none !important;
+					}
+				</style>
+
+				<!-- Three Dot Menu -->
+				<button class="menu-toggle" id="menuToggle">
+					<div class="menu-dots">
+						<div class="menu-dot"></div>
+						<div class="menu-dot"></div>
+						<div class="menu-dot"></div>
+					</div>
+				</button>
+
+				<!-- Dropdown Menu -->
+				<div class="dropdown-menu-custom" id="dropdownMenu">
+					<a t-att-href="f'/perfume-journey/change-value?uuid={crm_lead.uuid}&amp;all_oil=True'" class="dropdown-item-custom" id="option1">Edit my score manually</a>
+					<a t-att-href="f'/perfume-journey/fragrance-selection/edit'" class="dropdown-item-custom" id="option2">Edit oils I have Selected</a>
+					<a t-att-href="f'/perfume-journey/fragrance-selection/reset'" class="dropdown-item-custom" id="option3">Start Over with a fresh paper</a>
+				</div>
+
+				<div id="fragranceWrapper" t-att-data-location="location" class="fragrance-wrapper min-vh-100 d-flex flex-column position-relative" t-attf-style="background-color: #f8f4f0; padding-bottom: {{ '150px' if is_complete else '75px' }};">
+
+					<!-- Fragrance Sections -->
+					<div class="flex-fill d-flex flex-column m-0 p-0">
+						<t t-foreach="values" t-as="fragrance_name">
+							<t t-set="fragrance_data" t-value="values[fragrance_name]"/>
+							<div t-att-class="'fragrance-section flex-fill w-100 position-relative d-flex flex-column align-items-center justify-content-center ' + fragrance_name + '-section'" 
+									 t-att-data-category="fragrance_name" 
+									 t-attf-data-oil-added="{{ fragrance_data.get('oil_added', 0) }}" 
+									 t-attf-data-oil-max="{{ fragrance_data.get('oil_max', 0) }}">
+								
+								<!-- Counter Badge -->
+								<div class="d-flex align-items-center justify-content-between text-white w-100 px-3">
+									<t t-if="location == 'team_building'">
+										<div>
+											<h3 class="d-inline"><t t-esc="fragrance_data['oil_added']"/></h3> <span style="margin-left: 5px;"> drops used</span>
+											<br/>
+											<h3 class="d-inline"><t t-esc="fragrance_data['oil_max'] - fragrance_data['oil_added']"/></h3> <span style="margin-left: 5px;"> drops remaining</span>
+										</div>
+									</t>
+									<t t-else="">
+										<div>
+											<h3 class="d-inline"><t t-esc="int(fragrance_data['oil_added'])"/></h3> <span style="margin-left: 5px;"> : Choosen</span>
+											<br/>
+											<h3 class="d-inline"><t t-esc="int(fragrance_data['oil_max'])"/></h3> <span style="margin-left: 5px;"> : Total Needed</span>
+										</div>
+									</t>
+									<div class="text-end">
+										<h1 class="fw-bold" style="font-size:36px !important; margin: auto !important;"><t t-esc="fragrance_name.title()"/></h1>
+									</div>
+								</div>
+								
+							</div>
+						</t>
+					</div>
+				</div>
+
+				<!-- Bottom Navigation Bar -->
+				<div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="background: #F9F2F0">
+					<t t-if="formula_id">
+						<a t-attf-href="/my/formula/{{formula_id}}" class="text-decoration-none d-flex align-items-center justify-content-center">
+							<img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+						</a>
+					</t>
+					<t t-else="">
+						<div style="width: 40px;"></div>
+					</t>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+                    <div style="width: 40px;"></div>
+                </div>
+				<t t-if="is_complete">
+					<div class="fixed-bottom p-3" style="z-index: 150;height: 150px;pointer-events: none;background: #F9F2F0;"></div>
+					<div class="fixed-bottom d-flex align-items-start justify-content-center p-3" style="z-index: 1500;height: 150px;pointer-events: none;">
+						<button type="button" id="overrideButton" class="btn btn-lg" style="margin-right: 20px;pointer-events: auto;background: #B17B67;color: white;" t-att-data-formula-id="formula_id">
+							Confirm
+						</button>
+					</div>
+				</t>
+				<div class="fixed-bottom p-3"
+					style="z-index: 2000; pointer-events: none;">
+					<div id="messageBubble" class="bubble bubble-bottom-right text-brown position-relative" style="margin-right:10%; margin-bottom: 25px;max-width: 400px;margin-left: auto;">
+						<button type="button" class="btn-close position-absolute" id="closeBubble" style="top: 0px;background: red;right: 0px;font-size: 15px;color: white;opacity: 1;pointer-events: auto;" aria-label="Close">
+							<i class="fa fa-times" aria-hidden="true"></i>
+						</button>
+						<t t-if="is_complete">
+							<p>
+								You've completed the formula
+								<br/>
+								Please Confirm
+							</p>
+						</t>
+						<t t-else="">
+							<t t-if="location == 'scentzania'">
+								<p style="margin-bottom:0px !important;">
+									<strong>You Have to choose:</strong>
+									<br/>
+									<t t-foreach="values" t-as="fragrance_name">
+										<t t-set="fragrance_data" t-value="values[fragrance_name]"/>
+										<strong><t t-esc="fragrance_data['oil_max']"/></strong> <t t-esc="fragrance_name.title()"/> Scents
+										<br/>
+									</t>
+									Click on the room you are in
+								</p>
+							</t>
+							<t t-else="">
+								<p style="margin-bottom:0px !important;">
+									Your Drop limits are
+									<br/> 
+									<t t-foreach="values" t-as="fragrance_name">
+										<t t-set="fragrance_data" t-value="values[fragrance_name]"/>
+										<strong><t t-esc="fragrance_data['oil_max']"/></strong> drops of <strong><t t-esc="fragrance_name.title()"/></strong>
+										<br/>
+									</t>
+									<br/>
+									Click on the category you are trying
+								</p>
+							</t>
+						</t>
+					</div>
+					<div class="d-flex align-items-center justify-content-end">
+						<img id="avatarImage" t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+									alt="Avatar Image"
+									class="img-fluid"
+									style="height: 100px !important; z-index: 999; cursor: pointer; pointer-events: auto;" />
+					</div>
+				</div>
+
+				<script>
+				<![CDATA[
+					document.addEventListener('DOMContentLoaded', function() {
+						// Menu toggle functionality
+						const menuToggle = document.getElementById('menuToggle');
+						const dropdownMenu = document.getElementById('dropdownMenu');
+						
+						menuToggle.addEventListener('click', function(e) {
+							e.stopPropagation();
+							dropdownMenu.classList.toggle('show');
+						});
+						
+						// Close dropdown when clicking outside
+						document.addEventListener('click', function(e) {
+							if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+								dropdownMenu.classList.remove('show');
+							}
+						});
+						const option2 = document.getElementById('option2');
+						if (option2) {
+							option2.addEventListener('click', function(e) {
+								e.preventDefault();
+								
+								const fragranceSections = document.querySelectorAll('.fragrance-section');
+								let hasOilsAdded = false;
+								
+								// Check if any oils have been added
+								fragranceSections.forEach(function(section) {
+									const oilAdded = parseInt(section.getAttribute('data-oil-added'));
+									if (oilAdded > 0) {
+										hasOilsAdded = true;
+									}
+								});
+								
+								if (hasOilsAdded) {
+									// Navigate to edit score page
+									window.location.href = this.getAttribute('href');
+								} else {
+									alert('No oils have been added yet. Please add some oils before editing your score manually.');
+								}
+							});
+						}
+						// Add click event listeners to fragrance sections
+						const fragranceSections = document.querySelectorAll('.fragrance-section');
+						
+						fragranceSections.forEach(function(section) {
+							section.addEventListener('click', function() {
+								const category = this.getAttribute('data-category');
+								const oilAdded = parseInt(this.getAttribute('data-oil-added'));
+								const oilMax = parseInt(this.getAttribute('data-oil-max'));
+								const location = document.getElementById('fragranceWrapper').getAttribute('data-location');
+								
+								// Check if oil_added equals oil_max
+								if (oilMax === 0) {
+									window.location.href = '/perfume-journey/invalid-perfume?category='+category;
+									return;
+								}
+								if (oilAdded === oilMax) {
+									if (location === 'scentzania') {
+										alert('This fragrance category is already at maximum capacity (' + oilMax + ' oils). Please select another category.');
+									} else {
+										alert('This fragrance category is already at maximum capacity (' + oilMax + ' drops). Please select another category.');
+									}
+								} else {
+									// Navigate to the perfume start page with category parameter
+									window.location.href = '/perfume-journey/select-oil?category=' + encodeURIComponent(category);
+								}
+							});
+						});
+
+						// Add override button functionality
+						const overrideButton = document.getElementById('overrideButton');
+						
+						if (overrideButton) {
+							overrideButton.addEventListener('click', function() {
+								// Use requestAnimationFrame to avoid blocking the main thread
+								requestAnimationFrame(() => {
+									const fragranceSections = document.querySelectorAll('.fragrance-section');
+									
+									// Use Array.some for early exit when finding non-maxed section
+									const hasNonMaxedSection = Array.from(fragranceSections).some(section => {
+										const oilAdded = parseInt(section.getAttribute('data-oil-added'));
+										const oilMax = parseInt(section.getAttribute('data-oil-max'));
+										return oilAdded !== oilMax;
+									});
+									// Get formula ID from the button's data attribute
+									const formulaId = this.getAttribute('data-formula-id');
+									
+									if (!hasNonMaxedSection) {
+										let fetchPromise;
+										
+										if (formulaId) {
+											// All categories are maxed, proceed to save formula
+											fetchPromise = fetch('/my/formula/oil_save', {
+												method: 'POST',
+												headers: {
+													'Content-Type': 'application/json',
+													'X-Requested-With': 'XMLHttpRequest'
+												},
+												body: JSON.stringify({
+													formula_id: formulaId
+												})
+											});
+										} else {
+											// All categories are maxed, proceed to save formula
+											fetchPromise = fetch('/perfume-journey/api/save-formula', {
+												method: 'POST',
+												headers: {
+													'Content-Type': 'application/json',
+													'X-Requested-With': 'XMLHttpRequest'
+												},
+												body: JSON.stringify({})
+											});
+										}
+										
+										fetchPromise.then(response => response.json())
+										.then(data => {
+											const result = data.result;
+											if (result === true || result.success) {
+												// Store formula ID in localStorage if provided
+												if (result.formula_id) {
+													localStorage.setItem('currentFormulaId', result.formula_id);
+													localStorage.setItem('userFormula', JSON.stringify(result.userFormula));
+												}
+												// Redirect to next page
+												if (formulaId) {
+													window.location.href = `/my/formula/${formulaId}`;
+												} else {
+													window.location.href = '/perfume-journey/formula-naming';
+												}
+											} else {
+												alert('Failed to save formula. Please try again.');
+											}
+										})
+										.catch(error => {
+											console.error('Error saving formula:', error);
+											alert('An error occurred while saving the formula.');
+										});
+									} else {
+										alert('Please fill all fragrance categories to maximum capacity before confirming.');
+									}
+								});
+							});
+						}
+
+						// Message bubble functionality
+						const closeBubble = document.getElementById('closeBubble');
+						const messageBubble = document.getElementById('messageBubble');
+						const avatarImage = document.getElementById('avatarImage');
+						
+						// // Check localStorage on page load
+						// const bubbleHidden = localStorage.getItem('messageBubbleHidden');
+						// if (bubbleHidden === 'true') {
+						// 	messageBubble.style.display = 'none';
+						// }
+						// Add confirmation for option3 (Start Over)
+						const option3 = document.getElementById('option3');
+						if (option3) {
+							option3.addEventListener('click', function(e) {
+								e.preventDefault();
+								const confirmed = confirm('Are you sure you want to start over? This will reset all your selections.');
+								
+								if (confirmed) {
+									window.location.href = this.getAttribute('href');
+								}
+							});
+						}
+						// Hide bubble when close button is clicked
+						if (closeBubble) {
+							closeBubble.addEventListener('click', function () {
+								document.documentElement.classList.add("bubble-hidden");
+								localStorage.setItem("messageBubbleHidden", "true");
+							});
+						}
+
+						// Show bubble when avatar image is clicked
+						if (avatarImage) {
+							avatarImage.addEventListener('click', function () {
+								document.documentElement.classList.remove("bubble-hidden");
+								localStorage.setItem("messageBubbleHidden", "false");
+							});
+						}
+					});
+				]]>
+				</script>
+			</t> 
+		</template>
+	</data>
+</odoo>

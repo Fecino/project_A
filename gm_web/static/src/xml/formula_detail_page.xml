@@ -1,0 +1,248 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="formula_detail_page" name="Formula Detail Page">
+        <t t-name="gm_web.formula_detail_page">
+            <t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .o_body_html{
+                        padding : 0px 25px !important;
+                    }
+                    .img-profile{
+                        width: 128px; 
+                        height: 128px; 
+                        border-radius: 50%;
+                    }
+                    .text-brown {
+                        color: #5F3529 !important;
+                    }
+                    .img-avatar{
+                        max-width: 300px; 
+                        max-height: 400px;
+                    }
+                    .btn-custom{
+                        font-size: 16px; 
+                        background-color: #B17B67 !important; 
+                        border: 1px solid #bb8470ff  !important; 
+                        color: white !important; 
+                        border-radius: 25px;
+                        width: 100% !important;
+                        height: 50px !important;
+                    }
+                    @media (max-width: 500px) {
+                        .img-profile{
+                            width: 90px; 
+                            height: 90px; 
+                        }
+                        .img-avatar {
+                            max-width: 200px; 
+                            max-height: 300px; 
+                        }
+                        .container-home{
+                            padding-top: 50px !important;
+                        }
+                        <!-- .o_body_html{
+                            padding : 0px !important;
+                        } -->
+                    }
+                    .row::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .formula_card{
+                        border: 1px solid #bb8470ff; 
+                        border-radius: 15px; 
+                        padding: 5px 10px; 
+                        background: white;  
+                    }
+                    .hidden {
+                        display: none !important;
+                    }
+                </style>
+                <t t-set="title">Formula Detail | Scentzania</t>
+                <div class="container py-5 container-home" style="padding-bottom:100px !important;">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="text-brown" style="font-weight: bold;" id="formula_name_display"><t t-esc="formulas.formula_name"/></h5>
+                            <input type="text" id="formula_name" class="form-control hidden" t-att-value="formulas.formula_name" style="border: 1px solid #bb8470ff; background: #fff; border-radius: 10px;"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h6 class="text-brown" style="font-weight: bold;">Date Created</h6>
+                            <h6 class="text-brown"><t t-esc="formulas.create_date.strftime('%d %B %Y')"/></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h6 class="text-brown" style="font-weight: bold;">Designed for</h6>
+                            <h6 class="text-brown"><t t-esc="formulas.bottle_size"/></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="text-brown" style="font-weight: bold;">Oil Combination</h6>
+                        </div>
+                        <div class="col-6 text-end">
+                            <t t-if="formulas.location == 'scentzania'">
+                                <a t-att-href="'/my/formula/oil_edit/' + str(formulas.id)">Edit Oil Combination</a>
+                            </t>
+                        </div>
+                        <div class="col-12">
+                            <t t-foreach="formulas.sample_citrus" t-as="citrus" t-key="citrus.id">
+                                <span class="badge" t-att-style="'font-size: 12px; background: %s; color:black;' % (fragrance.get(citrus.main_category_id.name.lower(), '#cccccc'))"><t t-esc="citrus.name_code"/></span>
+                            </t>
+                            <t t-foreach="formulas.sample_fresh" t-as="fresh" t-key="fresh.id">
+                                <span class="badge" t-att-style="'font-size: 12px; background: %s; color:black;' % (fragrance.get(fresh.main_category_id.name.lower(), '#cccccc'))"><t t-esc="fresh.name_code"/></span>
+                            </t>
+                            <t t-foreach="formulas.sample_floral" t-as="floral" t-key="floral.id">
+                                <span class="badge" t-att-style="'font-size: 12px; background: %s; color:black;' % (fragrance.get(floral.main_category_id.name.lower(), '#cccccc'))"><t t-esc="floral.name_code"/></span>
+                            </t>
+                            <t t-foreach="formulas.sample_woody" t-as="woody" t-key="woody.id">
+                                <span class="badge" t-att-style="'font-size: 12px; background: %s; color:black;' % (fragrance.get(woody.main_category_id.name.lower(), '#cccccc'))"><t t-esc="woody.name_code"/></span>
+                            </t>
+                            <t t-foreach="formulas.sample_oriental" t-as="oriental" t-key="oriental.id">
+                                <span class="badge" t-att-style="'font-size: 12px; background: %s; color:white;' % (fragrance.get(oriental.main_category_id.name.lower(), '#cccccc'))"><t t-esc="oriental.name_code"/></span>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6 class="text-brown" style="font-weight: bold;">Personal Notes</h6>
+                            <textarea id="formula_notes" class="form-control" rows="4" placeholder="Add your notes here..." style="border: 1px solid #bb8470ff; background: #F9F2F0; border-radius: 10px; resize: none;" readonly="readonly"><t t-esc="formulas.notes"/></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="edit_btn" class="btn btn-custom mt-3" onclick="editFormula()" style="background-color: #B17B67 !important; color: white !important; border: 1px solid #B17B67 !important;">Edit</button>
+                            <button id="save_btn" class="btn btn-custom mt-3 hidden" onclick="saveFormula()" style="background-color: #B17B67 !important; color: white !important; border: 1px solid #B17B67 !important;">Save</button>
+                        </div>
+                        <div class="col-6">
+                            <a t-att-href="'/my/formula/bottling/%d/access' % formulas.id" class="text-decoration-none">
+                                <button class="btn btn-custom mt-3">Bottle this up!</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3"
+                    style="background: #F9F2F0; z-index: 1000;">
+                    <a href="/my/formula/all" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                    </a>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid" style="width: 150px; margin-right:30px; margin-top:-20px;" alt="Logo"/>
+                    <div style="width:40px;"></div>
+                </div>
+                <div class="fixed-bottom p-3"
+                    style="z-index: 2000; pointer-events: none;">
+                    <div class="text-end">
+                        <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+                                    alt="Avatar Image"
+                                    class="img-fluid"
+                                    style="height: 100px !important; z-index: 999; margin-right: 10%;" />
+                    </div>
+                </div>
+                <script>
+                    <![CDATA[
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const photo = document.getElementById("profile-photo");
+                            const input = document.getElementById("photo-input");
+                            if (!photo || !input) return;
+                            photo.addEventListener("click", () => input.click());
+                            input.addEventListener("change", async () => {
+                                const file = input.files[0];
+                                if (!file) return;
+                                const reader = new FileReader();
+                                reader.onload = async function (e) {
+                                    try {
+                                        const response = await fetch("/api/upload_photo_profile", {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ image: e.target.result.split(",")[1] }),
+                                        });                                     
+                                        const result = await response.text();
+                                        if (result === "success") {
+                                            photo.src = e.target.result;
+                                        } else {
+                                            alert("Failed to upload photo.");
+                                        }
+                                    } catch {
+                                        alert("An error occurred while uploading photo.");
+                                    }
+                                };
+                                reader.readAsDataURL(file);
+                            });
+                        });
+
+                        function editFormula() {
+                            // Show input field and hide display
+                            document.getElementById('formula_name').classList.remove('hidden');
+                            document.getElementById('formula_name_display').classList.add('hidden');
+                            
+                            // Make textarea editable
+                            document.getElementById('formula_notes').removeAttribute('readonly');
+                            document.getElementById('formula_notes').style.backgroundColor = 'white';
+                            // Show save button and hide edit button
+                            document.getElementById('edit_btn').classList.add('hidden');
+                            document.getElementById('save_btn').classList.remove('hidden');
+                        }
+
+                        function saveFormula() {
+                            const formulaNameInput = document.getElementById('formula_name');
+                            const textarea = document.getElementById('formula_notes');
+                            const formulaName = formulaNameInput.value;
+                            const notes = textarea.value;
+                            
+                            fetch('/api/save_formula_details', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    formula_id: window.location.pathname.split('/').pop(),
+                                    formula_name: formulaName,
+                                    notes: notes
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    // Update display with new values
+                                    document.getElementById('formula_name_display').textContent = formulaName;
+                                    
+                                    // Hide input field and show display
+                                    document.getElementById('formula_name').classList.add('hidden');
+                                    document.getElementById('formula_name_display').classList.remove('hidden');
+                                    
+                                    // Make textarea readonly again
+                                    document.getElementById('formula_notes').setAttribute('readonly', 'readonly');
+                                    document.getElementById('formula_notes').style.backgroundColor = '#F9F2F0';
+                                    // Show edit button and hide save button
+                                    document.getElementById('save_btn').classList.add('hidden');
+                                    document.getElementById('edit_btn').classList.remove('hidden');
+                                    
+                                    alert('Formula updated successfully!');
+                                } else {
+                                    alert('Failed to save formula details.');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('An error occurred while saving formula details.');
+                            });
+                        }
+                    ]]>
+                </script>
+            </t>
+        </t>
+    </template>
+</odoo>

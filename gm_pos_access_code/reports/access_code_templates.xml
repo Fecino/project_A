@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Report Template for Access Code -->
+    <template id="report_access_code_details">
+        <t t-call="web.html_container">
+            <main>
+            <t t-foreach="docs" t-as="o">
+                <!-- Access Code Card -->
+                <div style="width:58mm; height:58mm; margin:0; padding:1mm; box-sizing:border-box; display:flex; align-items:center; justify-content:center; background:white; font-family:Arial, sans-serif; overflow:hidden; page-break-inside:avoid;">
+                    <!-- div to wrap the content -->
+                    <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:space-between; text-align:center; box-sizing:border-box; padding:3mm;">
+                        <!-- Main content centered -->
+                        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1;">
+                            <div style="display:flex; flex-direction:column; align-items:center; gap:2mm;">
+                                <p style="color:#6c757d; font-size:10px; margin:0;">Your access code is:</p>
+                                <div style="font-weight:bold; font-size:18px; letter-spacing:0.5px; color:#000; margin:0; line-height:1.1;">
+                                    <t t-esc="o.name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Logo at bottom -->
+                        <div style="display:flex; align-items:center; justify-content:center; height:24px;">
+                            <t t-if="o.logo_b64_img">
+                                <img t-att-src="'data:image/png;base64,%s' % (o.logo_b64_img.decode() if isinstance(o.logo_b64_img, bytes) else o.logo_b64_img)"
+                                     style="height:22px; width:auto; object-fit:contain;"
+                                     alt="Logo"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            </main>
+        </t>
+</template>
+</odoo>

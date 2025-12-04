@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
+        <!-- Hide order summary -->
+        <xpath expr="//div[@class='order-summary d-flex flex-column gap-1 px-3 py-2 border-top fw-bolder lh-sm']" position="attributes">
+            <attribute name="data-custom-only">true</attribute>
+            <attribute name="style">display: none !important;</attribute>
+        </xpath>
+    </t>
+</templates>

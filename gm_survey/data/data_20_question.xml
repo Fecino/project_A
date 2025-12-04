@@ -1,0 +1,1949 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Survey Template -->
+        <record id="gm_survey.test_20_questions" model="survey.survey">
+            <field name="title">Personalize Test</field>
+            <field name="questions_selection">random</field>
+            <field name="theme_survey">custom</field>
+            <field name="personality_test">True</field>
+            <field name="generate_leads">True</field>
+        </record>
+        <!-- Survey Questions -->
+        <record id="gm_survey.page_quiz_20_questions" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions"/>
+            <field name="title">Quiz: 20 Questions</field>
+            <field name="is_page">True</field>
+        </record>
+        <record id="question_1_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you feel about mornings?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_1_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_1_question" />
+            <field name="value">Energized and ready to go!</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_1_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_1_question" />
+            <field name="value">Calm and refreshed.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_1_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_1_question" />
+            <field name="value">Slow and peaceful.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_1_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_1_question" />
+            <field name="value">Cozy and grounded.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_1_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_1_question" />
+            <field name="value">Contemplative and reflective.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_10_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How would your friends describe you?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_10_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_10_question" />
+            <field name="value">Outgoing and fun.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_10_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_10_question" />
+            <field name="value">Calm and composed.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_10_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_10_question" />
+            <field name="value">Warm and nurturing.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_10_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_10_question" />
+            <field name="value">Wise and dependable.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_10_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_10_question" />
+            <field name="value">Adventurous and curious.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_11_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your ideal meal is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_11_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_11_question" />
+            <field name="value">Fresh fruits and a protein bar.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_11_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_11_question" />
+            <field name="value">A light and healthy salad.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_11_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_11_question" />
+            <field name="value">A delicate dessert with floral notes.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_11_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_11_question" />
+            <field name="value">A hearty roast or grilled vegetables.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_11_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_11_question" />
+            <field name="value">A spicy curry or rich stew.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_12_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What type of movies do you enjoy?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_12_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_12_question" />
+            <field name="value">Action-packed and high-energy films.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_12_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_12_question" />
+            <field name="value">Light-hearted comedies or feel-good stories.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_12_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_12_question" />
+            <field name="value">Romantic dramas or classics.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_12_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_12_question" />
+            <field name="value">Thought-provoking documentaries or period pieces.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_12_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_12_question" />
+            <field name="value">Thrilling mysteries or exotic adventures.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_13_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">If you had to pick a scent to describe your personality, it would be...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_13_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_13_question" />
+            <field name="value">Zesty and invigorating.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_13_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_13_question" />
+            <field name="value">Clean and refreshing.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_13_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_13_question" />
+            <field name="value">Sweet and delicate.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_13_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_13_question" />
+            <field name="value">Earthy and deep.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_13_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_13_question" />
+            <field name="value">Rich and spicy.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_14_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you handle stress?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_14_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_14_question" />
+            <field name="value">Exercise or go for a run.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_14_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_14_question" />
+            <field name="value">Meditate or take deep breaths.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_14_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_14_question" />
+            <field name="value">Spend time in a garden or with loved ones.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_14_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_14_question" />
+            <field name="value">Reflect quietly in solitude.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_14_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_14_question" />
+            <field name="value">Indulge in a sensory experience like cooking or music.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_15_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Which season do you enjoy most?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_15_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_15_question" />
+            <field name="value">Summer.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_15_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_15_question" />
+            <field name="value">Spring.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_15_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_15_question" />
+            <field name="value">Late spring to early summer.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_15_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_15_question" />
+            <field name="value">Winter.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_15_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_15_question" />
+            <field name="value">Autumn.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_16_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What type of books do you enjoy?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_16_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_16_question" />
+            <field name="value">Fast-paced thrillers or motivational reads.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_16_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_16_question" />
+            <field name="value">Light reads or travel memoirs.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_16_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_16_question" />
+            <field name="value">Romantic novels or poetry.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_16_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_16_question" />
+            <field name="value">Nature writing or philosophical texts.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_16_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_16_question" />
+            <field name="value">Historical fiction or tales of distant lands.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_17_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What do you gravitate towards in a garden?</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_17_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_17_question" />
+            <field name="value">Citrus trees and vibrant fruits.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_17_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_17_question" />
+            <field name="value">Fresh herbs and greenery.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_17_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_17_question" />
+            <field name="value">Flowers in full bloom.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_17_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_17_question" />
+            <field name="value">Majestic trees and earthy textures.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_17_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_17_question" />
+            <field name="value">Rare and exotic plants.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_18_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your energy level throughout the day is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_18_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_18_question" />
+            <field name="value">High and energetic all day.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_18_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_18_question" />
+            <field name="value">Steady and balanced.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_18_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_18_question" />
+            <field name="value">Peaks and dips gently.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_18_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_18_question" />
+            <field name="value">Calm and constant.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_18_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_18_question" />
+            <field name="value">Peaks in the evening.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_19_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Which activity appeals to you most?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_19_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_19_question" />
+            <field name="value">Cycling or jogging outdoors.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_19_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_19_question" />
+            <field name="value">Yoga or mindfulness exercises.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_19_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_19_question" />
+            <field name="value">Gardening or arranging flowers.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_19_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_19_question" />
+            <field name="value">Hiking or birdwatching.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_19_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_19_question" />
+            <field name="value">Cooking or crafting unique items.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_2_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What is your favorite way to spend a weekend?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_2_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_2_question" />
+            <field name="value">Outdoor adventures like hiking or biking.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_2_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_2_question" />
+            <field name="value">A long walk by the beach or in a park.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_2_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_2_question" />
+            <field name="value">Visiting a botanical garden or enjoying art.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_2_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_2_question" />
+            <field name="value">Relaxing at a cabin in the woods.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_2_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_2_question" />
+            <field name="value">Exploring a new city or trying exotic cuisines.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_20_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">If you could choose an accessory, it would be...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_20_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_20_question" />
+            <field name="value">A bright scarf or sunglasses.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_20_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_20_question" />
+            <field name="value">A sleek watch or minimal jewelry.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_20_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_20_question" />
+            <field name="value">A floral brooch or dainty earrings.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_20_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_20_question" />
+            <field name="value">A leather bracelet or natural bead necklace.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_20_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_20_question" />
+            <field name="value">A bold statement piece.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_21_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your dream home is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_21_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_21_question" />
+            <field name="value">A vibrant city apartment with a balcony.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_21_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_21_question" />
+            <field name="value">A cozy beachside bungalow.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_21_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_21_question" />
+            <field name="value">A cottage surrounded by flowers.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_21_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_21_question" />
+            <field name="value">A rustic cabin in the woods.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_21_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_21_question" />
+            <field name="value">A villa with exotic interiors.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_22_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your favorite childhood memory involves...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_22_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_22_question" />
+            <field name="value">Playing outside on sunny days.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_22_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_22_question" />
+            <field name="value">Running through sprinklers in the yard.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_22_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_22_question" />
+            <field name="value">Picking flowers or helping in the garden.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_22_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_22_question" />
+            <field name="value">Exploring forests or building forts.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_22_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_22_question" />
+            <field name="value">Discovering new places or foods.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_23_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What motivates you most?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_23_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_23_question" />
+            <field name="value">Adventure and excitement.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_23_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_23_question" />
+            <field name="value">A sense of calm and clarity.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_23_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_23_question" />
+            <field name="value">Love and connection.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_23_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_23_question" />
+            <field name="value">Stability and tradition.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_23_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_23_question" />
+            <field name="value">Curiosity and discovery.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_24_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your favorite dessert is...</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_24_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_24_question" />
+            <field name="value">Lemon tart or citrus sorbet.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_24_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_24_question" />
+            <field name="value">Light and airy mousse.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_24_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_24_question" />
+            <field name="value">Rose-flavored macarons.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_24_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_24_question" />
+            <field name="value">Nutty brownies or spiced cake.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_24_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_24_question" />
+            <field name="value">Exotic sweets like baklava.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_25_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you usually spend your evenings?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_25_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_25_question" />
+            <field name="value">Watching a lively show or working out.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_25_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_25_question" />
+            <field name="value">Reading or meditating.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_25_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_25_question" />
+            <field name="value">Arranging flowers or baking.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_25_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_25_question" />
+            <field name="value">Sitting by the fire or journaling.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_25_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_25_question" />
+            <field name="value">Trying a new recipe or hobby.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_26_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your go-to skincare product is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_26_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_26_question" />
+            <field name="value">Vitamin C serum.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_26_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_26_question" />
+            <field name="value">Aloe vera gel.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_26_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_26_question" />
+            <field name="value">Rosewater mist.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_26_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_26_question" />
+            <field name="value">Shea butter cream.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_26_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_26_question" />
+            <field name="value">Spicy or herbal essential oil.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_27_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What inspires your creativity most?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_27_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_27_question" />
+            <field name="value">Bright colors and dynamic settings.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_27_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_27_question" />
+            <field name="value">Quiet and natural spaces.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_27_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_27_question" />
+            <field name="value">Flowers and soft details.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_27_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_27_question" />
+            <field name="value">Nature’s textures and shapes.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_27_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_27_question" />
+            <field name="value">Travel and cultural experiences.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_28_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">You prefer scents that are...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_28_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_28_question" />
+            <field name="value">Light and energizing.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_28_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_28_question" />
+            <field name="value">Subtle and fresh.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_28_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_28_question" />
+            <field name="value">Soft and romantic.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_28_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_28_question" />
+            <field name="value">Earthy and grounding.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_28_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_28_question" />
+            <field name="value">Bold and complex.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_29_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">If you could be anywhere right now, you'd be...</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_29_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_29_question" />
+            <field name="value">At a beach party.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_29_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_29_question" />
+            <field name="value">Relaxing by a crystal-clear lake.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_29_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_29_question" />
+            <field name="value">In a blooming garden.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_29_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_29_question" />
+            <field name="value">Exploring a lush forest trail.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_29_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_29_question" />
+            <field name="value">Walking through a bustling marketplace.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_3_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What type of weather do you enjoy the most?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_3_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_3_question" />
+            <field name="value">Warm and sunny.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_3_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_3_question" />
+            <field name="value">Crisp and breezy.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_3_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_3_question" />
+            <field name="value">Mild and pleasant.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_3_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_3_question" />
+            <field name="value">Cool and misty.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_3_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_3_question" />
+            <field name="value">Hot and humid.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_30_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your favorite childhood scent memory is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_30_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_30_question" />
+            <field name="value">The smell of oranges or lemons.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_30_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_30_question" />
+            <field name="value">The crisp air after rain.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_30_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_30_question" />
+            <field name="value">Freshly picked flowers.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_30_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_30_question" />
+            <field name="value">Pine trees in a forest.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_30_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_30_question" />
+            <field name="value">Exotic spices from the kitchen.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_31_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you prepare for a special occasion?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_31_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_31_question" />
+            <field name="value">By choosing a bold outfit and accessories.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_31_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_31_question" />
+            <field name="value">By keeping it simple yet elegant.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_31_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_31_question" />
+            <field name="value">By picking something soft and romantic.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_31_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_31_question" />
+            <field name="value">By incorporating natural, earthy elements.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_31_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_31_question" />
+            <field name="value">By going all out with dramatic touches.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_32_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Which hobby would you most likely try?</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_32_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_32_question" />
+            <field name="value">Rock climbing or kayaking.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_32_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_32_question" />
+            <field name="value">Gardening or nature photography.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_32_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_32_question" />
+            <field name="value">Flower arranging or painting.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_32_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_32_question" />
+            <field name="value">Woodworking or camping.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_32_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_32_question" />
+            <field name="value">Learning a new language or cooking exotic food.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_33_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your favorite scent combination is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_33_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_33_question" />
+            <field name="value">Orange and lemon.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_33_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_33_question" />
+            <field name="value">Mint and cucumber.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_33_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_33_question" />
+            <field name="value">Rose and jasmine.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_33_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_33_question" />
+            <field name="value">Cedarwood and sandalwood.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_33_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_33_question" />
+            <field name="value">Vanilla and amber.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_34_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What’s your ideal daily routine?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_34_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_34_question" />
+            <field name="value">Busy and filled with new activities.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_34_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_34_question" />
+            <field name="value">Balanced and relaxed.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_34_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_34_question" />
+            <field name="value">Centered around family and comfort.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_34_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_34_question" />
+            <field name="value">Rooted in habits and introspection.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_34_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_34_question" />
+            <field name="value">Unpredictable and inspiring.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_35_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your dream gift is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_35_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_35_question" />
+            <field name="value">A plane ticket to a tropical destination.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_35_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_35_question" />
+            <field name="value">A spa day or wellness retreat.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_35_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_35_question" />
+            <field name="value">A bouquet of fresh flowers.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_35_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_35_question" />
+            <field name="value">A hand-carved keepsake.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_35_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_35_question" />
+            <field name="value">A rare, exotic perfume.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_36_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What does your dream evening look like?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_36_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_36_question" />
+            <field name="value">Dancing under the stars.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_36_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_36_question" />
+            <field name="value">Relaxing in a cozy café.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_36_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_36_question" />
+            <field name="value">Enjoying a sunset picnic.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_36_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_36_question" />
+            <field name="value">Stargazing in a quiet field.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_36_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_36_question" />
+            <field name="value">Attending a vibrant cultural festival.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_37_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Which word best describes your ideal day?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_37_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_37_question" />
+            <field name="value">Energetic.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_37_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_37_question" />
+            <field name="value">Serene.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_37_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_37_question" />
+            <field name="value">Romantic.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_37_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_37_question" />
+            <field name="value">Grounded.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_37_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_37_question" />
+            <field name="value">Adventurous.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_38_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">If you could bottle a memory, it would smell like...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_38_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_38_question" />
+            <field name="value">Freshly peeled citrus fruits.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_38_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_38_question" />
+            <field name="value">A crisp breeze on a mountain trail.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_38_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_38_question" />
+            <field name="value">Roses blooming in spring.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_38_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_38_question" />
+            <field name="value">A smoky campfire in the woods.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_38_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_38_question" />
+            <field name="value">Exotic spices in a bustling market.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_39_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What kind of art inspires you?</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_39_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_39_question" />
+            <field name="value">Abstract and colorful.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_39_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_39_question" />
+            <field name="value">Minimalist landscapes.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_39_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_39_question" />
+            <field name="value">Soft impressionist paintings.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_39_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_39_question" />
+            <field name="value">Rustic and textured sculptures.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_39_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_39_question" />
+            <field name="value">Bold, cultural expressions.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_4_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">When it comes to fashion, you prefer...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_4_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_4_question" />
+            <field name="value">Bright and bold colors.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_4_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_4_question" />
+            <field name="value">Clean and simple lines.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_4_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_4_question" />
+            <field name="value">Feminine and romantic styles.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_4_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_4_question" />
+            <field name="value">Earthy and rustic tones.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_4_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_4_question" />
+            <field name="value">Exotic and unique patterns.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_40_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you unwind after a busy day?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_40_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_40_question" />
+            <field name="value">Dancing or exercising.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_40_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_40_question" />
+            <field name="value">Taking a long bath or meditating.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_40_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_40_question" />
+            <field name="value">Listening to soft music or lighting candles.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_40_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_40_question" />
+            <field name="value">Reading by a warm fire.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_40_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_40_question" />
+            <field name="value">Trying out new recipes or crafts.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_41_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Which plant would you grow in your garden?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_41_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_41_question" />
+            <field name="value">Citrus trees.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_41_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_41_question" />
+            <field name="value">Lavender or mint.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_41_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_41_question" />
+            <field name="value">A rose bush.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_41_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_41_question" />
+            <field name="value">Ferns or moss.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_41_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_41_question" />
+            <field name="value">Exotic orchids.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_42_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What kind of fragrances do you avoid?</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_42_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_42_question" />
+            <field name="value">Anything too sweet.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_42_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_42_question" />
+            <field name="value">Strong and overwhelming scents.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_42_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_42_question" />
+            <field name="value">Spicy or smoky aromas.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_42_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_42_question" />
+            <field name="value">Fruity or citrusy smells.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_42_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_42_question" />
+            <field name="value">Simple or one-dimensional fragrances.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_43_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your favorite type of exercise is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_43_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_43_question" />
+            <field name="value">Intense workouts like cardio or HIIT.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_43_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_43_question" />
+            <field name="value">Gentle yoga or stretching.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_43_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_43_question" />
+            <field name="value">Dance or aerobics.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_43_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_43_question" />
+            <field name="value">Hiking or long walks.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_43_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_43_question" />
+            <field name="value">Martial arts or cultural dance.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_44_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What role does nature play in your life?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_44_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_44_question" />
+            <field name="value">A source of energy.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_44_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_44_question" />
+            <field name="value">A place of peace.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_44_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_44_question" />
+            <field name="value">An inspiration for beauty.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_44_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_44_question" />
+            <field name="value">A grounding force.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_44_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_44_question" />
+            <field name="value">A treasure trove of discoveries.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_45_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your ideal gift from a loved one is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_45_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_45_question" />
+            <field name="value">A surprise adventure.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_45_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_45_question" />
+            <field name="value">A handwritten letter.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_45_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_45_question" />
+            <field name="value">A bouquet of their favorite flowers.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_45_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_45_question" />
+            <field name="value">A handcrafted item.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_45_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_45_question" />
+            <field name="value">Something rare and exotic.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_46_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you approach problem-solving?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_46_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_46_question" />
+            <field name="value">I take immediate action to resolve it.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_46_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_46_question" />
+            <field name="value">I analyze and take time to reflect before acting.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_46_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_46_question" />
+            <field name="value">I prefer to seek advice from others.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_46_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_46_question" />
+            <field name="value">I break the problem down into smaller steps.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_46_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_46_question" />
+            <field name="value">I look for creative or unconventional solutions.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_47_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What type of vacation is your favorite?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_47_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_47_question" />
+            <field name="value">Adventure-filled trips like hiking or rafting.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_47_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_47_question" />
+            <field name="value">A quiet, isolated retreat in nature.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_47_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_47_question" />
+            <field name="value">A visit to cultural landmarks and historical sites.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_47_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_47_question" />
+            <field name="value">A luxurious all-inclusive resort experience.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_47_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_47_question" />
+            <field name="value">A road trip with lots of exploration along the way.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_48_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you handle conflict?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_48_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_48_question" />
+            <field name="value">I face it head-on and resolve it quickly.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_48_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_48_question" />
+            <field name="value">I prefer to avoid confrontation and keep the peace.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_48_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_48_question" />
+            <field name="value">I listen to everyone’s perspective before taking action.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_48_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_48_question" />
+            <field name="value">I take a step back and think about the long-term effects.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_48_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_48_question" />
+            <field name="value">I express my feelings through creative outlets like writing or art.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_49_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Which of these describes your ideal work environment?</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_49_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_49_question" />
+            <field name="value">High-energy and fast-paced.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_49_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_49_question" />
+            <field name="value">Peaceful and relaxed with a lot of flexibility.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_49_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_49_question" />
+            <field name="value">Collaborative with plenty of interaction with others.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_49_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_49_question" />
+            <field name="value">Structured with clear guidelines and expectations.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_49_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_49_question" />
+            <field name="value">Innovative and open to new ideas.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_5_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What kind of music resonates with you?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_5_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_5_question" />
+            <field name="value">Upbeat and energetic pop.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_5_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_5_question" />
+            <field name="value">Relaxing acoustic or lo-fi.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_5_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_5_question" />
+            <field name="value">Classical or soft ballads.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_5_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_5_question" />
+            <field name="value">Folk or instrumental.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_5_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_5_question" />
+            <field name="value">World music or jazz.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_50_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">What type of art inspires you the most?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_50_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_50_question" />
+            <field name="value">Bold, modern art with vibrant colors.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_50_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_50_question" />
+            <field name="value">Minimalist designs with clean lines.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_50_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_50_question" />
+            <field name="value">Classic works from historical periods.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_50_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_50_question" />
+            <field name="value">Nature-inspired art and rustic pieces.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_50_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_50_question" />
+            <field name="value">Eclectic, abstract art that challenges perceptions.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_51_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Orange</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_51_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_51_question" />
+            <field name="value">Is a fruit</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_51_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_51_question" />
+            <field name="value">Is a colour</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_51_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_51_question" />
+            <field name="value">Agent Orange is a killer gas</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_51_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_51_question" />
+            <field name="value">is a telecom giant</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_51_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_51_question" />
+            <field name="value">is good in cocktails</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_52_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Banana</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_52_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_52_question" />
+            <field name="value">is for Monkeys</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_52_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_52_question" />
+            <field name="value">perfect for shake</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_52_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_52_question" />
+            <field name="value">Has a tropical scent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_52_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_52_question" />
+            <field name="value">Is rich in potassium</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_52_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_52_question" />
+            <field name="value">I know people who have gone bananas!</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_53_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Apple</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_53_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_53_question" />
+            <field name="value">A common crisp perfume note</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_53_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_53_question" />
+            <field name="value">Keeps doctors away</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_53_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_53_question" />
+            <field name="value">Was the cause of Newton’s discovery of gravity</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_53_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_53_question" />
+            <field name="value">Comes in so many varieties - Granny Smith and Fuji</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_53_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_53_question" />
+            <field name="value">is iPhone and Mac</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_54_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Rose</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_54_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_54_question" />
+            <field name="value">Is a popular scent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_54_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_54_question" />
+            <field name="value">Comes in different colors</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_54_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_54_question" />
+            <field name="value">Means love and romance</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_54_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_54_question" />
+            <field name="value">Rose water is good for skin</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_54_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_54_question" />
+            <field name="value">Rose gold – a perfect color!</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_55_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Sandalwood</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_55_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_55_question" />
+            <field name="value">Is a warm scent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_55_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_55_question" />
+            <field name="value">It is an endangered tree now</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_55_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_55_question" />
+            <field name="value">Is used in incense for worship</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_55_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_55_question" />
+            <field name="value">Has calming and meditative properties</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_55_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_55_question" />
+            <field name="value">Is an expensive softwood</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_56_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Vanilla</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_56_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_56_question" />
+            <field name="value">Is an ice cream</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_56_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_56_question" />
+            <field name="value">Is best in cake &amp; muffin</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_56_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_56_question" />
+            <field name="value">Is a perfume ingredient</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_56_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_56_question" />
+            <field name="value">Is an orchid</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_56_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_56_question" />
+            <field name="value">Means things are plain and boring</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_57_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Jasmine</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_57_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_57_question" />
+            <field name="value">Is a sweet, exotic floral scent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_57_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_57_question" />
+            <field name="value">White flowers</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_57_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_57_question" />
+            <field name="value">Means love &amp; purity</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_57_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_57_question" />
+            <field name="value">Flowers are used in temple &amp; garland</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_57_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_57_question" />
+            <field name="value">Is Aladdin’s girlfriend</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_58_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Cinnamon</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_58_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_58_question" />
+            <field name="value">Is a spice</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_58_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_58_question" />
+            <field name="value">Is a scent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_58_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_58_question" />
+            <field name="value">Is Christmas</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_58_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_58_question" />
+            <field name="value">Is used in cooking and baking</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_58_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_58_question" />
+            <field name="value">is perfect for latte</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_59_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Lemon</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_59_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_59_question" />
+            <field name="value">Has a fresh, zesty citrus scent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_59_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_59_question" />
+            <field name="value">Is a natural mood booster</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_59_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_59_question" />
+            <field name="value">Is for food</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_59_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_59_question" />
+            <field name="value">Is commonly used in cleaning products</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_59_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_59_question" />
+            <field name="value">Is best in Margarita</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_6_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">At a party, you’re most likely to...</field>
+            <field name="question_type">simple_choice</field>
+            <field name="fixed_question">true</field>
+        </record>
+        <record id="question_6_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_6_question" />
+            <field name="value">Be the life of the party, chatting with everyone.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_6_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_6_question" />
+            <field name="value">Enjoy casual conversations with a few people.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_6_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_6_question" />
+            <field name="value">Admire the décor and ambiance.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_6_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_6_question" />
+            <field name="value">Sit by the fire or enjoy deep conversations.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_6_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_6_question" />
+            <field name="value">Try unique food and drinks.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_60_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Coconut</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_60_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_60_question" />
+            <field name="value">Is a great drink</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_60_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_60_question" />
+            <field name="value">Is an oil</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_60_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_60_question" />
+            <field name="value">Is used in beach-inspired perfumes</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_60_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_60_question" />
+            <field name="value">Is a flavour</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_60_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_60_question" />
+            <field name="value">Is Pina Colada</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_61_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Ginger</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_61_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_61_question" />
+            <field name="value">Is spicy</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_61_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_61_question" />
+            <field name="value">Her hair, Her hair, was the colour of delicate ginger</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_61_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_61_question" />
+            <field name="value">Is ginger-bread house</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_61_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_61_question" />
+            <field name="value">Can cure &amp; heal</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_61_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_61_question" />
+            <field name="value">Is a Disney character</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_62_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Coffee</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_62_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_62_question" />
+            <field name="value">Wakes me up</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_62_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_62_question" />
+            <field name="value">Is perfumes ingredient</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_62_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_62_question" />
+            <field name="value">Is a ritual</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_62_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_62_question" />
+            <field name="value">Comes from cocoa beans</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_62_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_62_question" />
+            <field name="value">Espresso Martini</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_7_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Your favorite drink is...</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_7_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_7_question" />
+            <field name="value">Lemonade or a citrus cocktail.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_7_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_7_question" />
+            <field name="value">Sparkling water or herbal tea.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_7_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_7_question" />
+            <field name="value">Floral tea or a fruity sangria.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_7_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_7_question" />
+            <field name="value">Black coffee or whiskey.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_7_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_7_question" />
+            <field name="value">Spiced chai or an exotic cocktail.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_8_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">How do you decorate your living space?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_8_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_8_question" />
+            <field name="value">Bright and cheerful accents.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_8_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_8_question" />
+            <field name="value">Minimalist and airy.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_8_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_8_question" />
+            <field name="value">Cozy with flowers and soft lighting.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_8_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_8_question" />
+            <field name="value">Rustic with natural wood and greenery.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_8_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_8_question" />
+            <field name="value">Eclectic with unique artifacts.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+        <record id="question_9_question" model="survey.question">
+            <field name="survey_id" ref="gm_survey.test_20_questions" />
+            <field name="page_id" ref="gm_survey.page_quiz_20_questions" />
+            <field name="title">Which vacation appeals to you most?</field>
+            <field name="question_type">simple_choice</field>
+        </record>
+        <record id="question_9_answer_a" model="survey.question.answer">
+            <field name="question_id" ref="question_9_question" />
+            <field name="value">A tropical island getaway.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1" />
+        </record>
+        <record id="question_9_answer_b" model="survey.question.answer">
+            <field name="question_id" ref="question_9_question" />
+            <field name="value">A peaceful mountain retreat.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2" />
+        </record>
+        <record id="question_9_answer_c" model="survey.question.answer">
+            <field name="question_id" ref="question_9_question" />
+            <field name="value">A countryside escape with blooming fields.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3" />
+        </record>
+        <record id="question_9_answer_d" model="survey.question.answer">
+            <field name="question_id" ref="question_9_question" />
+            <field name="value">A forest cabin deep in nature.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4" />
+        </record>
+        <record id="question_9_answer_e" model="survey.question.answer">
+            <field name="question_id" ref="question_9_question" />
+            <field name="value">A cultural trip to an exotic destination.</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5" />
+        </record>
+    </data>
+</odoo>

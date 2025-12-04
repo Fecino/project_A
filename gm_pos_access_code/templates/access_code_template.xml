@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="access_code_template" name="Access Code Template">
+        <t t-call="web.html_container">
+            <t t-foreach="codes" t-as="code_data">
+                <div class="page" style="page-break-after: always; width: 58mm; height: 58mm; border: 1px solid #ccc; margin: 0; padding: 2mm; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <div class="hint" style="color: #6b7280; font-size: 10px; margin-bottom: 4px;">Your access code is:</div>
+                    <div class="code" style="font-weight: 700; font-size: 16px; letter-spacing: 1px; color: #111827; margin-bottom: 4px;">
+                        <t t-esc="code_data.get('code', '')"/>
+                    </div>
+                    <img t-att-src="company_logo_url" style="height: 16px; margin: 4px 0;" alt="Logo"/>
+                    <div class="page-info" style="color: #6b7280; font-size: 9px;">
+                        Page: <t t-esc="code_data.get('pageNumber', '')"/>/<t t-esc="total_pages"/>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

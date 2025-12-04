@@ -1,0 +1,490 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="auth_signup.login" inherit_id="web.login" name="Sign up - Reset Password">
+        <xpath expr="//div[hasclass('oe_login_buttons')]" position="after">
+            <p class="mt-2 text-center">
+                <a t-if="signup_enabled" class="btn btn-link btn-sm" t-attf-href="/web/signup?{{ keep_query() }}">Don't have an account?</a>
+            </p>
+        </xpath>
+    </template>
+    <template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
+        <div class="form-group field-login">
+            <label for="login" class="form-label">Email / Scentzania ID <span class="text-danger">*</span></label>
+            <input type="text" name="login" t-att-value="login" id="login" class="form-control" placeholder="example@email.com" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None" />
+        </div>
+        <div class="mb-3 field-password pt-2">
+                <label for="password">Password</label>
+                <div style="position: relative;">
+                    <input type="password" name="password" id="password" class="form-control form-control-sm" required="required" t-att-autofocus="'autofocus' if only_passwords else None" style="padding-right: 40px;" autocomplete="new-password"/>
+                    <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
+                </div>
+            </div>
+            <div class="mb-3 field-confirm_password">
+                <label for="confirm_password">Confirm Password</label>
+                <div style="position: relative;">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required" style="padding-right: 40px;" autocomplete="new-password"/>
+                    <i class="fa fa-eye-slash" id="toggleConfirmPassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
+                </div>
+            </div>
+        <div class="form-group field-firstname">
+            <label for="firstname" class="form-label">Your First Name <span class="text-danger">*</span></label>
+            <input type="text" name="firstname" t-att-value="firstname" id="firstname" class="form-control" placeholder="e.g. John" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+        </div>
+        <div class="form-group field-lastname">
+            <label for="lastname" class="form-label">Your Last Name <span class="text-danger">*</span></label>
+            <input type="text" name="lastname" t-att-value="lastname" id="lastname" class="form-control" placeholder="e.g. Doe" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+        </div>
+        <div class="form-group field-phone">
+            <label for="phone" class="form-label">Your Phone <span class="text-danger">*</span></label>
+            <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control" placeholder="e.g. +123456789" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+        </div>
+        <div class="form-group field-date_of_birth">
+            <label for="birthday" class="form-label">Your Birthday <span class="text-danger">*</span></label>
+            <input type="date" name="wk_dob" t-att-value="wk_dob" id="birthday" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+        </div>
+        <div class="mb-3 field-country form-group">
+            <label for="country-display" class="form-label">Country <span class="text-danger">*</span></label>
+            <input type="text" id="country-display" readonly="readonly" placeholder="Click to select country" class="form-control" style="cursor: pointer;" />
+            <input type="hidden" name="country_id" t-att-value="country_id" id="country-id" />
+        </div>
+        <div id="country-modal" class="country-modal" style="display:none;">
+            <div class="country-modal-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Select Country</h5>
+                    <button type="button" class="btn-close" onclick="document.getElementById('country-modal').classList.remove('show'); document.getElementById('country-modal').style.display='none';"></button>
+                </div>
+                <input type="text" id="country-search" placeholder="Search country..." class="form-control mb-2" />
+                <ul id="country-list" style="list-style: none; max-height: 300px; overflow-y: auto;"></ul>
+            </div>
+        </div>
+        <div class="form-group field-gender">
+            <label class="form-label" for="gender">Gender <span class="text-danger">*</span></label>
+            <select name="gender" required="1" class="form-control" id="gender">
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <script type="text/javascript" src="/gm_web/static/src/js/select_country.js" />
+    </template>
+    <template id="auth_signup.signup" name="Sign Up">
+        <t t-call="web.basic_layout">
+            <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+			<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+			<t t-if="font_url">
+					<link rel="stylesheet" t-att-href="font_url"/>
+			</t>
+            <style>
+                html,
+                body {
+					font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    width: 100vw !important;
+                    min-height: 100vh !important;
+                    height: 100% !important;
+                    overflow-x: hidden;
+                    background: #F9F2F0 !important;
+                }
+
+                .signup-bg {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100vw;
+                    min-height: 100vh;
+                    z-index: 1;
+                    background: url('/gm_survey/static/src/img/rose.png') center center/cover no-repeat;
+                    filter: grayscale(1) brightness(0.6);
+                }
+
+                .signup-overlay {
+                    position: relative;
+                    width: 100vw;
+                    min-height: 100vh;
+                    z-index: 2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 20px;
+                    box-sizing: border-box;
+                }
+
+                .signup-content {
+                    background: rgba(0, 0, 0, 0.0);
+                    color: black;
+                    width: 100%;
+                    max-width: 450px;
+                    max-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    z-index: 3;
+                    margin-bottom: 50px !important;
+                    
+                }
+
+                .signup-title {
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    margin-bottom: 0.3rem;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .signup-subtext {
+                    font-size: 0.9rem;
+                    font-weight: 400;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .signup-form-container {
+                    width: 100%;
+                    padding: 20px;
+                    border-radius: 16px;
+                    margin-bottom: 0.8rem;
+                    box-sizing: border-box;
+                }
+
+                .signup-form {
+                    width: 100%;
+                }
+
+                .form-group {
+                    margin-bottom: 12px;
+                }
+
+                .form-label {
+                    display: block;
+                    margin-bottom: 0px;
+                    font-size: 13px;
+                    color: #333;
+                    font-weight: 500;
+                }
+
+                .form-control {
+                    width: 100%;
+                    padding: 6px 12px;
+                    border: 1px solid #ddd;
+                    border-radius: 6px;
+                    font-size: 13px;
+                    transition: all 0.3s ease;
+                    box-sizing: border-box;
+                    background: #F5F5F5 !important;
+                }
+
+                .form-control:focus {
+                    outline: none;
+                    border-color: #87CEEB;
+                    box-shadow: 0 0 0 2px rgba(135, 206, 235, 0.1);
+                }
+
+                .signup-btn {
+                    width: 100%;
+                    background: #f5f0e6;
+                    color: #222;
+                    border: none;
+                    border-radius: 20px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding: 0.8rem 0;
+                    margin-bottom: 0.5rem;
+                    cursor: pointer;
+                    transition: background 0.2s, color 0.2s;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                }
+
+                .signup-btn:hover {
+                    background: #e0d7c6;
+                    color: #111;
+                }
+
+                .signup-login-row {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 0.9rem;
+                    margin-bottom: 0.3rem;
+                }
+
+                .signup-login-row a {
+                    color: black;
+                    text-decoration: underline;
+                    font-weight: 500;
+                    margin-left: 0.25rem;
+                }
+
+                .signup-footer {
+                    position: absolute;
+                    bottom: 16px;
+                    left: 0;
+                    width: 100vw;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    z-index: 4;
+                }
+
+                .signup-logo {
+                    width: 120px;
+                    margin-top: 8px;
+                }
+
+                .alert {
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    margin-bottom: 12px;
+                    font-size: 12px;
+                }
+
+                .alert-danger {
+                    background-color: #f8d7da;
+                    border: 1px solid #f5c6cb;
+                    color: #721c24;
+                }
+
+                .alert-success {
+                    background-color: #d4edda;
+                    border: 1px solid #c3e6cb;
+                    color: #155724;
+                }
+
+                .form-check {
+                    margin-bottom: 8px;
+                }
+
+                .form-check-label {
+                    font-size: 12px;
+                    color: #333;
+                }
+
+                .country-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: rgba(0,0,0,0.4);
+                    display: none; /* JS toggles this */
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 9999;
+                    }
+
+                    .country-modal.show {
+                    display: flex !important;
+                    }
+
+                    .country-modal-content {
+                    background: white;
+                    border-radius: 10px;
+                    padding: 20px;
+                    width: 90%;
+                    max-width: 400px;
+                    max-height: 80%;
+                    overflow-y: auto;
+                }
+
+                #country-list {
+                        padding-left: 0!important;  
+                }
+                #country-list li {
+                    padding: 10px;
+                    border-bottom: 1px solid #eee;
+                    cursor: pointer;
+                }
+
+                #country-list li:hover {
+                    background-color: #f3f3f3;
+                }
+
+
+                @media (max-width: 500px) {
+                    .signup-content {
+                        max-width: 95vw;
+                        max-height: 100vh;
+                    }
+
+                    .signup-form-container {
+                        max-height: 100vh;
+                        padding: 16px;
+                    }
+
+                    .signup-footer {
+                        bottom: 12px;
+                    }
+
+                    .signup-title {
+                        font-size: 1.6rem;
+                    }
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+
+                    to {
+                        opacity: 1;
+                    }
+                }
+                /* Kill Edge built-in password reveal */
+                input[type="password"]::-ms-reveal,
+                input[type="password"]::-ms-clear {
+                    display: none !important;
+                    width: 0 !important;
+                    height: 0 !important;
+                }
+
+                /* Kill Chromium-based Edge password toggle */
+                input[type="password"]::password-toggle {
+                    display: none !important;
+                }
+            </style>
+            <div class="signup-bg"></div>
+            <div class="signup-overlay">
+                <div class="signup-content" >
+                    <t t-set="only_passwords" t-value="bool(token and not invalid_token)" />
+                    <div class="signup-form-container">
+                        <form class="signup-form oe_signup_form" role="form" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                            <input type="hidden" name="redirect" t-att-value="redirect" />
+                            <input type="hidden" name="device_token" id="device_token_input" />
+                            <t t-call="auth_signup.fields" />
+                            <p class="alert alert-danger" t-if="error" role="alert">
+                                <t t-esc="error" />
+                            </p>
+                            <p t-if="message" class="alert alert-success" role="status">
+                                <t t-esc="message" />
+                            </p>
+                            <button type="submit" class="signup-btn">Sign up</button>
+                        </form>
+                      <div class="signup-login-row"> Already have an account <a t-attf-href="/web/login?{{ keep_query() }}">Log In</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="z-index: 999; background: #F9F2F0">
+                    <a t-attf-href="/web/login?{{ keep_query() }}" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                    </a>
+                    <div class="d-flex justify-content-center">
+                        <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+                    </div>
+                    <div style="width: 40px;"></div>
+                </div>
+            </div>
+            <script type="text/javascript" src="/gm_web/static/src/js/select_country.js" />
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var token = localStorage.getItem('device_token');
+                    if (!token) {
+                        if (window.crypto &amp;&amp; window.crypto.randomUUID) {
+                            token = crypto.randomUUID();
+                        } else {
+                            token = 'dev-' + Math.random().toString(36).substr(2, 16);
+                        }
+                        localStorage.setItem('device_token', token);
+                    }
+                    var input = document.getElementById('device_token_input');
+                    if (input) input.value = token;
+                });
+            </script>
+            <script>
+                <![CDATA[
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const togglePassword = document.getElementById('togglePassword');
+                        const passwordField = document.getElementById('password');
+                        
+                        if (togglePassword && passwordField) {
+                            togglePassword.addEventListener('click', function() {
+                                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                                passwordField.setAttribute('type', type);
+                                this.classList.toggle('fa-eye-slash');
+                                this.classList.toggle('fa-eye');
+                            });
+                        }
+
+                        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+                        const confirmPasswordField = document.getElementById('confirm_password');
+                        
+                        if (toggleConfirmPassword && confirmPasswordField) {
+                            toggleConfirmPassword.addEventListener('click', function() {
+                                const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                                confirmPasswordField.setAttribute('type', type);
+                                this.classList.toggle('fa-eye-slash');
+                                this.classList.toggle('fa-eye');
+                            });
+                        }
+                    });
+                ]]>
+            </script>
+        </t>
+    </template>
+    <template id="auth_signup.reset_password" name="Reset password">
+        <t t-call="web.login_layout">
+            <style>
+                body{
+                    background: #F9F2F0 !important;
+                }
+                .oe_reset_password_form{
+                    margin: 0 auto !important;
+                }
+            </style>
+            <div t-if="message" class="oe_login_form clearfix">
+                <p class="alert alert-success" t-if="message" role="status">
+                    <t t-esc="message"/>
+                </p>
+                <a href="/web/login" class="btn btn-link btn-sm float-start" role="button">Back to Login</a>
+            </div>
+            <div class="justify-content-center">
+                <div style="background:#EEE5CF !important; border-radius: 20px;margin-top: 50px;padding: 31px 25px;height: 200px;" class="col-md-3 col-sm-10 col-10 mx-auto">
+                    <form class="oe_reset_password_form" role="form" method="post" t-if="not message">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <t t-if="token and not invalid_token">
+                            <t t-call="auth_signup.fields">
+                                <t t-set="only_passwords" t-value="1"/>
+                            </t>
+                        </t>
+
+                        <t t-if="not token">
+                            <div class="mb-3 field-login">
+                                <label for="login" class="col-form-label">Your Email</label>
+                                <input type="text" name="login" t-att-value="login" id="login" class="form-control"
+                                    autofocus="autofocus" required="required" autocapitalize="off"/>
+                            </div>
+                        </t>
+
+                        <p class="alert alert-danger" t-if="error" role="alert">
+                            <t t-esc="error"/>
+                        </p>
+                        <input type="hidden" name="redirect" t-att-value="redirect"/>
+                        <input type="hidden" name="token" t-att-value="token"/>
+                        <div class="clearfix oe_login_buttons d-grid mt-3">
+                            <div class="d-flex justify-content-between align-items-center small mt-2">
+                                <a t-if="not token" t-attf-href="/web/login?{{ keep_query() }}">Cancel</a>
+                                <a t-if="invalid_token" href="/web/login">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Reset Password</button>
+                            </div>
+                            <div class="o_login_auth"/>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="z-index: 999;">
+                <a t-attf-href="/web/login?{{ keep_query() }}" class="text-decoration-none d-flex align-items-center justify-content-center">
+                    <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                </a>
+                <div class="d-flex justify-content-center">
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+                </div>
+                <div style="width: 40px;"></div>
+            </div>
+        </t>
+    </template>
+</odoo>

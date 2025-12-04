@@ -1,0 +1,567 @@
+<odoo>
+    <data>
+        
+        <record id="survey_question_form_inherit" model="ir.ui.view">
+            <field name="name">survey.question.form.inherit</field>
+            <field name="model">survey.question</field>
+            <field name="inherit_id" ref="survey.survey_question_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[hasclass('o_label_nowrap')]" position="after">
+                    <group>
+                        <field name="video_url" invisible="question_type != 'video'"/>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='question_type']" position="after">
+                    <field name="fixed_question" invisible="survey_id.questions_selection == 'all'" widget="boolean_toggle"/>
+                </xpath>
+                <xpath expr="//field[@name='suggested_answer_ids']" position="attributes">
+                    <attribute name="invisible">question_type not in ['simple_choice', 'multiple_choice', 'matrix','video']</attribute>
+                </xpath>
+                <xpath expr="//field[@name='suggested_answer_ids']/list//field[@name='value']" position="after">
+                    <field name="fragrance_family_id" widget="selection" />
+                </xpath>
+            </field>
+        </record>
+        <record id="survey_survey_form_inherit" model="ir.ui.view">
+            <field name="name">survey.survey.form.inherit</field>
+            <field name="model">survey.survey</field>
+            <field name="inherit_id" ref="survey.survey_survey_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='survey_type']" position="attributes">
+                    <attribute name="groups">base.group_no_one</attribute>
+                </xpath>
+                <field name="restrict_user_ids" position="after">
+                    <field name="theme_survey"/>
+                    <field name="personality_test" widget="boolean_toggle" />
+                </field>
+                <xpath expr="//field[@name='random_questions_count']" position="after">
+                    <field name="fixed_question" column_invisible="parent.questions_selection == 'all'" widget="boolean_toggle" invisible="is_page"/>
+                </xpath>
+                <xpath expr="//field[@name='question_and_page_ids']/list" position="attributes">
+                    <attribute name="default_order">is_page desc, fixed_question desc</attribute>
+                </xpath>
+                <xpath expr="//header" position="replace">
+                    <header>
+                        <button name="action_test_survey" string="Test Survey" type="object" invisible="not active or not question_ids"/>
+                        <button name="action_unarchive" string="Unarchive Survey" class="btn-primary" type="object" invisible="active"/>
+                        <button name="action_archive" string="Archive Survey" type="object" invisible="not active"/>
+                    </header>
+                </xpath>
+                <xpath expr="//form" position="attributes">
+                    <attribute name="create">false</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="survey_survey_view_tree_inherit" model="ir.ui.view">
+            <field name="name">survey.survey.view.tree.inherit</field>
+            <field name="model">survey.survey</field>
+            <field name="inherit_id" ref="survey.survey_survey_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//list" position="attributes">
+                    <attribute name="create">false</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="survey_survey_view_kanban_inherit" model="ir.ui.view">
+            <field name="name">survey.survey.view.kanban.inherit</field>
+            <field name="model">survey.survey</field>
+            <field name="inherit_id" ref="survey.survey_survey_view_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban" position="attributes">
+                    <attribute name="create">false</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="survey_question_answer_form_inherit" model="ir.ui.view">
+            <field name="name">survey.question.answer.form.inherit</field>
+            <field name="model">survey.question.answer</field>
+            <field name="inherit_id" ref="survey.survey_question_answer_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='question_id']" position="after">
+                    <field name="fragrance_family_id" widget="selection" />
+                </xpath>
+            </field>
+        </record>
+        <record id="survey_user_input_form_inherit" model="ir.ui.view">
+            <field name="name">survey.user.input.form.inherit</field>
+            <field name="model">survey.user_input</field>
+            <field name="inherit_id" ref="survey.survey_user_input_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_input_line_ids']/list/field[@name='question_id']" position="after">
+                    <field name="fragrance_family_id" widget="selection"/>
+                </xpath>
+                <xpath expr="//page[@name='page_answers']" position="after">
+                    <page name="personality" string="Personality">
+                        <group>
+                            <field name="avatar_id"/>
+                            <field name="device_token"  readonly="1"/>
+                        </group>
+                        <group invisible="1">
+                            <field name="personality_citrus"  />
+                            <field name="personality_fresh"  />
+                            <field name="personality_floral"  />
+                            <field name="personality_woody"  />
+                            <field name="personality_oriental"  />
+                        </group>
+                        <field name="fragrance_value_ids" nolabel="1" readonly="1" force_save="1">
+                            <list>
+                                <field name="fragrance_family_id"/>
+                                <field name="value"/>
+                            </list>
+                        </field>
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="survey_user_input_line_form_inherit" model="ir.ui.view">
+            <field name="name">survey.user.input.line.form.inherit</field>
+            <field name="model">survey.user_input.line</field>
+            <field name="inherit_id" ref="survey.survey_user_input_line_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='question_id']" position="after">
+                    <field name="fragrance_family_id" widget="selection"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="crm_lead_view_form_inherit_gm_survey" model="ir.ui.view">
+            <field name="name">crm.lead.form.inherit.gm_survey</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page string="User Profile">
+                    <group>
+                        <group string="Account Info">
+                            <field name="user_portal_id"/>
+                            <field name="user_login"/>
+                            <field name="user_email"/>
+                            <field name="user_name"/>
+                        </group>
+                        <group string="Personal Profile">
+                            <field name="gender"/>
+                            <field name="wk_dob"/>
+                            <field name="country"/>
+                            <field name="secondary_email"/>
+                            <field name="fax"/>
+                            <field name="survey_id"/>
+                            <field name="survey_user_input_id"/>
+                            <!-- <field name="bottle_size"/> -->
+                        </group>
+                    </group>
+                </page>
+                <page string="User Activity">
+                    <group>
+                        <group string="Perfume Personality" invisible="1">
+                            <field name="personality_mapping_lines" widget="one2many_list" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="perfume_personality"/>
+                                    <field name="personality_citrus"/>
+                                    <field name="personality_fresh"/>
+                                    <field name="personality_floral"/>
+                                    <field name="personality_woody"/>
+                                    <field name="personality_oriental"/>
+                                    <field name="persona_name"/>
+                                    <field name="gender"/>
+                                    <field name="link_video"/>
+                                    <field name="avatar_img"/>
+                                </list>
+                            </field>
+                        </group>
+                        <group string="Avatar &amp; Fragrance Family">
+                            <field name="avatar_id"/>
+                            <field name="fragrance_value_ids" widget="one2many_list" nolabel="1" readonly="0">
+                                <list editable="bottom">
+                                    <field name="fragrance_family_id"/>
+                                    <field name="value"/>
+                                    <!-- <field name="value_calculated"/> -->
+                                    <field name="value_manual"/>
+                                    <field name="value_50"/>
+                                    <field name="value_30"/>
+                                </list>
+                            </field>
+                        </group>
+                        <group string="My Formulas">
+                            <field name="purchased_formula_ids" widget="one2many_list" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="formula_id"/>
+                                    <field name="formula_name"/>
+                                    <field name="bottle_size"/>
+                                    <field name="sample_citrus" string="Citrus" widget="many2many_tags"/>
+                                    <field name="sample_fresh" string="Fresh" widget="many2many_tags"/>
+                                    <field name="sample_floral" string="Floral" widget="many2many_tags"/>
+                                    <field name="sample_woody" string="Woody" widget="many2many_tags"/>
+                                    <field name="sample_oriental" string="Oriental" widget="many2many_tags"/>
+                                    <field name="formula_purchased"/>
+                                    <field name="perfume_picture"/>
+                                </list>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="formula_id"/>
+                                                <field name="formula_name"/>
+                                                <field name="formula_purchased"/>
+                                                <field name="perfume_picture"/>
+                                            </group>
+                                        </group>
+                                        <notebook>
+                                            <page string="Perfume Samples">
+                                                <group>
+                                                    <group string="Citrus Samples">
+                                                        <field name="sample_citrus" widget="many2many_tags" nolabel="1"/>
+                                                    </group>
+                                                    <group string="Fresh Samples">
+                                                        <field name="sample_fresh" widget="many2many_tags" nolabel="1"/>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <group string="Floral Samples">
+                                                        <field name="sample_floral" widget="many2many_tags" nolabel="1"/>
+                                                    </group>
+                                                    <group string="Woody Samples">
+                                                        <field name="sample_woody" widget="many2many_tags" nolabel="1"/>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <group string="Oriental Samples">
+                                                        <field name="sample_oriental" widget="many2many_tags" nolabel="1"/>
+                                                    </group>
+                                                </group>
+                                            </page>
+                                            <page string="Sample Counts (Read-only)">
+                                                <group>
+                                                    <group>
+                                                        <field name="citrus_count" readonly="1"/>
+                                                        <field name="fresh_count" readonly="1"/>
+                                                        <field name="floral_count" readonly="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="woody_count" readonly="1"/>
+                                                        <field name="oriental_count" readonly="1"/>
+                                                    </group>
+                                                </group>
+                                            </page>
+                                        </notebook>
+                                    </sheet>
+                                </form>
+                            
+                            </field>
+                            <!-- <field name="formula_drop_ids" widget="one2many_list">
+                                <list editable="bottom">
+                                    <field name="formula_id"/>
+                                    <field name="bottle_size"/>
+                                    <field name="oil_drop" widget="one2many_tags"/>
+                                </list>
+                            </field> -->
+                        </group>
+                    </group>
+                    <group string="Personality">
+                        <group string="Personality">
+                            <field name="uuid" invisible="1"/>
+                            <field name="avatar_name" string="Avatar Name" readonly="1"/>
+                            <!-- <field name="avatar_id" string="Avatar Image" widget="image"/> -->
+                        </group>
+                        <!-- <group string="POS Access Code">
+                            <button name="generate_pos_access_code" type="object" class="oe_stat_button" icon="fa-qrcode" string="Generate POS Access Code"/>
+                            <field name="booking_code" string="Booking Code"/>
+                            <field name="booking_price" string="Booking Price"/>
+                            <field name="booking_from" string="Booking From"/>
+                            <field name="bottle_size" string="Bottle Size"/>
+                            <field name="access_code_json" string="Access Code JSON" widget="text" readonly="1"/>
+                        </group> -->
+                    </group>
+                </page>
+                <page string="Survey Answer">
+                    <field name="user_input_line_ids" mode="list" readonly="True" no_label="1" domain="[('fragrance_family_id', '==', True)]">
+                        <list decoration-muted="skipped == True">
+                            <field name="question_id"/>
+                            <field name="display_name" string="Answer"/>
+                            <field name="fragrance_family_id" sum="Value"/>
+                        </list>
+                    </field>
+                </page>
+                <page string="Purchase History">
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_purchase_history" type="object" class="oe_stat_button" icon="fa-shopping-cart">
+                            <field name="total_purchases" widget="statinfo" string="Total Purchases"/>
+                        </button>
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-money">
+                            <field name="total_spent" widget="monetary" options="{'currency_field': 'currency_id'}" string="Total Spent"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group string="Purchase Statistics">
+                            <field name="total_purchases"/>
+                            <field name="total_spent"/>
+                            <field name="last_purchase_date"/>
+                        </group>
+                    </group>
+                    <field name="purchase_history_ids" nolabel="1">
+                        <list decoration-success="payment_status=='paid'" decoration-warning="payment_status=='pending'" decoration-danger="payment_status=='failed'">
+                            <field name="purchase_date"/>
+                            <field name="formula_name"/>
+                            <field name="bottle_size"/>
+                            <field name="quantity"/>
+                            <field name="total_amount"/>
+                            <field name="payment_status"/>
+                            <field name="delivery_status"/>
+                            <field name="is_sample"/>
+                            <field name="is_gift"/>
+                        </list>
+                        <form>
+                            <group>
+                                <group>
+                                    <field name="formula_id"/>
+                                    <field name="formula_name"/>
+                                    <field name="purchase_date"/>
+                                    <field name="bottle_size"/>
+                                    <field name="custom_size" invisible="bottle_size != 'custom'"/>
+                                    <field name="quantity"/>
+                                </group>
+                                <group>
+                                    <field name="unit_price"/>
+                                    <field name="total_amount"/>
+                                    <field name="payment_status"/>
+                                    <field name="delivery_status"/>
+                                    <field name="is_sample"/>
+                                    <field name="is_gift"/>
+                                    <field name="gift_recipient" invisible="not is_gift"/>
+                                </group>
+                            </group>
+                            <field name="notes"/>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+                <xpath expr="//field[@name='survey_user_input_id']" position="after">
+                    <!-- Remove old groups, now replaced by notebook pages -->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="crm_lead_purchase_history_form" model="ir.ui.view">
+            <field name="name">crm.lead.purchase.history.form</field>
+            <field name="model">crm.lead.purchase.history</field>
+            <field name="arch" type="xml">
+                <form string="Purchase History">
+                    <header>
+                        <field name="payment_status" widget="statusbar" statusbar_visible="pending,paid,failed,refunded"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" invisible="not is_sample">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Sample</span>
+                                </div>
+                            </button>
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-gift" invisible="not is_gift">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Gift</span>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                            <group string="Purchase Details">
+                                <field name="lead_id"/>
+                                <field name="formula_id"/>
+                                <field name="formula_name"/>
+                                <field name="purchase_date"/>
+                                <field name="order_reference"/>
+                            </group>
+                            <group string="Product &amp; Pricing">
+                                <field name="bottle_size"/>
+                                <field name="custom_size" invisible="bottle_size != 'custom'"/>
+                                <field name="quantity"/>
+                                <field name="unit_price"/>
+                                <field name="total_amount"/>
+                                <field name="currency_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Order Status">
+                                <field name="delivery_status"/>
+                                <field name="is_sample"/>
+                                <field name="is_gift"/>
+                                <field name="gift_recipient" invisible="not is_gift"/>
+                            </group>
+                            <group string="Formula Details">
+                                <field name="sample_citrus"/>
+                                <field name="sample_fresh"/>
+                                <field name="sample_floral"/>
+                                <field name="sample_woody"/>
+                                <field name="sample_oriental"/>
+                                <field name="perfume_picture"/>
+                            </group>
+                        </group>
+                        <group string="Additional Information">
+                            <field name="notes" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_lead_purchase_history_tree" model="ir.ui.view">
+            <field name="name">crm.lead.purchase.history.tree</field>
+            <field name="model">crm.lead.purchase.history</field>
+            <field name="arch" type="xml">
+                <list string="Purchase History" decoration-success="payment_status=='paid'" decoration-warning="payment_status=='pending'" decoration-danger="payment_status=='failed'">
+                    <field name="purchase_date"/>
+                    <field name="lead_id"/>
+                    <field name="formula_name"/>
+                    <field name="bottle_size"/>
+                    <field name="quantity"/>
+                    <field name="total_amount"/>
+                    <field name="currency_id"/>
+                    <field name="payment_status"/>
+                    <field name="delivery_status"/>
+                    <field name="is_sample"/>
+                    <field name="is_gift"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="crm_lead_purchase_history_search" model="ir.ui.view">
+            <field name="name">crm.lead.purchase.history.search</field>
+            <field name="model">crm.lead.purchase.history</field>
+            <field name="arch" type="xml">
+                <search string="Purchase History">
+                    <field name="lead_id"/>
+                    <field name="formula_name"/>
+                    <field name="order_reference"/>
+                    <separator/>
+                    <filter string="Paid Orders" name="paid" domain="[('payment_status', '=', 'paid')]"/>
+                    <filter string="Pending Payment" name="pending" domain="[('payment_status', '=', 'pending')]"/>
+                    <filter string="Sample Orders" name="samples" domain="[('is_sample', '=', True)]"/>
+                    <filter string="Gift Orders" name="gifts" domain="[('is_gift', '=', True)]"/>
+                    <separator/>
+                    <filter string="This Year" name="this_year" domain="[('purchase_date', '&gt;=', datetime.date.today().replace(month=1, day=1))]"/>
+                    <filter string="Last 30 Days" name="last_30_days" domain="[('purchase_date', '&gt;=', (datetime.date.today() - datetime.timedelta(days=30)))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Lead" name="group_lead" context="{'group_by': 'lead_id'}"/>
+                        <filter string="Payment Status" name="group_payment" context="{'group_by': 'payment_status'}"/>
+                        <filter string="Bottle Size" name="group_size" context="{'group_by': 'bottle_size'}"/>
+                        <filter string="Purchase Date" name="group_date" context="{'group_by': 'purchase_date:month'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- Purchased Formula Views -->
+        <record id="crm_lead_purchased_formula_form" model="ir.ui.view">
+            <field name="name">crm.lead.purchased.formula.form</field>
+            <field name="model">crm.lead.purchased.formula</field>
+            <field name="arch" type="xml">
+                <form string="Purchased Formula">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="lead_id"/>
+                                <field name="formula_id"/>
+                                <field name="formula_name"/>
+                                <field name="formula_purchased"/>
+                                <field name="perfume_picture"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Perfume Samples">
+                                <group>
+                                    <group string="Citrus Samples">
+                                        <field name="sample_citrus" widget="many2many_tags" nolabel="1"/>
+                                        <field name="citrus_count" readonly="1" string="Count"/>
+                                    </group>
+                                    <group string="Fresh Samples">
+                                        <field name="sample_fresh" widget="many2many_tags" nolabel="1"/>
+                                        <field name="fresh_count" readonly="1" string="Count"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Floral Samples">
+                                        <field name="sample_floral" widget="many2many_tags" nolabel="1"/>
+                                        <field name="floral_count" readonly="1" string="Count"/>
+                                    </group>
+                                    <group string="Woody Samples">
+                                        <field name="sample_woody" widget="many2many_tags" nolabel="1"/>
+                                        <field name="woody_count" readonly="1" string="Count"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Oriental Samples">
+                                        <field name="sample_oriental" widget="many2many_tags" nolabel="1"/>
+                                        <field name="oriental_count" readonly="1" string="Count"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_lead_purchased_formula_list" model="ir.ui.view">
+            <field name="name">crm.lead.purchased.formula.list</field>
+            <field name="model">crm.lead.purchased.formula</field>
+            <field name="arch" type="xml">
+                <list string="My Formulas">
+                    <field name="lead_id"/>
+                    <field name="formula_name"/>
+                    <field name="citrus_count" string="Citrus"/>
+                    <field name="fresh_count" string="Fresh"/>
+                    <field name="floral_count" string="Floral"/>
+                    <field name="woody_count" string="Woody"/>
+                    <field name="oriental_count" string="Oriental"/>
+                    <field name="formula_purchased"/>
+                    <field name="create_date"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="crm_lead_purchased_formula_search" model="ir.ui.view">
+            <field name="name">crm.lead.purchased.formula.search</field>
+            <field name="model">crm.lead.purchased.formula</field>
+            <field name="arch" type="xml">
+                <search string="Search My Formulas">
+                    <field name="formula_name"/>
+                    <field name="lead_id"/>
+                    <filter string="Purchased" name="purchased" domain="[('formula_purchased', '=', True)]"/>
+                    <filter string="Not Purchased" name="not_purchased" domain="[('formula_purchased', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Lead" name="group_lead" context="{'group_by': 'lead_id'}"/>
+                        <filter string="Purchased Status" name="group_purchased" context="{'group_by': 'formula_purchased'}"/>
+                        <filter string="Creation Date" name="group_date" context="{'group_by': 'create_date:month'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_crm_lead_purchased_formula" model="ir.actions.act_window">
+            <field name="name">My Formulas</field>
+            <field name="res_model">crm.lead.purchased.formula</field>
+            <field name="view_mode">list,form</field>
+            <field name="search_view_id" ref="crm_lead_purchased_formula_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first purchased formula!
+                </p>
+                <p>
+                    Track formulas created by users with detailed perfume samples.
+                </p>
+            </field>
+        </record>
+
+        <!-- Add menu item for My Formulas -->
+        <!-- <menuitem id="menu_crm_lead_purchased_formula"
+                  name="My Formulas"
+                  parent="crm.crm_menu_root"
+                  action="action_crm_lead_purchased_formula"
+                  sequence="15"/>
+ -->
+
+    </data>
+</odoo>

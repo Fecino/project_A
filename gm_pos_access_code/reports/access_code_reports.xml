@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Report Action for Access Code -->
+    <record id="action_access_code_report" model="ir.actions.report">
+        <field name="name">Access Code Report</field>
+        <field name="model">pos.access.code</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_pos_access_code.report_access_code_details</field>
+        <field name="report_file">gm_pos_access_code.report_access_code_details</field>
+        <field name="binding_model_id" ref="model_pos_access_code"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="base.paperformat_euro"/>
+        <field name="print_report_name">'Access Code - %s' % (object.name)</field>
+    </record>
+    
+    <!-- Custom Paper Format 58mm x 58mm -->
+    <record id="paperformat_access_code" model="report.paperformat">
+        <field name="name">Access Code Format (58mm x 58mm)</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line">False</field>
+        <field name="header_spacing">0</field>
+        <field name="dpi">72</field>
+        <field name="page_width">58</field>
+        <field name="page_height">58</field>
+    </record>
+    
+    <!-- Update Report Action to use custom paper format -->
+    <record id="action_access_code_report" model="ir.actions.report">
+        <field name="paperformat_id" ref="paperformat_access_code"/>
+    </record>
+</odoo>

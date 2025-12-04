@@ -1,0 +1,254 @@
+<?xml version="1.0" ?>
+<odoo>
+	<template id="landing_page_template" name="Landing Page">
+		<t t-call="web.basic_layout">
+			<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+			<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+			<t t-if="font_url">
+					<link rel="stylesheet" t-att-href="font_url"/>
+			</t>
+			<style>
+				body {
+					font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+					font-size: clamp(14px, 2vw, 16px);
+				}
+				.welcome-text {
+					color: #a0a0a0 !important;
+					max-width: 80%;
+					margin: 0 auto 2% auto;
+					font-size: clamp(14px, 2.5vw, 18px);
+				}
+				.welcome-text h1,h2,h3,h4{
+					color: #a0a0a0 !important;
+					font-size: clamp(20px, 4vw, 32px);
+				}
+				.grid-container {
+					margin: 0 auto;
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 2% 2%;
+					max-width: 100%;
+				}
+				@media (min-width: 768px) {
+					.grid-container {
+						grid-template-columns: repeat(4, 1fr); /* For tablets and larger screens */
+						gap: 3% 3%;
+					}
+				}
+				@media (max-width: 500px) {
+					.grid-container {
+						max-width: 90%;						
+					}
+				}
+				.grid-item {
+					background-color: #eee0db;
+					aspect-ratio: 1 / 1;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+					border-radius: 1rem;
+					overflow: hidden;
+					max-width: 100%;
+				}
+				.grid-item img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+				.o_body_html {
+					padding: 4% !important;
+				}
+				.article {
+					padding: 3.8% !important;
+				}
+				.footer-text {
+					font-size: clamp(14px, 2.5vw, 16px);
+				}
+			</style>
+			<t t-set="title">Landing Page | Scentzania</t>
+			<div class=" col-sm-12">
+				<t t-set="image_header" t-value="data.line_ids.filtered(lambda l: l.name == 'header')[0]"/>
+				<image alt="Header" t-att-src="'data:%s;base64,%s' % (image_header.image_mime, image_header.decode_image(image_header.image))" class="img-fluid mx-auto" style="max-height: 18% !important;"/>
+			</div>
+			<div class="text-center mt-3" id="landing-page-wrapper" style="padding: 5%;">
+				<div class="welcome-text">
+					<t t-esc="data.description or 'Welcome to Scentzania!'"/>
+				</div>
+			</div>
+			<div class="grid-container" role="list" aria-label="Gallery of scent images" style="padding-bottom: 18%; padding-left: 2%; padding-right: 2%;">
+				<t t-foreach="data.line_ids.filtered(lambda l: l.name != 'header')" t-as="line">
+					<div class="grid-item" role="listitem" aria-label="Scent image placeholder">
+						<image alt="Scent Image" t-att-src="'data:%s;base64,%s' % (line.image_mime, line.decode_image(line.image))"/>
+					</div>
+				</t>
+			</div>
+			<div class="text-center"
+				style="position: fixed;
+								bottom: 0;
+								left: 0;
+								width: 100%;
+								background: #fff;
+								padding: 2.5%;
+								text-align: center;
+								z-index: 999;">
+				<p class="footer-text" style="color: #999; margin:0 !important">Tap anywhere to continue</p>
+				<img src="/gm_web/static/src/img/logo.png" style="width: 30%; margin-bottom: 2%;" alt="Logo"/>
+			</div>
+			<script type="text/javascript">
+						document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+								document.body.addEventListener(&quot;click&quot;, function () {
+										window.location.href = &quot;/language-selector&quot;;
+								});
+						});
+						</script>
+		</t>
+	</template>
+	<template id="language_selector_template" name="Language Selector Mobile Style">
+		<t t-call="web.basic_layout">
+			<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+			<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+			<t t-if="font_url">
+					<link rel="stylesheet" t-att-href="font_url"/>
+			</t>
+			<style>
+				body {
+					font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+				}
+				.o_body_html {
+					padding: 16px !important;
+					background-color: #F9F2F0 !important;
+				}
+			</style>
+			<t t-set="title">Choose Language | Scentzania</t>
+			<form class="login-form" role="form" method="post" t-att-action="'/set-language'" style="margin-top:100px;">
+				<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+				<div class="row justify-content-center">
+					<div class="col-md-10 mb-3">
+						<label for="language" class="form-label">Language</label>
+						<select name="language" id="language" class="form-select bg-white form-select-lg" required="required">
+							<option value="">Select language</option>
+							<t t-foreach="languages" t-as="language">
+								<t t-if="language.code == 'en_US'">
+									<option t-att-value="language.code" selected="selected">
+										<t t-esc="language.name"/>
+									</option>
+								</t>
+								<t t-else="">
+									<option t-att-value="language.code">
+										<t t-esc="language.name"/>
+									</option>
+								</t>
+							</t>
+						</select>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-10 mb-3">
+						<label for="name" class="form-label">Name</label>
+						<input type="text" name="name" id="name" class="form-control form-control-lg" required="required" style="background:white;"/>
+					</div>
+				</div>
+				<div class="fixed-bottom p-3">
+					<div class="d-flex justify-content-center" style="width: 100%; display:block">
+						<a href="/web/login" class="text-decoration-none" style="color:black !important;">
+							I have an account - login
+						</a>
+					</div>
+					<div class="d-flex align-items-center justify-content-between" style="z-index: 999;">
+						<a href="/" class="text-decoration-none d-flex align-items-center justify-content-center">
+							<img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+						</a>
+						<img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+						<button type="submit" class="btn p-0 d-flex align-items-center justify-content-center" style="background: none; border: none;">
+							<img src="/gm_web/static/src/img/next.svg" alt="Next" style="width: 40px; height: 40px; object-fit: contain;"/>      
+						</button>
+					</div>
+				</div>
+			</form>
+		</t>
+	</template>
+	<template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
+		<div class="mb-3 field-login">
+			<label for="login">Your Email</label>
+			<input type="text" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+		</div>
+		<div class="mb-3 field-password pt-2">
+			<label for="password">Password</label>
+			<div style="position: relative;">
+				<input type="password" name="password" id="password" class="form-control form-control-sm" required="required" t-att-autofocus="'autofocus' if only_passwords else None" style="padding-right: 40px;"/>
+				<i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
+			</div>
+		</div>
+		<div class="mb-3 field-confirm_password">
+			<label for="confirm_password">Confirm Password</label>
+			<div style="position: relative;">
+				<input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required" style="padding-right: 40px;"/>
+				<i class="fa fa-eye-slash" id="toggleConfirmPassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
+			</div>
+		</div>
+		<div class="mb-3 field-firstname">
+			<label for="firstname">Your First Name</label>
+			<input type="text" name="firstname" t-att-value="firstname" id="firstname" class="form-control form-control-sm" placeholder="e.g. John" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+		</div>
+		<div class="mb-3 field-lastname">
+			<label for="lastname">Your Last Name</label>
+			<input type="text" name="lastname" t-att-value="lastname" id="lastname" class="form-control form-control-sm" placeholder="e.g. Doe" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+		</div>
+		<div class="mb-3 field-phone">
+			<label for="phone">Your Phone</label>
+			<input type="text" name="phone" t-att-value="phone" id="phone" class="form-control form-control-sm" placeholder="e.g. +123456789" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+		</div>
+		<div class="mb-3 field-date_of_birth">
+			<label for="birthday">Your Birthday</label>
+			<input type="date" name="wk_dob" t-att-value="wk_dob" id="birthday" class="form-control form-control-sm" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+		</div>
+		<div class="mb-3 field-country">
+			<label for="country-display">Country *</label>
+			<input type="text" id="country-display" readonly="readonly" placeholder="Click to select country" class="form-control" style="cursor: pointer;"/>
+			<input type="hidden" name="country_id" t-att-value="country_id" id="country-id"/>
+		</div>
+		<div id="country-modal" class="country-modal" style="display:none;">
+			<div class="country-modal-content">
+				<div class="d-flex justify-content-between align-items-center mb-3">
+					<h5 class="mb-0">Select Country</h5>
+					<button type="button" class="btn-close" onclick="document.getElementById('country-modal').style.display='none'"/>
+				</div>
+				<input type="text" id="country-search" placeholder="Search country..." class="form-control mb-2"/>
+				<ul id="country-list" style="list-style: none; max-height: 300px; overflow-y: auto;"/>
+			</div>
+		</div>
+		<script>
+			<![CDATA[
+				document.addEventListener('DOMContentLoaded', function() {
+					const togglePassword = document.getElementById('togglePassword');
+					const passwordField = document.getElementById('password');
+					
+					if (togglePassword && passwordField) {
+						togglePassword.addEventListener('click', function() {
+							const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+							passwordField.setAttribute('type', type);
+							this.classList.toggle('fa-eye-slash');
+							this.classList.toggle('fa-eye');
+						});
+					}
+
+					const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+					const confirmPasswordField = document.getElementById('confirm_password');
+					
+					if (toggleConfirmPassword && confirmPasswordField) {
+						toggleConfirmPassword.addEventListener('click', function() {
+							const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+							confirmPasswordField.setAttribute('type', type);
+							this.classList.toggle('fa-eye-slash');
+							this.classList.toggle('fa-eye');
+						});
+					}
+				});
+			]]>
+		</script>
+		<t t-call-assets="web.assets_frontend" t-js="true"/>
+	</template>
+</odoo>

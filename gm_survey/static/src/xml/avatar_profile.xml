@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_detail" name="Avatar Detail">
+		<t t-name="gm_survey.avatar_detail">
+			<t t-call="web.basic_layout">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                        font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                    }
+                    .o_body_html{
+                        padding-left: 15px !important;
+                        padding-right: 15px !important;
+                        background-color: #F9F2F0 !important;
+                    }
+                    .btn-custom{
+                        border-radius: 25rem !important; 
+                        width: 100%; 
+                        background-color: #C48080; 
+                        color: white;
+                    }
+                    .info-card{
+                        background-color: #F2F2F2; 
+                        border-radius: 10px; 
+                        padding: 10px; 
+                        height:100%;
+                    }
+                    @media (min-width: 768px) {
+                        .avatar-title {
+                            font-size: xx-large;
+                        }
+                    }
+                    .avatar-title{
+                        font-weight: bold;
+                    }
+                </style>
+                <t t-set="title">Avatar Detail | Scentzania</t>
+                <div class="container" style="padding:0px !important; padding-bottom: 75px !important;">
+                    <div class="row mt-2">
+                        <div class="col-sm-12 col-md-8 order-2 order-md-1 mt-2">
+                            <div class="info-card d-flex justify-content-center align-items-center">
+                                <span class="my-auto avatar-title"> You are a "<t t-esc="avatar.name"/>"</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 order-1 order-md-2 mt-2">
+                            <div class="info-card d-flex align-items-center">
+                                <span style="margin-right: 10px;">
+                                    Hi,
+                                    <br/>
+                                    My name is <t t-esc="avatar_name"/> and I will be your guide on this fragrant journey.
+                                </span>
+                                <t t-if="gender == 'other'">
+                                    <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime(gender), avatar.decode_image(avatar.image))" alt="Avatar Image" class="img-fluid" style="height: 100px;" />
+                                </t>
+                                <t t-if="gender == 'female'">
+                                    <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime(gender), avatar.decode_image(avatar.female_image))" alt="Avatar Image" class="img-fluid" style="height: 100px;" />
+                                </t>
+                                <t t-if="gender == 'male'">
+                                    <img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime(gender), avatar.decode_image(avatar.male_image))" alt="Avatar Image" class="img-fluid" style="height: 100px;" />
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row" style="height:100%">
+                                <div class="col-md-12 sm-12 mt-2">
+                                    <div class="info-card" style="height:100%">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div style="max-height: 250px; max-width: 250px;">
+                                                <canvas id="avatarRadarChart"></canvas>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span>Your Dominant Dimension:</span>
+                                            <br/>
+                                            <span style="font-weight:bold;">( <t t-esc="', '.join(avatar.fragrance_family_ids.mapped('name'))"/> )</span>
+                                            <br/>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Your ideal scent ration:
+                                        </span>
+                                        <br/>
+                                        <t t-foreach="data.items()" t-as="item">
+                                            <t t-set="name" t-value="item[0]"/>
+                                            <t t-set="info" t-value="item[1]"/>
+                                            <div class="d-flex align-items-center mt-1">
+                                                <div style="min-width: 110px;">
+                                                    <t t-esc="name"/> <t t-esc="str(info['percentage'])"/>%
+                                                </div>
+                                                <div class="progress flex-grow-1 ms-2"
+                                                    role="progressbar"
+                                                    t-att-aria-valuenow="str(info['percentage'])"
+                                                    aria-valuemin="0" aria-valuemax="100"
+                                                    style="height: 5px;">
+                                                    <div class="progress-bar bg-info"
+                                                        t-att-style="'width: ' + str(info['percentage']) + '%; background-color: ' + info['color'] + '!important;'">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Personality Overview:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.overview"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Emotions:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.emotions"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Goals:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.goal"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Judges others by:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.judges_other_by"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Influences others by:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.influences_other_by"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Strengths and Limitations:
+                                        </span>
+                                        <br/>
+                                        <t t-esc="avatar.strengths"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Communication &amp; Decision-Making Style:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.communication"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Values to the Organization:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.values_to_org"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 sm-12 mt-2">
+                                    <div class="info-card">
+                                        <span style="font-weight:bold;">
+                                            Under Pressure:
+                                        </span>
+                                        <br/>
+                                        <span t-esc="avatar.under_pressure"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mt-2">
+                            <div class="info-card">
+                                <span style="font-weight:bold;">
+                                    Personally:
+                                </span>
+                                <br/>
+                                <span t-esc="avatar.personality"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mt-2">
+                            <div class="info-card">
+                                <span style="font-weight:bold;">
+                                    Would increase effectiveness with more:
+                                </span>
+                                <br/>
+                                <span t-esc="avatar.increase_effectiveness"/>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="z-index: 999; background-color: #F9F2F0 !important;">
+                    <t t-if="from_choose_report">
+                        <a t-att-href="'/choose_report/%s' % (answer_token)" class="text-decoration-none d-flex align-items-center justify-content-center">
+                            <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                        </a>
+                    </t>
+                    <t t-else="">
+                        <a t-att-href="'/show_avatar/%s' % (answer_token)" class="text-decoration-none d-flex align-items-center justify-content-center">
+                            <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                        </a>
+                    </t>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 120px;" alt="Logo"/>
+                        <t t-if="from_choose_report">
+                        <div style="width: 40px;"></div>
+                    </t>
+                    <t t-else="">
+                        <a t-att-href="'/choose_report/%s' % (answer_token)" class="text-decoration-none d-flex align-items-center justify-content-center">
+                            <img src="/gm_web/static/src/img/next.svg" alt="Next" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                        </a>
+                    </t>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                    const labels = <t t-raw="labels" />;
+                    const data = <t t-raw="values" />;
+
+                    const ctx = document.getElementById('avatarRadarChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'radar',
+                        data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Fragrance Profile',
+                            data: data,
+                            fill: true,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgb(54, 162, 235)',
+                            pointBackgroundColor: 'rgb(54, 162, 235)',
+                            borderWidth: 2
+                        }]
+                        },
+                        options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        elements: {
+                            line: {
+                                borderWidth: 2
+                            }
+                        },
+                        scales: {
+                            r: {
+                                beginAtZero: true
+                            }
+                        }
+                        }
+                    });
+                    });
+                </script>
+            </t>
+        </t>
+    </template>
+</odoo>

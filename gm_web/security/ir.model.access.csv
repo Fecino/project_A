@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scentopia_web,access.scentopia.web,model_scentopia_web,base.group_user,1,1,1,1
+access_scentopia_web_line,access.scentopia.web.line,model_scentopia_web_line,base.group_user,1,1,1,1
+access_portal_config,portal.config,model_portal_config,base.group_system,1,1,1,1
+access_portal_custom_page,portal.custom.page,model_portal_custom_page,base.group_system,1,1,1,1
+access_portal_custom_page_portal,portal.custom.page,model_portal_custom_page,base.group_portal,1,0,0,0
+access_portal_config_portal,access.portal.config.portal,model_portal_config,base.group_portal,1,0,0,0

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_portal_config_form" model="ir.ui.view">
+        <field name="name">portal.config.form</field>
+        <field name="model">portal.config</field>
+        <field name="arch" type="xml">
+            <form string="Portal Configuration" create="false" delete="false">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" 
+                                class="oe_stat_button" icon="fa-archive" 
+                                invisible="active == True">
+                            <field name="active" widget="boolean_button" 
+                                   options='{"terminology": {"string_true": "Active", "string_false": "Archived"}}'/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Portal Configuration Name"/>
+                        </h1>
+                    </div>
+                    
+                    <notebook>
+                        <page string="my/perfume-showoff/video">
+                            <group>
+                                <field name="show_video" string="Enable Video"/>
+                                <field name="video_url" 
+                                    invisible="show_video == False"/>
+                                <field name="video_thumbnail" 
+                                    invisible="show_video == False"/>
+                                       widget="image" 
+                                       options="{'preview_image': 'image_1024', 'size': [300, 300]}"/>
+                            </group>
+                        </page>
+                        <page string="my/perfume-start-041">
+                            <group>
+                                <field name="video_title" />
+                                <field name="video_description" />
+                                <field name="video_duration" />
+                                <field name="video_url_perfume" />
+                                <field name="video_thumbnail_perfume" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_portal_config" model="ir.actions.act_window">
+        <field name="name">Scentzania Portal</field>
+        <field name="res_model">portal.config</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" eval="False"/>
+        <field name="res_id" ref="gm_web.scentopia_portal_data"/>
+    </record>
+
+    <menuitem id="scentopia_web_portal" 
+              name="Scentzania Portal"
+              parent="gm_scentopia.scentopia_settings_menu_category"
+              action="action_portal_config"
+              sequence="10"/>
+</odoo>

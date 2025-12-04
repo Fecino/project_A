@@ -1,0 +1,43 @@
+<odoo>
+	<data>
+		<!-- Main Scentopia Menu -->
+		<menuitem id="scentopia_root_menu" 
+				  name="Scentzania" 
+				  sequence="1"/>
+		
+		<!-- Perfume Management Section -->
+		<menuitem id="scentopia_perfume_menu" 
+				  name="Perfume Management" 
+				  sequence="10" 
+				  parent="scentopia_root_menu"/>
+		
+		<menuitem id="scentopia_perfume_details_menu" 
+				  name="Perfume Details" 
+				  sequence="10" 
+				  parent="scentopia_perfume_menu"
+				  action="gm_scentopia.action_perfume_details"/>
+				
+		<!-- Customer Experience Section -->
+		<menuitem id="scentopia_customer_menu" 
+				  name="Customer Experience" 
+				  sequence="20" 
+				  parent="scentopia_root_menu"/>
+		
+		<menuitem id="scentopia_personalize_test_menu" 
+				  name="Personalize Test" 
+				  sequence="10" 
+				  parent="scentopia_customer_menu"/>
+
+		<!-- Configuration Section -->
+		<menuitem id="scentopia_config_menu" 
+				  name="Personalize Test" 
+				  sequence="30" 
+				  parent="scentopia_root_menu"/>
+		
+		<menuitem id="scentopia_settings_menu_category" 
+				  name="Settings" 
+				  sequence="10" 
+				  parent="scentopia_config_menu"/>
+		
+	</data>
+</odoo>

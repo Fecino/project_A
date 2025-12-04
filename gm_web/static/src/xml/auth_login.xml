@@ -1,0 +1,276 @@
+<?xml version="1.0" ?>
+<odoo>
+	<template id="web.login" name="Login">
+		<t t-call="web.basic_layout">
+			<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+			<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+			<t t-if="font_url">
+					<link rel="stylesheet" t-att-href="font_url"/>
+			</t>
+			<style>
+				html, body {
+					font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+					margin: 0 !important;
+					padding: 0 !important;
+					width: 100vw !important;
+					height: 100dvh !important;
+					overflow-x: hidden;
+					background: #F9F2F0 !important;
+				}
+				.login-bg {
+					position: fixed;
+					left: 0;
+					top: 0;
+					width: 100vw;
+					height: 100dvh;
+					z-index: 1;
+					background: url('/gm_survey/static/src/img/rose.png') center center/cover no-repeat;
+					filter: grayscale(1) brightness(0.6);
+				}
+				.login-overlay {
+					position: fixed;
+					left: 0;
+					top: 0;
+					width: 100vw;
+					height: 100dvh;
+					z-index: 2;
+					display: flex;
+					flex-direction: column;
+					justify-content: end;
+					align-items: center;
+					padding: 20px;
+					box-sizing: border-box;
+					padding-bottom: 0px;
+				}
+				.login-content {
+					background: rgba(0,0,0,0.0);
+					color: #fff;
+					width: 100%;
+					max-width: 450px;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					z-index: 3;
+				}
+				.login-title {
+					font-size: 2.5rem;
+					font-weight: 700;
+					margin-bottom: 0.3rem;
+					text-align: center;
+					width: 100%;
+					color:#5F3529;
+				}
+				.login-form-container {
+					width: 100%;
+					border-radius: 16px;
+					margin-bottom: 0.8rem;
+					box-sizing: border-box;
+				}
+				.login-form {
+					width: 100%;
+				}
+				.form-group {
+					margin-bottom: 12px;
+				}
+				.form-label {
+					display: block;
+					margin-bottom: 4px;
+					font-size: 13px;
+					color: black;
+					font-weight: 500;
+				}
+				.form-control {
+					width: 100%;
+					padding: 0.5rem 12px;
+					border: 1px solid #ddd;
+					border-radius: 20px;
+					font-size: 13px;
+					transition: all 0.3s ease;
+					box-sizing: border-box;
+					background: black;
+					color: #fff;
+				}
+				.form-control:focus {
+					background-color: #111;
+					color: #fff;
+					outline: none;
+					box-shadow: 0 0 0 1px rgba(70, 73, 78, 0.3);
+				}
+				.login-btn {
+					width: 100%;
+					background: #E0D7C3;
+					color: #222;
+					border: none;
+					border-radius: 20px;
+					font-size: 1rem;
+					font-weight: 600;
+					padding: 0.5rem 0;
+					margin-bottom: 0.5rem;
+					cursor: pointer;
+					transition: background 0.2s, color 0.2s;
+					box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+				}
+				.login-btn:hover {
+					background: #e0d7c6;
+					color: #111;
+				}
+				.login-links {
+					text-align: center;
+					margin-top: 0.5rem;
+				}
+				.login-link {
+					color: #87CEEB;
+					text-decoration: none;
+					font-size: 0.9rem;
+					transition: color 0.3s ease;
+				}
+				.login-link:hover {
+					color: #5a9bc8;
+					text-decoration: underline;
+				}
+				.login-signup-row {
+					width: 100%;
+					text-align: center;
+					font-size: 0.9rem;
+					margin-bottom: 0.3rem;
+				}
+				.login-signup-row a {
+					color: #fff;
+					text-decoration: underline;
+					font-weight: 500;
+					margin-left: 0.25rem;
+				}
+				.login-footer {
+					position: absolute;
+					bottom: 16px;
+					left: 0;
+					width: 100vw;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					z-index: 4;
+				}
+				.login-logo {
+					width: 120px;
+					margin-top: 8px;
+				}
+				.alert {
+					padding: 8px 12px;
+					border-radius: 6px;
+					margin-bottom: 12px;
+					font-size: 12px;
+				}
+				.alert-danger {
+					background-color: #f8d7da;
+					border: 1px solid #f5c6cb;
+					color: #721c24;
+				}
+				.alert-success {
+					background-color: #d4edda;
+					border: 1px solid #c3e6cb;
+					color: #155724;
+				}
+				@media (max-width: 500px) {
+					.login-content {
+						max-width: 95vw;
+					}
+					.login-footer {
+						bottom: 12px;
+					}
+					.login-title {
+						text-align: left;
+					}
+				}
+			</style>
+			<div class="login-bg"/>
+			<div class="login-overlay">
+				<div class="login-content">
+					<div class="login-title">
+						Hi There!<br/>
+						Welcome Back
+					</div>
+					<div class="login-form-container mt-4">
+						<t t-if="Mfa">
+							<t t-call="mfa_totp_login"/>
+						</t>
+						<t t-else="">
+							<owl-component t-if="not login" name="web.user_switch"/>
+							<form class="login-form" role="form" method="post" t-attf-action="/web/login?{{ keep_query() }}">
+								<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+								<input type="hidden" name="device_token" id="device_token_input"/>
+								<div class="form-group" t-if="databases and len(databases) &gt; 1">
+									<label for="db" class="form-label">Database</label>
+									<div style="display: flex; gap: 10px;">
+										<input type="text" name="db" t-att-value="request.db" id="db" class="form-control" required="required" readonly="readonly"/>
+										<a role="button" href="/web/database/selector" class="login-btn" style="width: auto; margin: 0;">
+											Select
+											<i class="fa fa-database" role="img" aria-label="Database" title="Database"/>
+										</a>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="login" class="form-label">Email/ Scentzania ID</label>
+									<input id="login" name="login" type="text" placeholder="Enter your email or Scentzania ID" class="form-control" required="required" autofocus="autofocus" autocapitalize="off" t-att-value="login"/>
+								</div>
+								<div class="form-group">
+									<label for="password" class="form-label">Password</label>
+									<div style="position: relative;">
+										<input id="password" name="password" type="password" placeholder="Enter your password" class="form-control" required="required" maxlength="4096" style="padding-right: 40px;"/>
+										<i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
+									</div>
+								</div>
+								<p t-if="error" class="alert alert-danger">
+									<t t-esc="error"/>
+								</p>
+								<p t-if="message" class="alert alert-success">
+									<t t-esc="message"/>
+								</p>
+								<button type="submit" class="login-btn mt-4">Log In</button>
+								<div class="login-links">
+									<a href="/web/reset_password" class="login-link">Forgot password?</a>
+								</div>
+								<div class="oe_login_buttons" style="display: none;"/>
+							</form>
+						</t>
+					</div>
+					<div class="text-center p-3" style="background: #F9F2F0">
+						<img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 150px;" alt="Logo"/>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="login-footer">
+				<t t-if="debug">
+					<a class="login-link" href="?debug=1">Sign In with debug mode</a>
+				</t>
+				<div class="o_login_auth"/>
+			</div> -->
+
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					var token = localStorage.getItem('device_token');
+					if (!token) {
+						if (window.crypto &amp;&amp; window.crypto.randomUUID) {
+							token = crypto.randomUUID();
+						} else {
+							token = 'dev-' + Math.random().toString(36).substr(2, 16);
+						}
+						localStorage.setItem('device_token', token);
+					}
+					var input = document.getElementById('device_token_input');
+					if (input) input.value = token;
+
+					const togglePassword = document.getElementById('togglePassword');
+					const passwordField = document.getElementById('password');
+					
+					togglePassword.addEventListener('click', function() {
+						const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+						passwordField.setAttribute('type', type);
+						this.classList.toggle('fa-eye-slash');
+						this.classList.toggle('fa-eye');
+					});
+				});
+			</script>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,523 @@
+<odoo>
+    <data noupdate="1">
+        <!-- ========================= -->
+        <!-- Citrus Traits -->
+        <!-- ========================= -->
+        <record id="scent_trait_fierce" model="fragrance.intensity.index">
+            <field name="sequence">1</field>
+            <field name="name">Fierce</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_vigorous" model="fragrance.intensity.index">
+            <field name="sequence">2</field>
+            <field name="name">Vigorous</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_powerful" model="fragrance.intensity.index">
+            <field name="sequence">3</field>
+            <field name="name">Powerful</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_bold" model="fragrance.intensity.index">
+            <field name="sequence">4</field>
+            <field name="name">Bold</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_adventurous" model="fragrance.intensity.index">
+            <field name="sequence">5</field>
+            <field name="name">Adventurous</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_driven" model="fragrance.intensity.index">
+            <field name="sequence">6</field>
+            <field name="name">Driven</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_energetic" model="fragrance.intensity.index">
+            <field name="sequence">7</field>
+            <field name="name">Energetic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_enthusiastic" model="fragrance.intensity.index">
+            <field name="sequence">8</field>
+            <field name="name">Enthusiastic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_assertive" model="fragrance.intensity.index">
+            <field name="sequence">9</field>
+            <field name="name">Assertive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_competitive" model="fragrance.intensity.index">
+            <field name="sequence">10</field>
+            <field name="name">Competitive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_determined" model="fragrance.intensity.index">
+            <field name="sequence">11</field>
+            <field name="name">Determined</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_confident" model="fragrance.intensity.index">
+            <field name="sequence">12</field>
+            <field name="name">Confident</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_outgoing" model="fragrance.intensity.index">
+            <field name="sequence">13</field>
+            <field name="name">Outgoing</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_passionate" model="fragrance.intensity.index">
+            <field name="sequence">14</field>
+            <field name="name">Passionate</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_motivated" model="fragrance.intensity.index">
+            <field name="sequence">15</field>
+            <field name="name">Motivated</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_resilient" model="fragrance.intensity.index">
+            <field name="sequence">16</field>
+            <field name="name">Resilient</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_agile" model="fragrance.intensity.index">
+            <field name="sequence">17</field>
+            <field name="name">Agile</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_dynamic" model="fragrance.intensity.index">
+            <field name="sequence">18</field>
+            <field name="name">Dynamic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_tenacious" model="fragrance.intensity.index">
+            <field name="sequence">19</field>
+            <field name="name">Tenacious</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+        <record id="scent_trait_spirited" model="fragrance.intensity.index">
+            <field name="sequence">20</field>
+            <field name="name">Spirited</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_1"/>
+        </record>
+
+        <!-- ========================= -->
+        <!-- Fresh Traits -->
+        <!-- ========================= -->
+        <record id="scent_trait_extrovert" model="fragrance.intensity.index">
+            <field name="sequence">1</field>
+            <field name="name">Extrovert</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_sporty" model="fragrance.intensity.index">
+            <field name="sequence">2</field>
+            <field name="name">Sporty</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_charismatic" model="fragrance.intensity.index">
+            <field name="sequence">3</field>
+            <field name="name">Charismatic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_loyal" model="fragrance.intensity.index">
+            <field name="sequence">4</field>
+            <field name="name">Loyal</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_energetic_fresh" model="fragrance.intensity.index">
+            <field name="sequence">5</field>
+            <field name="name">Energetic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_supportive" model="fragrance.intensity.index">
+            <field name="sequence">6</field>
+            <field name="name">Supportive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_team_oriented" model="fragrance.intensity.index">
+            <field name="sequence">7</field>
+            <field name="name">Team-oriented</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_sociable" model="fragrance.intensity.index">
+            <field name="sequence">8</field>
+            <field name="name">Sociable</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_dependable" model="fragrance.intensity.index">
+            <field name="sequence">9</field>
+            <field name="name">Dependable</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_enthusiastic_fresh" model="fragrance.intensity.index">
+            <field name="sequence">10</field>
+            <field name="name">Enthusiastic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_warm_hearted" model="fragrance.intensity.index">
+            <field name="sequence">11</field>
+            <field name="name">Warm-hearted</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_encouraging" model="fragrance.intensity.index">
+            <field name="sequence">12</field>
+            <field name="name">Encouraging</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_happy_go_lucky" model="fragrance.intensity.index">
+            <field name="sequence">13</field>
+            <field name="name">Happy-go-lucky</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_optimistic" model="fragrance.intensity.index">
+            <field name="sequence">14</field>
+            <field name="name">Optimistic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_outgoing_fresh" model="fragrance.intensity.index">
+            <field name="sequence">15</field>
+            <field name="name">Outgoing</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_positive" model="fragrance.intensity.index">
+            <field name="sequence">16</field>
+            <field name="name">Positive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_cooperative" model="fragrance.intensity.index">
+            <field name="sequence">17</field>
+            <field name="name">Cooperative</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_easy_going" model="fragrance.intensity.index">
+            <field name="sequence">18</field>
+            <field name="name">Easy-going</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_approachable" model="fragrance.intensity.index">
+            <field name="sequence">19</field>
+            <field name="name">Approachable</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+        <record id="scent_trait_generous" model="fragrance.intensity.index">
+            <field name="sequence">20</field>
+            <field name="name">Generous</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_2"/>
+        </record>
+
+        <!-- ========================= -->
+        <!-- Floral Traits -->
+        <!-- ========================= -->
+        <record id="scent_trait_altruistic" model="fragrance.intensity.index">
+            <field name="sequence">1</field>
+            <field name="name">Altruistic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_idealistic" model="fragrance.intensity.index">
+            <field name="sequence">2</field>
+            <field name="name">Idealistic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_visionary" model="fragrance.intensity.index">
+            <field name="sequence">3</field>
+            <field name="name">Visionary</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_empathetic" model="fragrance.intensity.index">
+            <field name="sequence">4</field>
+            <field name="name">Empathetic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_compassionate" model="fragrance.intensity.index">
+            <field name="sequence">5</field>
+            <field name="name">Compassionate</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_altruistic_floral" model="fragrance.intensity.index">
+            <field name="sequence">6</field>
+            <field name="name">Altruistic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_caring" model="fragrance.intensity.index">
+            <field name="sequence">7</field>
+            <field name="name">Caring</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_insightful" model="fragrance.intensity.index">
+            <field name="sequence">8</field>
+            <field name="name">Insightful</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_kind_hearted" model="fragrance.intensity.index">
+            <field name="sequence">9</field>
+            <field name="name">Kind-hearted</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_loving" model="fragrance.intensity.index">
+            <field name="sequence">10</field>
+            <field name="name">Loving</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_intuitive" model="fragrance.intensity.index">
+            <field name="sequence">11</field>
+            <field name="name">Intuitive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_understanding" model="fragrance.intensity.index">
+            <field name="sequence">12</field>
+            <field name="name">Understanding</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_supportive_floral" model="fragrance.intensity.index">
+            <field name="sequence">13</field>
+            <field name="name">Supportive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_genuine" model="fragrance.intensity.index">
+            <field name="sequence">14</field>
+            <field name="name">Genuine</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_warm" model="fragrance.intensity.index">
+            <field name="sequence">15</field>
+            <field name="name">Warm</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_thoughtful" model="fragrance.intensity.index">
+            <field name="sequence">16</field>
+            <field name="name">Thoughtful</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_sensitive" model="fragrance.intensity.index">
+            <field name="sequence">17</field>
+            <field name="name">Sensitive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_encouraging_floral" model="fragrance.intensity.index">
+            <field name="sequence">18</field>
+            <field name="name">Encouraging</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_patient" model="fragrance.intensity.index">
+            <field name="sequence">19</field>
+            <field name="name">Patient</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+        <record id="scent_trait_reflective" model="fragrance.intensity.index">
+            <field name="sequence">20</field>
+            <field name="name">Reflective</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_3"/>
+        </record>
+
+        <!-- ========================= -->
+        <!-- Woody Traits -->
+        <!-- ========================= -->
+        <record id="scent_trait_systematic" model="fragrance.intensity.index">
+            <field name="sequence">1</field>
+            <field name="name">Systematic</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_perfectionist" model="fragrance.intensity.index">
+            <field name="sequence">2</field>
+            <field name="name">Perfectionist</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_focused" model="fragrance.intensity.index">
+            <field name="sequence">3</field>
+            <field name="name">Focused</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_diligent" model="fragrance.intensity.index">
+            <field name="sequence">4</field>
+            <field name="name">Diligent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_steady" model="fragrance.intensity.index">
+            <field name="sequence">5</field>
+            <field name="name">Steady</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_thorough" model="fragrance.intensity.index">
+            <field name="sequence">6</field>
+            <field name="name">Thorough</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_organized" model="fragrance.intensity.index">
+            <field name="sequence">7</field>
+            <field name="name">Organized</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_structured" model="fragrance.intensity.index">
+            <field name="sequence">8</field>
+            <field name="name">Structured</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_punctual" model="fragrance.intensity.index">
+            <field name="sequence">9</field>
+            <field name="name">Punctual</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_methodical" model="fragrance.intensity.index">
+            <field name="sequence">10</field>
+            <field name="name">Methodical</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_disciplined" model="fragrance.intensity.index">
+            <field name="sequence">11</field>
+            <field name="name">Disciplined</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_efficient" model="fragrance.intensity.index">
+            <field name="sequence">12</field>
+            <field name="name">Efficient</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_detail_oriented" model="fragrance.intensity.index">
+            <field name="sequence">13</field>
+            <field name="name">Detail-oriented</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_responsible" model="fragrance.intensity.index">
+            <field name="sequence">14</field>
+            <field name="name">Responsible</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_dependable_woody" model="fragrance.intensity.index">
+            <field name="sequence">15</field>
+            <field name="name">Dependable</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_practical" model="fragrance.intensity.index">
+            <field name="sequence">16</field>
+            <field name="name">Practical</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_precise" model="fragrance.intensity.index">
+            <field name="sequence">17</field>
+            <field name="name">Precise</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_consistent" model="fragrance.intensity.index">
+            <field name="sequence">18</field>
+            <field name="name">Consistent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_logical" model="fragrance.intensity.index">
+            <field name="sequence">19</field>
+            <field name="name">Logical</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+        <record id="scent_trait_reliable" model="fragrance.intensity.index">
+            <field name="sequence">20</field>
+            <field name="name">Reliable</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_4"/>
+        </record>
+
+        <!-- ========================= -->
+        <!-- Oriental Traits -->
+        <!-- ========================= -->
+        <record id="scent_trait_extravagant" model="fragrance.intensity.index">
+            <field name="sequence">1</field>
+            <field name="name">Extravagant</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_opulent" model="fragrance.intensity.index">
+            <field name="sequence">2</field>
+            <field name="name">Opulent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_lavish" model="fragrance.intensity.index">
+            <field name="sequence">3</field>
+            <field name="name">Lavish</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_exclusive" model="fragrance.intensity.index">
+            <field name="sequence">4</field>
+            <field name="name">Exclusive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_strong_willed" model="fragrance.intensity.index">
+            <field name="sequence">5</field>
+            <field name="name">Strong-willed</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_commanding" model="fragrance.intensity.index">
+            <field name="sequence">6</field>
+            <field name="name">Commanding</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_authoritative" model="fragrance.intensity.index">
+            <field name="sequence">7</field>
+            <field name="name">Authoritative</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_grand" model="fragrance.intensity.index">
+            <field name="sequence">8</field>
+            <field name="name">Grand</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_posh" model="fragrance.intensity.index">
+            <field name="sequence">9</field>
+            <field name="name">Posh</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_premium" model="fragrance.intensity.index">
+            <field name="sequence">10</field>
+            <field name="name">Premium</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_focused_oriental" model="fragrance.intensity.index">
+            <field name="sequence">11</field>
+            <field name="name">Focused</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_disciplined_oriental" model="fragrance.intensity.index">
+            <field name="sequence">12</field>
+            <field name="name">Disciplined</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_sophisticated" model="fragrance.intensity.index">
+            <field name="sequence">13</field>
+            <field name="name">Sophisticated</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_elegant" model="fragrance.intensity.index">
+            <field name="sequence">14</field>
+            <field name="name">Elegant</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_grand_oriental" model="fragrance.intensity.index">
+            <field name="sequence">15</field>
+            <field name="name">Grand</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_assertive_oriental" model="fragrance.intensity.index">
+            <field name="sequence">16</field>
+            <field name="name">Assertive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_refined" model="fragrance.intensity.index">
+            <field name="sequence">17</field>
+            <field name="name">Refined</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_ambitious" model="fragrance.intensity.index">
+            <field name="sequence">18</field>
+            <field name="name">Ambitious</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_indulgent" model="fragrance.intensity.index">
+            <field name="sequence">19</field>
+            <field name="name">Indulgent</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+        <record id="scent_trait_decisive" model="fragrance.intensity.index">
+            <field name="sequence">20</field>
+            <field name="name">Decisive</field>
+            <field name="fragrance_family_id" ref="gm_scentopia.fragrance_family_5"/>
+        </record>
+    </data>
+</odoo>

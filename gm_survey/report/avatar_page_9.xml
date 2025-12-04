@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_report_page_9_template" name="avatar_report_page_9_template">
+        <t t-name="gm_survey.avatar_report_page_9_template">
+            <t t-call="web.basic_layout">
+                <style>
+                    .image-wrapper {
+                        width: 600px;
+                        margin: 0 auto; 
+                    }
+                    .info-wrapper {
+                        border-radius: 1.5rem;
+                        background-color: white;
+                    }
+                    .info-box {
+                        border-radius: 1rem;
+                    }
+                    .fragrance-name{
+                        width:25%;
+                        height: inherit;
+                    }
+                    .fragrance-description{
+                        width:60%;
+                        height: inherit;
+                    }
+                    
+                    .fragrance-description p{
+                        margin: 0 !important;
+                    }
+                    .fragrance-value{
+                        width:15%;
+                        height: inherit;
+                        padding: 0px;
+                    }
+                    .number-circle {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 500;
+                        font-size: 24px;
+                        color: #333;
+                    }
+
+
+                </style>
+                <t t-foreach="docs" t-as="doc">
+                    <main>
+                        <div class="page" style="font-weight:600; padding-top: 50px;">
+                            <div class="container">
+                                <t t-set="fragrance_families" t-value="doc.avatar_id.mapped('fragrance_family_ids.name')"/>
+                                <div class="col-sm-12">
+                                    <h2 style="font-weight:bold; font-family: 'Prompt'">Stage 2 : Your Dominant dimension</h2>
+                                    <p style="font-weight:400;">
+                                        Your highest dimension(s) - determined by your responses regarding how you perceive your environment are <t t-esc="fragrance_families[0] if len(fragrance_families) == 1 else (' and '.join(fragrance_families) if len(fragrance_families) == 2 else ', '.join(fragrance_families[:-1]) + ' and ' + fragrance_families[-1] )"/>. We have added some information below. Additionally, refer to next few pages to learn more about the other dimensions.
+                                    </p>
+                                </div>
+                                <t t-if="'Citrus' in fragrance_families">
+                                    <div class="col-sm-12 mt-4">
+                                        <h2 style="font-weight:bold; font-family: 'Prompt'; color:#E39B9B">Citrus</h2>
+                                        <p style="font-weight:400;">
+                                            Citrus Perfume Personalities are cheerful, bright, and energetic, thriving on spontaneity, adventure, and social interaction. Their childlike curiosity and innocence add a sense of purity, while their direct communication fosters openness in relationships. They excel in dynamic work settings, valuing hands-on experiences and variety. Preferences lean toward fruity scents and youthful fragrances, reflecting their zest for life. Culinary choices mirror their taste for novelty, embracing international flavors and hearty dishes. Despite their vigor, they can face sleep challenges, which guided meditations and fragrance-based relaxation techniques can alleviate. Ultimately, CITRUS individuals bring warmth, excitement, and positivity to every aspect of life.
+                                        </p>
+                                    </div>
+                                </t>
+                                <t t-if="'Fresh' in fragrance_families">
+                                    <div class="col-sm-12 mt-4">
+                                        <h2 style="font-weight:bold; font-family: 'Prompt'; color:#E39B9B">Fresh</h2>
+                                        <p style="font-weight:400;">
+                                            A Fresh personality is notably warm, caring, and highly social, drawing energy from engaging with others and offering genuine support. They have a strong inclination toward team-oriented endeavours, finding fulfilment in uplifting those around them and cultivating a harmonious environment. Their organisational skills and reliability allow them to manage responsibilities effectively, whether at work or in personal settings. They excel at understanding people’s needs and providing a guiding hand when necessary. Additionally, their assertive streak bolsters their self-assurance, enabling them to tackle challenges head-on with optimism and a keen sense of duty. Often taking on leadership roles, these individuals prioritise maintaining positive relationships and fostering unity, making them invaluable contributors to any group or community.
+                                        </p>
+                                    </div>
+                                </t>
+                                <t t-if="'Floral' in fragrance_families">
+                                    <div class="col-sm-12 mt-4">
+                                        <h2 style="font-weight:bold; font-family: 'Prompt'; color:#E39B9B">Floral</h2>
+                                        <p style="font-weight:400;">
+                                            Florals are empathetic and deeply intuitive individuals who excel at understanding others' emotions and motivations. They combine idealism with practicality, driven by a desire to create meaningful change in the world. Though introverted, they form warm and authentic connections, valuing depth over superficiality. Creative and visionary, Florals use structured planning to achieve their long-term goals. They are often conflict-averse yet unwavering in their values, balancing sensitivity with determination. With a strong sense of purpose and a rich inner world, Florals thrive in roles where they can align their creativity and compassion to make a lasting impact.
+                                        </p>
+                                    </div>
+                                </t>
+                                <t t-if="'Woody' in fragrance_families">
+                                    <div class="col-sm-12 mt-4">
+                                        <h2 style="font-weight:bold; font-family: 'Prompt'; color:#E39B9B">Woody</h2>
+                                        <p style="font-weight:400;">
+                                            Woodys are practical, detail-oriented individuals who excel at creating order and structure. They are highly dependable, with a strong sense of duty and responsibility, often committed to upholding traditions and following through on their commitments. Logical and methodical, Woodys rely on facts and clear systems to make decisions, ensuring efficiency and accuracy in their work. Though introverted, they value loyalty and form meaningful, steady relationships built on trust and mutual respect. Preferring stability over spontaneity, Woodys are highly disciplined and thrive in environments where rules and expectations are clearly defined. Their grounded nature and dedication make them reliable contributors in any setting.
+                                        </p>
+                                    </div>
+                                </t>
+                                <t t-if="'Oriental' in fragrance_families">
+                                    <div class="col-sm-12 mt-4">
+                                        <h2 style="font-weight:bold; font-family: 'Prompt'; color:#E39B9B">Oriental</h2>
+                                        <p style="font-weight:400;">
+                                            The Oriental Perfume Personality is strong-willed, independent, and thrives as a natural leader. These individuals prefer structure, efficiency, and logical thinking, excelling in roles that let them plan ahead. Gifted with visionary ideas, they can become CEO material when strategies align with overarching goals. Their extraverted, goal-oriented nature fuels ambition, though they may struggle with debate, insensitivity, and too many ideas. By practicing empathy, prioritizing concepts, and collaborating with execution-minded people, they maintain healthy relationships and productive environments. They are protective of loved ones and loyal to those they cherish, relaxing by challenging their minds or engaging in thought-provoking activities.
+                                        </p>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="avatar_report_page_9" model="ir.actions.report">
+        <field name="name">Avatar Detail Report Page 9</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_survey.avatar_report_page_9_template</field>
+        <field name="report_file">gm_survey.avatar_report_page_9_template</field>
+        <field name="paperformat_id" ref="gm_survey.paperformat_a4_with_minimum_margin"/>
+        <!-- <field name="print_report_name">'Avatar Detail'</field> -->
+    </record>
+
+</odoo>

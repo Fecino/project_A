@@ -1,0 +1,72 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_fragrance_family_form" model="ir.ui.view">
+        <field name="name">fragrance.family.form</field>
+        <field name="model">fragrance.family</field>
+        <field name="arch" type="xml">
+            <form string="Fragrance family">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="threshold"/>
+                        <field name="color" widget="color"/>
+                    </group>
+                    <notebook>
+                        <page name="value" string="Value">
+                            <field name="value_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="fragrance_family_id" column_invisible="1"/>
+                                    <field name="level"/>
+                                    <field name="label"/>
+                                    <field name="value_start"/>
+                                    <field name="value_end"/>
+                                    <field name="percentage_start"/>
+                                    <field name="percentage_end"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page name="intensity" string="Intensity">
+                            <field name="intensity_index_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="fragrance_family_id" column_invisible="1"/>
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree/List View -->
+    <record id="view_fragrance_family_tree" model="ir.ui.view">
+        <field name="name">fragrance.family.tree</field>
+        <field name="model">fragrance.family</field>
+        <field name="arch" type="xml">
+            <list string="Fragrance family">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="threshold"/>
+                <field name="color" widget="color"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_fragrance_family" model="ir.actions.act_window">
+        <field name="name">Fragrance family</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fragrance.family</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first fragrance family
+            </p>
+        </field>
+    </record>
+    <menuitem id="scentopia_fragrance_family_menu" name="Fragrance Family" sequence="20" action="gm_scentopia.action_fragrance_family" parent="gm_scentopia.scentopia_settings_menu_category"/>
+
+</odoo>

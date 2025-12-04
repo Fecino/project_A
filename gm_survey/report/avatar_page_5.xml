@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_report_page_5_template" name="avatar_report_page_5_template">
+        <t t-name="gm_survey.avatar_report_page_5_template">
+            <t t-call="web.basic_layout">
+                <style>
+                    .image-wrapper {
+                        max-width: 400px;
+                        margin: 0 auto; /* untuk center */
+                    }
+                    .container-info {
+                        background-color: #eee0db;
+                        border-radius: 2rem;
+                    }
+                    .info-wrapper {
+                        border-radius: 1.5rem;
+                        background-color: white;
+                    }
+                    .info-box {
+                        border-radius: 1rem;
+                    }
+                    .fragrance-name{
+                        width:25%;
+                        height: inherit;
+                    }
+                    .fragrance-description{
+                        width:60%;
+                        height: inherit;
+                    }
+                    
+                    .fragrance-description p{
+                        margin: 0 !important;
+                    }
+                    .fragrance-value{
+                        width:15%;
+                        height: inherit;
+                        padding: 0px;
+                    }
+                    .number-circle {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 500;
+                        font-size: 24px;
+                        color: #333;
+                    }
+
+
+                </style>
+                <t t-foreach="docs" t-as="doc">
+                    <main>
+                        <div class="page" style="font-weight:600; padding-top: 50px;">
+                            <div class="container">
+                                <div class="col-sm-12" style="text-align: center;">
+                                    <h1 style="font-weight:bold;">Your Perfume Personality Results</h1>
+                                </div>
+                                <div class="col-sm-12 mx-auto container-info mt-5 p-4">
+                                    <div class="mx-auto info-wrapper px-3 py-2">
+                                        <t t-foreach="doc.fragrance_value_ids" t-as="fragrance_value">
+                                            <div class="info-box my-2 p-2 row mx-auto" t-att-style="'background-color: %s;' % fragrance_value.fragrance_family_id.color">
+                                                <div class="fragrance-name d-flex align-items-center" style="padding-left:15px;">
+                                                    <h3 class='fw-bold m-0'> <t t-esc="fragrance_value.fragrance_family_id.name"/></h3>
+                                                </div>
+                                                <div class="fragrance-description d-flex align-items-center" style="font-size: 24px;">
+                                                    <t t-esc="fragrance_value.fragrance_family_id.description"/>
+                                                </div>
+                                                <div class="fragrance-value d-flex align-items-center text-center" style="text-align: center;">
+                                                    <div style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid black; text-align: center; line-height: 50px; margin:auto;">
+                                                        <span class="number-circle"><t t-esc="fragrance_value.value"/></span> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t> 
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="avatar_report_page_5" model="ir.actions.report">
+        <field name="name">Avatar Detail Report Page 5</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_survey.avatar_report_page_5_template</field>
+        <field name="report_file">gm_survey.avatar_report_page_5_template</field>
+        <field name="paperformat_id" ref="gm_survey.paperformat_a4_with_minimum_margin"/>
+        <!-- <field name="print_report_name">'Avatar Detail'</field> -->
+    </record>
+
+</odoo>

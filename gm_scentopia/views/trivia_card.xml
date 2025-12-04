@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_trivia_card_form" model="ir.ui.view">
+        <field name="name">trivia.card.form</field>
+        <field name="model">trivia.card</field>
+        <field name="arch" type="xml">
+            <form string="Trivia &amp; Helpful Guides">
+                <sheet>
+                    <group>
+                        <field name="type"/>
+                        <field name="name" required="1"/>
+                        <field name="answer" invisible="type != 'trivia'" required="type == 'trivia'"/>
+                        <field name="content" invisible="type != 'helpfull'" widget="text" required="type == 'helpfull'"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_trivia_card_tree" model="ir.ui.view">
+        <field name="name">trivia.card.tree</field>
+        <field name="model">trivia.card</field>
+        <field name="arch" type="xml">
+            <list string="Trivia &amp; Helpful Guides">
+                <field name="type"/>
+                <field name="name"/>
+                <field name="answer"/>
+                <field name="content"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_trivia_card_menuitems" model="ir.actions.act_window">
+        <field name="name">Trivia &amp; Helpful Guides</field>
+        <field name="res_model">trivia.card</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_trivia_card_tree"/>
+    </record>
+
+    <menuitem id="menu_trivia_card_menuitem" name="Trivia &amp; Helpful Guides" action="action_trivia_card_menuitems" parent="gm_scentopia.scentopia_settings_menu_category"/>
+
+    <!-- Removed helpful-specific tree/action/menu: view_helpfull_card_tree, action_helpfull_card, menu_helpfull_card_menuitem -->
+</odoo>

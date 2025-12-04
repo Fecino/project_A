@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_report_intensity_table_template" name="avatar_report_intensity_table_template">
+        <t t-name="gm_survey.avatar_report_intensity_table_template">
+            <t t-call="web.basic_layout">
+                 <style>
+                    table, th, td {
+                        border: 1px solid black !important;
+                    }
+                </style>
+                <t t-foreach="docs" t-as="doc">
+                    <main>
+                        <div class="page" style="font-weight:400; padding-top: 50px;">
+                            <div class="container">
+                                <div class="col-sm-12">
+                                    <h2 style="color: black; font-weight:bold; font-family: Prompt;">Stage 2: Intensity Index</h2>
+                                </div>
+                                <t t-set="result" t-value="doc.get_data_intensity_table()"/>
+                                <t t-set="table" t-value="result[0]"/>
+                                <t t-set="categories" t-value="result[1]"/>
+
+                                <table class="table table-bordered">
+                                    <thead  style="text-align:center;">
+                                        <tr>
+                                        <th t-foreach="categories" t-as="cat"
+                                            t-attf-style="background:#{cat.color if cat.color else 'ddd'};color:#fff;">
+                                            <t t-esc="cat.name"/>
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="table" t-as="row">
+                                        <td t-foreach="categories" t-as="cat"
+                                            t-attf-style="background:#{cat.color if row[cat.name]['highlight'] else 'fff'};">
+                                            <t t-esc="row[cat.name]['text']"/>
+                                        </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div style="page-break-after: always;"></div>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="avatar_report_intensity_table" model="ir.actions.report">
+        <field name="name">Avatar Detail Report Intensity Table</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_survey.avatar_report_intensity_table_template</field>
+        <field name="report_file">gm_survey.avatar_report_intensity_table_template</field>
+        <field name="paperformat_id" ref="gm_survey.paperformat_a4_with_minimum_margin"/>
+        <!-- <field name="print_report_name">'Avatar Detail'</field> -->
+    </record>
+
+</odoo>

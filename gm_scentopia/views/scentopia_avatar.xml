@@ -1,0 +1,115 @@
+<odoo>
+    <data>
+        <record id="view_avatar_form" model="ir.ui.view">
+            <field name="name">avatar.form</field>
+            <field name="model">scentopia.avatar</field>
+            <field name="arch" type="xml">
+                <form  js_class="hr_employee_form">
+                    <sheet>
+                        <div class="row justify-content-between position-relative w-100 m-0 mb-2">
+                            <div class="oe_title mw-100 ps-0 pe-2">
+                                <label for="name">Personality Type</label>
+                                <h1 class="d-flex flex-row align-items-center">
+                                    <field name="name" placeholder="Personality Type" style="font-size: min(4vw, 2.6rem);"/>
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between position-relative w-100 m-0 mb-2">
+                            <div class="ps-0 pe-2 mx-auto" style="max-width:128px !important;">
+                                <div class="d-flex flex-column">
+                                    <label class="form-label mb-1" for="image">Unisex Avatar</label>
+                                    <field name="image" widget="image" options="{'zoom': true}"/>
+                                </div>
+                            </div>
+                            <div class="ps-0 pe-2 mx-auto" style="max-width:128px !important;">
+                                <div class="d-flex flex-column">
+                                    <label class="form-label mb-1" for="male_image">Male Avatar</label>
+                                    <field name="male_image" widget="image" options="{'zoom': true}"/>
+                                </div>
+                            </div>
+                            <div class="ps-0 pe-2 mx-auto" style="max-width:128px !important;">
+                                <div class="d-flex flex-column">
+                                    <label class="form-label mb-1" for="female_image">Female Avatar</label>
+                                    <field name="female_image" widget="image" options="{'zoom': true}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <group>
+                            <field name="is_unisex" widget="boolean_toggle"/>
+                            <field name="title" widget="many2many_tags"/>
+                            <field name="fragrance_family_ids" widget="many2many_tags"/>
+                            <field name="video_url"/>
+                        </group>
+                        <notebook>
+                            <page string="Data Personality" name="data_Personality">
+                                <group>
+                                    <field name="emotions"/>
+                                    <field name="goal"/>
+                                    <field name="judges_other_by"/>
+                                    <field name="influences_other_by"/>
+                                    <field name="strengths"/>
+                                    <field name="communication"/>
+                                    <field name="values_to_org"/>
+                                    <field name="under_pressure"/>
+                                    <field name="fears"/>
+                                    <field name="increase_effectiveness"/>
+                                    <field name="overview"/>
+                                    <field name="personality"/>
+                                </group>
+                            </page>
+                            <page string="Data Report" name="data_report">
+                                <group>
+                                    <field name="five_elements_report_name" invisible="1"/>
+                                    <field name="love_match_report_name" invisible="1"/>
+                                    <field name="career_match_report_name" invisible="1"/>
+                                    <field name="soulfulness_report_name" invisible="1"/>
+                                    <field name="thirty_one_types_report_name" invisible="1"/>
+                                    <field name="tcm_report_name" invisible="1"/>
+                                    <field name="ayurvedic_report_name" invisible="1"/>
+                                    <field name="perfume_personality_report_name" invisible="1"/>
+                                    <field name="five_elements_report" filename="five_elements_report_name"/>
+                                    <field name="love_match_report" filename="love_match_report_name"/>
+                                    <field name="career_match_report" filename="career_match_report_name"/>
+                                    <field name="soulfulness_report" filename="soulfulness_report_name"/>
+                                    <field name="thirty_one_types_report" filename="thirty_one_types_report_name"/>
+                                    <field name="tcm_report" filename="tcm_report_name"/>
+                                    <field name="ayurvedic_report" filename="ayurvedic_report_name"/>
+                                    <field name="perfume_personality_report" filename="perfume_personality_report_name"/>
+
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_avatar_list" model="ir.ui.view">
+            <field name="name">avatar.list</field>
+            <field name="model">scentopia.avatar</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="title" widget="many2many_tags"/>
+                    <field name="fragrance_family_ids" widget="many2many_tags"/>
+                    <field name="video_url"/>
+                </list>
+            </field>
+        </record>
+        <record id="scentopia_avatar_action" model="ir.actions.act_window">
+            <field name="name">Avatars</field>
+            <field name="res_model">scentopia.avatar</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_avatar_list"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                    Create and manage your avatars here.
+                </p>
+            </field>
+        </record>
+        <menuitem id="scentopia_avatar_menu" name="Avatars"
+            parent="gm_scentopia.scentopia_settings_menu_category"
+            action="scentopia_avatar_action"
+            sequence="10"/>
+    </data>
+</odoo>

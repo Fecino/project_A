@@ -1,0 +1,166 @@
+<?xml version="1.0" ?>
+<odoo>
+	<template id="staff_validation_template" name="Staff Validation">
+		<t t-name="gm_web.staff_validation_template">
+			<t t-call="web.basic_layout">
+				<t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+				<t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+				<t t-if="font_url">
+						<link rel="stylesheet" t-att-href="font_url"/>
+				</t>
+				<style>
+					body {
+						font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+						background-color: #F9F2F0 !important;
+					}
+					
+					.o_body_html {
+						padding: 16px !important;
+					}
+					.custom-btn {
+						display: block;
+						width: 100%;
+						color: #fff;
+						text-align: center;
+						border: none;
+						padding: 12px;
+						font-size: 16px;
+						border-radius: 12px;
+						cursor: pointer;
+						text-decoration: none;
+						box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+						transition: background-color 0.2s ease;
+					}
+					.bubble {
+						position: relative;
+						font-size: 12px;
+						line-height: 14px;
+						background: #fff;
+						border-radius: 40px;
+						padding: 15px;
+						text-align: center;
+						color: #000;
+						border: 1px solid #fff;
+					}
+
+					.bubble-bottom-right:before {
+						content: "";
+						width: 0px;
+						height: 0px;
+						position: absolute;
+						border-right: 24px solid #fff;
+						border-left: 12px solid transparent;
+						border-top: 12px solid #fff;
+						border-bottom: 20px solid transparent;
+						right: 32px;
+						bottom: -24px;
+					}
+				</style>
+				<t t-set="title">Staff Validation</t>
+				<div class="wrap">
+					<div class="container mt-5" style="padding-bottom: 80px;">
+						<h4 class="text-center mb-4" style="color: #B17B67; font-weight: bold;">Please see our staff perfumer</h4>
+						<form class="login-form" role="form" method="post" action="/perfume-journey/submit-value">
+							<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+							<input type="hidden" name="uuid" t-att-value="uuid"/>
+							<div class="row mx-auto">
+								<div class="col-md-12 mb-3">
+									<span class="form-label" style="color: #B17B67; font-weight: bold;">Staff ID</span>
+									<input type="text" class="form-control form-control-lg" name="staff_id" placeholder="Enter Staff ID" style="background: white; border-radius: 1rem;"/>
+								</div>
+							</div>
+							<div class="row mx-auto">
+								<div class="col-md-12 mb-3">
+									<span class="form-label" style="color: #B17B67; font-weight: bold;">Access Code</span>
+									<input type="text" class="form-control form-control-lg" name="access_code" placeholder="Enter Access Code" style="background: white; border-radius: 1rem;"/>
+								</div>
+							</div>
+							<div>
+								<div style="display: flex; flex-direction: column; gap: 15px; align-items: center; max-width: 300px; margin: 0 auto;">
+									<button type="submit" class="btn custom-btn" style="width: 80%; background: #B17B67 !important; color: white; padding: 15px;">
+										Proceed
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- Fixed bottom bar -->
+				<div class="fixed-bottom d-flex align-items-center justify-content-between p-3"
+						style="z-index: 1000;">
+					<a t-att-href="f'/perfume-journey/change-value?uuid={uuid}'"
+						class="text-decoration-none d-flex align-items-center justify-content-center"
+						style="background:#F9F2F0 !important; border-radius:15px;">
+						<img src="/gm_web/static/src/img/prev.svg"
+								alt="Back"
+								class="img-fluid"
+								style="width: 40px; height: 40px; object-fit: contain;" />
+					</a>
+					<img src="/gm_web/static/src/img/logo.png"
+							class="img-fluid"
+							style="width: 150px; margin-top:-20px;"
+							alt="Logo" />
+					<div style="width: 40px; height: 40px;"></div>
+				</div>
+
+				<!-- Mini avatar (bottom right) -->
+				<div class="fixed-bottom p-3" style="z-index: 2000; pointer-events: none;">
+					<div class="bubble bubble-bottom-right text-brown ms-auto me-2 mb-4" style="max-width: 400px;">
+						<p class="mb-0">
+							Please see our staff perfumer
+						</p>
+					</div>
+					<div class="text-end me-2">
+						<img t-att-src="'data:%s;base64,%s' % (avatar.get_image_mime('other'), avatar.decode_image(avatar.image))"
+							alt="Avatar Image"
+							class="img-fluid"
+							style="height: 100px;" />
+					</div>
+				</div>
+
+				<script type="text/javascript">
+					<![CDATA[
+						document.addEventListener('DOMContentLoaded', function() {
+							const form = document.querySelector('.login-form');
+							form.addEventListener('submit', async function(e) {
+								e.preventDefault();
+								const staffId = form.querySelector('input[name="staff_id"]').value.trim();
+								const accessCode = form.querySelector('input[name="access_code"]').value.trim();
+								if (!staffId || !accessCode) {
+									alert("Staff ID dan Access Code harus diisi");
+									return;
+								}
+								try {
+									const response = await fetch('/perfume-journey/check-code', {
+										method: 'POST',
+										headers: {
+											'Content-Type': 'application/json',
+											'X-Requested-With': 'XMLHttpRequest',
+										},
+										body: JSON.stringify({ staff_id: staffId, access_code: accessCode }),
+									});
+									console.log(response)
+									if (!response.ok) {
+										throw new Error(`HTTP error! status: ${response.status}`);
+									}
+									const result = await response.json();
+									console.log(result)
+									if (result.success === true) {
+										form.submit();
+									} else {
+										alert(result.message || "Access denied");
+									}
+								} catch (err) {
+									console.error("Fetch error:", err);
+									alert("An error occurred, please try again later.");
+								}
+							});
+						});
+					]]>
+				</script>
+			</t>
+		</t>
+	</template>
+</odoo>

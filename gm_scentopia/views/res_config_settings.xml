@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_res_config_settings_inherit_scentzania" model="ir.ui.view">
+            <field name="name">res.config.settings.inherit.scentzania</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="Scentzania" string="Scentzania" name="gm_scentopia">
+                        <block title="Scentzania Settings" name="scentzania_settings_container">
+                            <setting string="Oil Drop" help="Set How Much Drop / ML" id="oil_drop">
+                                <field name="scentzania_oil_drop"/>
+                            </setting>
+                            <setting string="Custom Font" help="Set Font on the website, please use font.googleapis.com" id="font_link">
+                                <field name="font_link" placeholder="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"/>
+                                <field name="font_name" invisible="1"/>
+                            </setting>
+                            <setting string="Bottling Video" help="Set the embbed URL for the bottling video" id="bottling_video_url">
+                                <field name="bottling_video_url" placeholder="https://www.youtube.com/embed/xxxxxxxxxxxxxxx"/>
+                            </setting>
+                            <setting string="Pump Video" help="Set the embbed URL for the pump video" id="pump_video_url">
+                                <field name="pump_video_url" placeholder="https://www.youtube.com/embed/xxxxxxxxxxxxxxx"/>
+                            </setting>
+                            <setting string="Seal Video" help="Set the embbed URL for the seal video" id="seal_video_url">
+                                <field name="seal_video_url" placeholder="https://www.youtube.com/embed/xxxxxxxxxxxxxxx"/>
+                            </setting>
+
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+        <record id="action_gm_scentopia_config" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'gm_scentopia', 'bin_size': False}</field>
+        </record>
+        <menuitem id="scentopia_settings_menu" name="Settings"
+            parent="gm_scentopia.scentopia_settings_menu_category"
+            action="action_gm_scentopia_config"
+            sequence="1"/>
+    </data>
+</odoo>

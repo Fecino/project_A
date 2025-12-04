@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <template id="survey_page_five_elements_report" name="Survey: print page">
+            <t t-call="gm_survey.custom_layout_custom">
+                <t t-set="font_url" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_link')"/>
+                <t t-set="font_family" t-value="request.env['ir.config_parameter'].sudo().get_param('gm_scentopia.font_name')"/>
+
+                <t t-if="font_url">
+                        <link rel="stylesheet" t-att-href="font_url"/>
+                </t>
+                <style>
+                    body {
+                    background-color: #F9F2F0 !important;
+                    font-family: "<t t-esc="font_family or 'Poppins'"/>" !important;
+                    text-align: center;
+                    padding-top: 40px;
+                    color: #a56b57;
+                    }
+                    .container{
+                        padding-bottom: 80px !important;
+                    }
+                    .report-box {
+                    background-color: #d9d9d9;
+                    height: 400px;
+                    max-height: 500px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 30px;
+                    color: #000;
+                    font-weight: bold;
+                    }
+                    .go-back-btn {
+                    background-color: #a56b57;
+                    color: #fff;
+                    border: none;
+                    border-radius: 25px;
+                    padding: 10px 30px;
+                    font-size: 0.9rem;
+                    }
+                    .go-back-btn:hover {
+                    background-color: #925c4e;
+                    }
+                    .title {
+                        color: #a66f5b;
+                        font-weight: 600;
+                        }
+                </style>
+                <t t-set="title">Five Elements Report | Scentzania</t>
+                <div class="container">
+                    <div class="fixed-top d-flex align-items-center justify-content-center" style="z-index: 1000; background: #F9F2F0; padding: 20px 0;">
+                        <h2 class="title mb-0">Five Elements Report</h2>
+                    </div>
+                    <div style="margin-top: 80px;"></div>
+
+                    <iframe t-att-src="'/get_report_pdf/%s/%s' % ('five_elements', answer_token)"
+                        style="border:none; width: 100%; height: 600px;"></iframe>
+
+                </div>
+                <div class="fixed-bottom d-flex align-items-center justify-content-between p-3" style="z-index: 999; background: #F9F2F0;">
+                    <a t-att-href="'/choose_report/' + answer_token" class="text-decoration-none d-flex align-items-center justify-content-center">
+                        <img src="/gm_web/static/src/img/prev.svg" alt="Back" class="img-fluid" style="width: 40px; height: 40px; object-fit: contain;"/>
+                    </a>
+                    <img src="/gm_web/static/src/img/logo.png" class="img-fluid mb-2" style="width: 120px;" alt="Logo"/>
+                    <div style="width: 40px;"></div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="avatar_report_intensity_index_template" name="avatar_report_intensity_index_template">
+        <t t-name="gm_survey.avatar_report_intensity_index_template">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="doc">
+                    <main>
+                        <t t-set="data" t-value="doc.get_data_intensity()"/>
+                        <t t-foreach="data" t-as="data_intensity">
+                            <div class="page" style="font-weight:400; padding-top: 50px;">
+                                <div class="container">
+                                    <div class="col-sm-12">
+                                        <h2 t-att-style="'color: %s; font-weight:bold; font-family: Prompt; text-align:center' % data_intensity['color']"><t t-esc="data_intensity['title']"/></h2>
+                                        <p>
+                                            <t t-esc="data_intensity['description']"/>
+                                        </p>
+                                    </div>
+                                    <t t-foreach="data_intensity.items()" t-as="item">
+                                        <t t-if="item[0] not in ['title', 'description', 'color', 'Path to balance this facet']">
+                                            <div class="col-sm-12 mt-4">
+                                                <p>
+                                                    <span style="color:#BF6659">
+                                                        <t t-esc="item[0]"/> : 
+                                                    </span>
+                                                    <t t-esc="data_intensity[item[0]]"/>
+                                                </p>
+                                                
+                                            </div>
+                                        </t>
+                                        <t t-elif="item[0] == 'Path to balance this facet'">
+                                            <div class="col-sm-12 mt-4">
+                                                <span style="color:#BF6659; font-weight:600;">
+                                                    <t t-esc="item[0]"/>
+                                                </span>
+                                                <ul>
+                                                    <t t-foreach="data_intensity[item[0]]" t-as="path">
+                                                        <li>
+                                                            <span style="font-weight:bold;">
+                                                                <t t-esc="path"/> :
+                                                            </span>
+                                                            <t t-esc="data_intensity[item[0]][path]"/>
+                                                        </li>
+                                                    </t>
+                                                </ul>
+                                            </div>
+                                        </t>
+                                    </t>
+                                </div>
+                            </div>
+                            <div style="page-break-after: always;"></div>
+                        </t>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="avatar_report_intensity_index" model="ir.actions.report">
+        <field name="name">Avatar Detail Report Intensity Index</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gm_survey.avatar_report_intensity_index_template</field>
+        <field name="report_file">gm_survey.avatar_report_intensity_index_template</field>
+        <field name="paperformat_id" ref="gm_survey.paperformat_a4_with_minimum_margin"/>
+        <!-- <field name="print_report_name">'Avatar Detail'</field> -->
+    </record>
+
+</odoo>

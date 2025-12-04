@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <!-- Inherit res.partner form view -->
+        <record id="view_partner_form_inherit_scentopia" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.scentopia</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Example: Add a new field after 'name' -->
+                <field name="vat" position="after">
+                    <field name="designation"/>
+                    <field name="department"/>
+                    <field name="account_type"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
